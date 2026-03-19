@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>形容词变形总结 - JLPT N5-N3</title>
+<style>
+    :root {
+        --bg-color: #FDFBF7;
+        --text-main: #1C1C1A;
+        --text-muted: #7A7A7A;
+        --border-light: #E6E4DD;
+        --border-dark: #1C1C1A;
+        --paper-white: #FFFFFF;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, .serif, .section-header, .doc-title, .toc-section-title {
+        font-family: "Noto Serif SC", "Source Han Serif SC", "SimSun", "Times New Roman", serif;
+    }
+
+    /* Layout */
+    .layout-container {
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    /* Sidebar TOC */
+    .sidebar {
+        width: 280px;
+        min-width: 280px;
+        border-right: 1px solid var(--border-light);
+        padding: 40px 24px;
+        overflow-y: auto;
+        background: var(--bg-color);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .toc-header {
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        margin-bottom: 32px;
+        border-bottom: 1px solid var(--border-light);
+        padding-bottom: 12px;
+        font-family: sans-serif;
+    }
+
+    .toc-section-title {
+        font-size: 18px;
+        color: var(--text-main);
+        margin: 24px 0 12px 0;
+    }
+
+    .toc-list {
+        list-style: none;
+    }
+
+    .toc-item {
+        margin-bottom: 4px;
+    }
+
+    .toc-link {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 14px;
+        display: block;
+        padding: 6px 12px 6px 24px;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+        position: relative;
+    }
+
+    .toc-link::before {
+        content: "";
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 4px;
+        background: var(--border-light);
+        border-radius: 50%;
+        transition: all 0.2s;
+    }
+
+    .toc-link:hover {
+        background: rgba(0,0,0,0.03);
+        color: var(--text-main);
+    }
+
+    .toc-link.active {
+        color: var(--text-main);
+        font-weight: bold;
+    }
+
+    .toc-link.active::before {
+        background: var(--text-main);
+    }
+
+    /* Main Content */
+    .main {
+        flex: 1;
+        overflow-y: auto;
+        padding: 60px 40px;
+        scroll-behavior: smooth;
+    }
+
+    .paper {
+        max-width: 210mm;
+        margin: 0 auto;
+    }
+
+    /* Document Header */
+    .doc-header {
+        text-align: center;
+        border-bottom: 4px solid var(--border-dark);
+        padding-bottom: 32px;
+        margin-bottom: 64px;
+        position: relative;
+    }
+
+    .doc-header::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: var(--border-dark);
+    }
+
+    .doc-title {
+        font-size: 42px;
+        margin: 0 0 16px;
+        letter-spacing: 2px;
+        font-weight: normal;
+    }
+
+    .doc-meta {
+        font-size: 13px;
+        color: var(--text-muted);
+        font-family: "Courier New", Courier, monospace;
+        letter-spacing: 1px;
+    }
+
+    /* Section Headers */
+    .section-header {
+        font-size: 28px;
+        font-weight: normal;
+        margin: 40px 0 32px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--border-dark);
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    .section-meta {
+        font-size: 14px;
+        color: var(--text-muted);
+        font-family: sans-serif;
+    }
+
+    /* Grid Layout */
+    .cards-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 32px;
+        align-items: start;
+    }
+
+    /* Content Card */
+    .content-card {
+        border: 1px solid var(--border-light);
+        background: var(--paper-white);
+        padding: 32px;
+        position: relative;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .content-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--border-dark);
+    }
+
+    .card-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 16px;
+        color: var(--text-main);
+    }
+
+    /* Overview Grid */
+    .overview-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-top: 20px;
+    }
+
+    .overview-item {
+        border-top: 3px solid var(--border-dark);
+        padding-top: 16px;
+    }
+
+    .overview-label {
+        font-size: 11px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        margin-bottom: 8px;
+    }
+
+    .overview-heading {
+        font-size: 22px;
+        font-weight: bold;
+        color: var(--text-main);
+        margin-bottom: 8px;
+    }
+
+    .overview-text {
+        font-size: 14px;
+        color: var(--text-muted);
+        margin-bottom: 12px;
+    }
+
+    .overview-list {
+        list-style: none;
+        font-size: 14px;
+    }
+
+    .overview-list li {
+        padding: 4px 0;
+        color: var(--text-main);
+    }
+
+    /* Warning Box */
+    .warning-box {
+        background: #FDF6EE;
+        padding: 12px 16px;
+        border-left: 3px solid #D4A855;
+        font-size: 14px;
+        color: #555;
+        margin-top: 16px;
+    }
+
+    /* Note Box */
+    .note-box {
+        background: #F4F2EB;
+        padding: 12px 16px;
+        border-left: 3px solid #C0B9A8;
+        font-size: 14px;
+        color: #555;
+        margin-top: 16px;
+    }
+
+    /* Rule Box */
+    .rule-box {
+        font-family: "Courier New", monospace;
+        background: #F4F2EB;
+        padding: 8px 16px;
+        border-radius: 4px;
+        margin: 12px 0;
+        border: 1px solid var(--border-light);
+        font-size: 14px;
+    }
+
+    /* Example */
+    .example {
+        background: #FAFAFA;
+        border-left: 3px solid var(--border-light);
+        padding: 10px 16px;
+        margin: 10px 0;
+        border-radius: 0 4px 4px 0;
+    }
+
+    /* Table */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 14px;
+    }
+
+    th, td {
+        border: 1px solid var(--border-light);
+        padding: 10px 16px;
+        text-align: left;
+    }
+
+    th {
+        background: #FAFAFA;
+        font-weight: 600;
+        color: var(--text-main);
+    }
+
+    /* Japanese Text */
+    .jp {
+        font-weight: 600;
+        display: block;
+        margin-bottom: 2px;
+    }
+
+    td .note {
+        font-size: 12px;
+        color: var(--text-muted);
+    }
+
+    /* Arrow */
+    .arrow, .arrow-na {
+        color: var(--text-main);
+        font-weight: 700;
+        margin: 0 4px;
+    }
+
+    /* Trap Number */
+    .trap-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        background: var(--border-dark);
+        color: white;
+        border-radius: 50%;
+        font-weight: bold;
+        font-size: 14px;
+        margin-right: 12px;
+        flex-shrink: 0;
+    }
+
+    .trap-card {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 24px;
+        padding: 20px;
+        background: var(--paper-white);
+        border: 1px solid var(--border-light);
+    }
+
+    .trap-content {
+        flex: 1;
+    }
+
+    .trap-title {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 12px;
+        color: var(--text-main);
+    }
+
+    /* Incorrect text styling */
+    .incorrect {
+        color: #A00000;
+        text-decoration: line-through;
+    }
+
+    /* Label styling for trap table */
+    .type-label {
+        font-weight: 700;
+    }
+
+    /* Print Styles */
+    @media print {
+        @page {
+            size: A4 portrait;
+            margin: 1cm;
+        }
+
+        body {
+            background: #FFF;
+            font-size: 10pt;
+            line-height: 1.4;
+        }
+
+        .layout-container {
+            display: block;
+            height: auto;
+            overflow: visible;
+        }
+
+        .sidebar {
+            display: none !important;
+        }
+
+        .main {
+            padding: 0;
+            overflow: visible;
+        }
+
+        .doc-header {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+        }
+
+        .doc-title {
+            font-size: 20pt;
+            margin-bottom: 5px;
+        }
+
+        .section-header {
+            margin: 20px 0 10px;
+            font-size: 14pt;
+            padding-bottom: 5px;
+        }
+
+        .cards-grid {
+            gap: 10px;
+        }
+
+        .content-card {
+            box-shadow: none;
+            border: 1px solid #CCC;
+            break-inside: avoid;
+            page-break-inside: avoid;
+            padding: 10px 15px;
+            margin-bottom: 0;
+        }
+
+        .content-card::before {
+            display: none;
+        }
+
+        .overview-grid {
+            gap: 15px;
+        }
+
+        table {
+            margin: 8px 0;
+            font-size: 9.5pt;
+        }
+
+        th, td {
+            padding: 4px 8px;
+        }
+
+        .note-box, .warning-box, .rule-box, .example {
+            padding: 6px 10px;
+            margin-top: 10px;
+            font-size: 9.5pt;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .layout-container { flex-direction: column; }
+        .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border-light); padding: 20px; height: auto; max-height: 300px; }
+        .main { padding: 30px 20px; }
+        .content-card { padding: 24px 20px; }
+        .overview-grid { grid-template-columns: 1fr; }
+    }
+</style>
+</head>
+<body>
+
+<div class="layout-container">
+    <aside class="sidebar" id="print-hide">
+        <div class="toc-header">INDEX / 形容词变形目录</div>
+        
+        <h3 class="toc-section-title serif">概述</h3>
+        <ul class="toc-list">
+            <li class="toc-item"><a href="#sec-overview" class="toc-link">い vs な 形容词概览</a></li>
+            <li class="toc-item"><a href="#sec-quickref" class="toc-link">速查对比表</a></li>
+        </ul>
+        
+        <h3 class="toc-section-title serif">い形容词</h3>
+        <ul class="toc-list">
+            <li class="toc-item"><a href="#sec-i-basic" class="toc-link">基本规则</a></li>
+            <li class="toc-item"><a href="#sec-i-predicate" class="toc-link">谓语形式</a></li>
+            <li class="toc-item"><a href="#sec-i-modify" class="toc-link">修饰名词</a></li>
+            <li class="toc-item"><a href="#sec-i-te" class="toc-link">て形</a></li>
+            <li class="toc-item"><a href="#sec-i-adverb" class="toc-link">副词形式</a></li>
+            <li class="toc-item"><a href="#sec-i-conditional" class="toc-link">条件形（ば形）</a></li>
+            <li class="toc-item"><a href="#sec-i-special" class="toc-link">特殊：いい（よい）</a></li>
+        </ul>
+        
+        <h3 class="toc-section-title serif">な形容词</h3>
+        <ul class="toc-list">
+            <li class="toc-item"><a href="#sec-na-basic" class="toc-link">基本规则</a></li>
+            <li class="toc-item"><a href="#sec-na-predicate" class="toc-link">谓语形式</a></li>
+            <li class="toc-item"><a href="#sec-na-modify" class="toc-link">修饰名词</a></li>
+            <li class="toc-item"><a href="#sec-na-te" class="toc-link">て形</a></li>
+            <li class="toc-item"><a href="#sec-na-adverb" class="toc-link">副词形式</a></li>
+            <li class="toc-item"><a href="#sec-na-conditional" class="toc-link">条件形</a></li>
+        </ul>
+        
+        <h3 class="toc-section-title serif">综合</h3>
+        <ul class="toc-list">
+            <li class="toc-item"><a href="#sec-comparison" class="toc-link">并列对比总表</a></li>
+            <li class="toc-item"><a href="#sec-traps" class="toc-link">考试常见陷阱 TOP 5</a></li>
+        </ul>
+    </aside>
+
+    <main class="main" id="main-scroll">
+        <div class="paper">
+            
+            <header class="doc-header">
+                <h1 class="doc-title serif">形容词变形总结</h1>
+                <div class="doc-meta">い形容词 &amp; な形容词 全变形规则 · JLPT N5–N3 · 更新于 2026年3月19日</div>
+            </header>
+
+            <!-- SECTION: Overview -->
+            <section id="sec-overview">
+                <h2 class="section-header serif">
+                    <span>い形容词 vs な形容词 概览</span>
+                    <span class="section-meta">OVERVIEW</span>
+                </h2>
+                <div class="cards-grid">
+                    <div class="content-card" id="overview">
+                        <div class="overview-grid">
+                            <div class="overview-item">
+                                <div class="overview-label">I-ADJECTIVE</div>
+                                <div class="overview-heading">い形容词</div>
+                                <div class="overview-text">词尾以 い 结尾，变形时去掉い</div>
+                                <ul class="overview-list">
+                                    <li>高い（たかい）贵的/高的</li>
+                                    <li>忙しい（いそがしい）忙的</li>
+                                    <li>おもしろい 有趣的</li>
+                                    <li>いい（特殊）好的</li>
+                                </ul>
+                            </div>
+                            <div class="overview-item">
+                                <div class="overview-label">NA-ADJECTIVE</div>
+                                <div class="overview-heading">な形容词</div>
+                                <div class="overview-text">修饰名词时加 な，变形类似名词</div>
+                                <ul class="overview-list">
+                                    <li>静かな（しずかな）安静的</li>
+                                    <li>元気な（げんきな）精神好的</li>
+                                    <li>好きな（すきな）喜欢的</li>
+                                    <li>きれいな 漂亮的</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="warning-box">
+                            ⚠ 注意：有些词虽然以 い 结尾，但其实是 な形容词！常见的有：きれい（漂亮）、嫌い/きらい（讨厌）、有名/ゆうめい（有名）。判断方法：修饰名词时加「な」就是な形容词。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: Quick Reference -->
+            <section id="sec-quickref">
+                <h2 class="section-header serif">
+                    <span>速查对比表</span>
+                    <span class="section-meta">QUICK REF</span>
+                </h2>
+                <div class="cards-grid">
+                    <div class="content-card" id="quick-ref">
+                        <div class="card-title">い形容词 vs な形容词 速查表</div>
+                        <table>
+                            <tr>
+                                <th>变形</th>
+                                <th>い形容词</th>
+                                <th>な形容词</th>
+                            </tr>
+                            <tr>
+                                <td>肯定（现在）</td>
+                                <td>高い / 高いです</td>
+                                <td>静かだ / 静かです</td>
+                            </tr>
+                            <tr>
+                                <td>否定（现在）</td>
+                                <td>高くない / 高くないです</td>
+                                <td>静かじゃない / 静かじゃないです</td>
+                            </tr>
+                            <tr>
+                                <td>肯定（过去）</td>
+                                <td>高かった / 高かったです</td>
+                                <td>静かだった / 静かでした</td>
+                            </tr>
+                            <tr>
+                                <td>否定（过去）</td>
+                                <td>高くなかった / 高くなかったです</td>
+                                <td>静かじゃなかった / 静かじゃなかったです</td>
+                            </tr>
+                            <tr>
+                                <td>修饰名词</td>
+                                <td>高い + 名词（直接）</td>
+                                <td>静かな + 名词（加な）</td>
+                            </tr>
+                            <tr>
+                                <td>て形</td>
+                                <td>高くて</td>
+                                <td>静かで</td>
+                            </tr>
+                            <tr>
+                                <td>副词形式</td>
+                                <td>高く</td>
+                                <td>静かに</td>
+                            </tr>
+                            <tr>
+                                <td>变得〜</td>
+                                <td>高くなる</td>
+                                <td>静かになる</td>
+                            </tr>
+                            <tr>
+                                <td>条件（ば形）</td>
+                                <td>高ければ</td>
+                                <td>静かなら(ば) / 静かであれば</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: い形容词 - 基本规则 -->
+            <section id="sec-i-basic">
+                <h2 class="section-header serif">
+                    <span>い形容词 — 基本规则</span>
+                    <span class="section-meta">I-ADJ BASICS</span>
+                </h2>
+                <div class="cards-grid">
+                    <div class="content-card" id="i-basic">
+                        <div class="card-title">核心变形法则</div>
+                        <div class="rule-box">
+                            基本原则：い形容词的所有变形都是 去掉词尾「い」，然后加上对应的后缀。高い → 高 + 后缀
+                        </div>
+                        <div class="note-box">
+                            💡 记忆技巧：い形容词变形就像"换衣服"——脱掉「い」这件衣服，换上不同的"新衣服"。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: い形容词 - 谓语形式 -->
+            <section id="sec-i-predicate">
+                <h2 class="section-header serif">
+                    <span>い形容词 — 谓语形式（肯定/否定 × 现在/过去）</span>
+                    <span class="section-meta">I-ADJ PREDICATE</span>
+                </h2>
+                <div class="cards-grid">
+                    <div class="content-card" id="i-predicate">
+                        <div class="card-title">以「高い（たかい）」为例</div>
+                        <table>
+                            <tr>
+                                <th></th>
+                                <th>简体</th>
+                                <th>敬体</th>
+                            </tr>
+                            <tr>
+                                <td>现在肯定</td>
+                                <td><span class="jp">高い</span><span class="note">直接使用</span></td>
+                                <td><span class="jp">高いです</span><span class="note">+ です</span></td>
+                            </tr>
+                            <tr>
+                                <td>现在否定</td>
+                                <td><span class="jp">高くない</span><span class="note">い → くない</span></td>
+                                <td><span class="jp">高くないです / 高くありません</span><span class="note">两种均可</span></td>
+                            </tr>
+                            <tr>
+                                <td>过去肯定</td>
+                                <td><span class="jp">高かった</span><span class="note">い → かった</span></td>
+                                <td><span class="jp">高かったです</span><span class="note">+ です</span></td>
+                            </tr>
+                            <tr>
+                                <td>过去否定</td>
+                                <td><span class="jp">高くなかった</span><span class="note">い → くなかった</span></td>
+                                <td><span class="jp">高くなかったです / 高くありませんでした</span><span class="note">两种均可</span></td>
+                            </tr>
+                        </table>
+                        <div class="warning-box">
+                            ❌ 常见错误：高いだ ← 绝对不可以！い形容词后面不能加「だ」。正确：高い ○   错误：高いだ ✗
+                        </div>
+                        <div class="example">
+                            この本は高い。/ 这本书很贵。
+                        </div>
+                        <div class="example">
+                            昨日は忙しくなかった。/ 昨天不忙。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: い形容词 - 修饰名词 -->
+            <section id="sec-i-modify">
+                <h2 class="section-header serif">
+                    <span>い形容词 — 修饰名词</span>
+                    <span class="section-meta">I-ADJ + NOUN</span>
+                </h2>
+                <div class="cards-grid">
+                    <div class="content-card" id="i-modify">
+                        <div class="card-title">い形容词 + 名词（直接连接）</div>
+                        <div class="rule-box">
+                            规则：い形容词 直接 放在名词前面，不需要任何变化。高い + 山 → 高い山（たかいやま）
+                        </div>
+                        <div class="example">
+                            おもしろい映画を見ました。/ 看了一部有趣的电影。
+                        </div>
+                        <div class="example">
+                            忙しい人はいつも時間がない。/ 忙碌的人总是没有时间。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: い形容词 - て形 -->
+            <section id="sec-i-te">
+                <h2 class="section-header serif">
+                    <span>い形容词 — て形</span>
+                    <span class="section-meta">I-ADJ TE FORM</span>
+                </h2>
+                <div class="cards-grid">
+                    <div class="content-card" id="i-te">
+                        <div class="card-title">い → くて（用于并列、原因等）</div>
+                        <div class="rule-box">
+                            高い <span class="arrow">→</span> 高くて<br>
+                            忙しい <span class="arrow">→</span> 忙しくて<br>
+                            おもしろい <span class="arrow">→</span> おもしろくて
+                        </div>
+                        <div class="note-box">
+                            💡 用法：て形可以用来——① 并列两个形容词：安くておいしい（又便宜又好吃）② 表示原因：忙しくて行けない（因为忙所以去不了）
+                        </div>
+                        <div class="example">
+                            この店は安くておいしい。/ 这家店又便宜又好吃。
+                        </div>
+                        <div class="example">
+                            頭が痛くて、学校を休みました。/ 因为头疼，请了学校的假。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: い形容词 - 副词形式 -->
+            <section id="sec-i-adverb">
+                <h2 class="section-header serif">
+                    <span>い形容词 — 副词形式</span>
+                    <span class="section-meta">I-ADJ ADVERB</span>
+                </h2>
+                <div class="cards-grid">
+                    <div class="content-card" id="i-adverb">
+                        <div class="card-title">い → く（变成副词修饰动词）</div>
+                        <div class="rule-box">
+                            早い <span class="arrow">→</span> 早く（早早地）<br>
+                            高い <span class="arrow">→</span> 高く（高高地）
+                        </div>
+                        <div class="example">
+                            早く起きてください。/ 请早点起床。
+                        </div>
+                        <div class="example">
+                            大きく書いてください。/ 请写大一点。
+                        </div>
+                        <div class="note-box">
+                            💡 「〜くなる」= 变得〜 高くなる（变贵）、寒くなる（变冷）、大きくなる（变大） 这也是副词形式 + なる 的应用。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: い形容词 - 条件形 -->
+            <section id="sec-i-conditional">
+                <h2 class="section-header serif">
+                    <span>い形容词 — 条件形（ば形）</span>
+                    <span class="section-meta">I-ADJ CONDITIONAL</span>
+                </h2>
+                <div class="cards-grid">
+                    <div class="content-card" id="i-conditional">
+                        <div class="card-title">い → ければ（如果〜的话）</div>
+                        <div class="rule-box">
+                            高い <span class="arrow">→</span> 高ければ（如果贵的话）<br>
+                            安い <span class="arrow">→</span> 安ければ（如果便宜的话）<br>
+                            忙しい <span class="arrow">→</span> 忙しければ（如果忙的话）
+                        </div>
+                        <div class="example">
+                            安ければ買います。/ 如果便宜就买。
+                        </div>
+                        <div class="example">
+                            天気がよければ、出かけましょう。/ 如果天气好的话，就出门吧。
+                        </div>
+                        <div class="note-box">
+                            💡 否定条件：〜くなければ（如果不〜的话） 高くなければ = 如果不贵的话
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: い形容词 - 特殊いい -->
+            <section id="sec-i-special">
+                <h2 class="section-header serif">
+                    <span>い形容词 — 特殊：いい（よい）</span>
+                    <span class="section-meta">I-ADJ SPECIAL</span>
+                </h2>
+                <div class="cards-grid">
+                    <div class="content-card" id="i-special">
+                        <div class="card-title">いい 的所有变形都基于「よい」</div>
+                        <div class="warning-box">
+                            ⚠ 超级重要：「いい」（好的）是最特殊的い形容词！原形可以说「いい」，但 所有变形都要用「よ-」，不能用「い-」！
+                        </div>
+                        <table>
+                            <tr>
+                                <th>变形</th>
+                                <th>正确 ✓</th>
+                                <th>错误 ✗</th>
+                            </tr>
+                            <tr>
+                                <td>原形</td>
+                                <td>いい / よい</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>否定</td>
+                                <td>よくない</td>
+                                <td><span class="incorrect">いくない</span></td>
+                            </tr>
+                            <tr>
+                                <td>过去</td>
+                                <td>よかった</td>
+                                <td><span class="incorrect">いかった</span></td>
+                            </tr>
+                            <tr>
+                                <td>过去否定</td>
+                                <td>よくなかった</td>
+                                <td><span class="incorrect">いくなかった</span></td>
+                            </tr>
+                            <tr>
+                                <td>て形</td>
+                                <td>よくて</td>
+                                <td><span class="incorrect">いくて</span></td>
+                            </tr>
+                            <tr>
+                                <td>副词</td>
+                                <td>よく</td>
+                                <td><span class="incorrect">いく</span></td>
+                            </tr>
+                            <tr>
+                                <td>条件</td>
+                                <td>よければ</td>
+                                <td><span class="incorrect">いければ</span></td>
+                            </tr>
+                        </table>
+                        <div class="note-box">
+                            💡 同类词：「かっこいい」（帅的）也一样→ かっこよかった、かっこよくて
+                        </div>
+                        <div class="example">
+                            昨日の映画はよかった。/ 昨天的电影很好看。
+                        </div>
+                        <div class="example">
+                            天気がよくて、散歩しました。/ 天气好，去散步了。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: な形容词 - 基本规则 -->
+            <section id="sec-na-basic">
+                <h2 class="section-header serif">
+                    <span>な形容词 — 基本规则</span>
+                    <span class="section-meta">NA-ADJ BASICS</span>
+                </h2>
+                <div class="cards-grid">
+                    <div class="content-card" id="na-basic">
+                        <div class="card-title">核心变形法则</div>
+                        <div class="rule-box">
+                            基本原则：な形容词的变形模式与 名词 几乎相同。把它当作名词来处理就对了！静か + だ / です / じゃない / だった …
+                        </div>
+                        <div class="note-box">
+                            💡 记忆技巧：な形容词 = "形容词外表，名词内心"。变形规则跟着名词走！
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: な形容词 - 谓语形式 -->
+            <section id="sec-na-predicate">
+                <h2 class="section-header serif">
+                    <span>な形容词 — 谓语形式（肯定/否定 × 现在/过去）</span>
+                    <span class="section-meta">NA-ADJ PREDICATE</span>
+                </h2>
+                <div class="cards-grid">
+                    <div class="content-card" id="na-predicate">
+                        <div class="card-title">以「静か（しずか）」为例</div>
+                        <table>
+                            <tr>
+                                <th></th>
+                                <th>简体</th>
+                                <th>敬体</th>
+                            </tr>
+                            <tr>
+                                <td>现在肯定</td>
+                                <td><span class="jp">静かだ</span><span class="note">+ だ</span></td>
+                                <td><span class="jp">静かです</span><span class="note">+ です</span></td>
+                            </tr>
+                            <tr>
+                                <td>现在否定</td>
+                                <td><span class="jp">静かじゃない</span><span class="note">+ じゃない</span></td>
+                                <td><span class="jp">静かじゃないです / 静かではありません</span><span class="note">两种均可</span></td>
+                            </tr>
+                            <tr>
+                                <td>过去肯定</td>
+                                <td><span class="jp">静かだった</span><span class="note">+ だった</span></td>
+                                <td><span class="jp">静かでした</span><span class="note">+ でした</span></td>
+                            </tr>
+                            <tr>
+                                <td>过去否定</td>
+                                <td><span class="jp">静かじゃなかった</span><span class="note">+ じゃなかった</span></td>
+                                <td><span class="jp">静かじゃなかったです / 静かではありませんでした</span><span class="note">两种均可</span></td>
+                            </tr>
+                        </table>
+                        <div class="example">
+                            この部屋は静かです。/ 这个房间很安静。
+                        </div>
+                        <div class="example">
+                            昨日は暇じゃなかった。/ 昨天不空闲。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: な形容词 - 修饰名词 -->
+            <section id="sec-na-modify">
+                <h2 class="section-header serif">
+                    <span>な形容词 — 修饰名词</span>
+                    <span class="section-meta">NA-ADJ + NOUN</span>
+                </h2>
+                <div class="cards-grid">
+                    <div class="content-card" id="na-modify">
+                        <div class="card-title">な形容词 + な + 名词</div>
+                        <div class="rule-box">
+                            规则：な形容词修饰名词时，中间必须加「な」。静か + な + 場所 → 静かな場所（安静的地方）
+                        </div>
+                        <div class="example">
+                            元気な子供が遊んでいます。/ 精力充沛的孩子在玩耍。
+                        </div>
+                        <div class="example">
+                            有名な歌手が来ました。/ 著名的歌手来了。
+                        </div>
+                        <div class="warning-box">
+                            ❌ 常见错误：静か場所 ← 缺少「な」！正确：静かな場所 ○   错误：静か場所 ✗
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: な形容词 - て形 -->
+            <section id="sec-na-te">
+                <h2 class="section-header serif">
+                    <span>な形容词 — て形</span>
+                    <span class="section-meta">NA-ADJ TE FORM</span>
+                </h2>
+                <div class="cards-grid">
+                    <div class="content-card" id="na-te">
+                        <div class="card-title">な形容词 + で（用于并列、原因等）</div>
+                        <div class="rule-box">
+                            静か <span class="arrow-na">→</span> 静かで<br>
+                            元気 <span class="arrow-na">→</span> 元気で<br>
+                            きれい <span class="arrow-na">→</span> きれいで
+                        </div>
+                        <div class="note-box">
+                            💡 对比记忆：い形容词て形：〜くて（高くて）な形容词て形：〜で（静かで）完全不同的形式！考试常考！
+                        </div>
+                        <div class="example">
+                            この町は静かできれいです。/ 这个城镇又安静又漂亮。
+                        </div>
+                        <div class="example">
+                            暇で、映画を見ました。/ 因为有空，看了电影。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: な形容词 - 副词形式 -->
+            <section id="sec-na-adverb">
+                <h2 class="section-header serif">
+                    <span>な形容词 — 副词形式</span>
+                    <span class="section-meta">NA-ADJ ADVERB</span>
+                </h2>
+                <div class="cards-grid">
+                    <div class="content-card" id="na-adverb">
+                        <div class="card-title">な形容词 + に（变成副词修饰动词）</div>
+                        <div class="rule-box">
+                            静か <span class="arrow-na">→</span> 静かに（安静地）<br>
+                            きれい <span class="arrow-na">→</span> きれいに（漂亮地）
+                        </div>
+                        <div class="example">
+                            静かにしてください。/ 请安静。
+                        </div>
+                        <div class="example">
+                            部屋をきれいに掃除しました。/ 把房间打扫得很干净。
+                        </div>
+                        <div class="note-box">
+                            💡 「〜になる」= 变得〜 元気になる（变精神）、きれいになる（变漂亮）、静かになる（变安静） 对比：い形容词用「〜くなる」，な形容词用「〜になる」
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: な形容词 - 条件形 -->
+            <section id="sec-na-conditional">
+                <h2 class="section-header serif">
+                    <span>な形容词 — 条件形</span>
+                    <span class="section-meta">NA-ADJ CONDITIONAL</span>
+                </h2>
+                <div class="cards-grid">
+                    <div class="content-card" id="na-conditional">
+                        <div class="card-title">な形容词 + であれば / なら(ば)（如果〜的话）</div>
+                        <div class="rule-box">
+                            ① 静か + であれば（较书面）<br>
+                            ② 静か + なら(ば)（较口语，常用）<br>
+                            ③ 静か + だったら（たら条件，口语常用）
+                        </div>
+                        <div class="example">
+                            静かなら、ここで勉強できます。/ 如果安静的话，可以在这里学习。
+                        </div>
+                        <div class="example">
+                            暇だったら、遊びに来てください。/ 如果有空的话，请来玩。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: 并列对比总表 -->
+            <section id="sec-comparison">
+                <h2 class="section-header serif">
+                    <span>并列对比总表</span>
+                    <span class="section-meta">COMPARISON</span>
+                </h2>
+                <div class="cards-grid">
+                    <div class="content-card" id="comparison">
+                        <div class="card-title">い形容词 vs な形容词 — 全变形对比</div>
+                        <table>
+                            <tr>
+                                <th>变形</th>
+                                <th>い形规则</th>
+                                <th>い形例</th>
+                                <th>な形规则</th>
+                                <th>な形例</th>
+                                <th>记忆口诀</th>
+                            </tr>
+                            <tr>
+                                <td>现在肯定</td>
+                                <td>原形 / +です</td>
+                                <td>高い / 高いです</td>
+                                <td>+だ / +です</td>
+                                <td>静かだ / 静かです</td>
+                                <td>い形不加だ</td>
+                            </tr>
+                            <tr>
+                                <td>现在否定</td>
+                                <td>い→くない</td>
+                                <td>高くない</td>
+                                <td>+じゃない</td>
+                                <td>静かじゃない</td>
+                                <td>い→く、な→じゃ</td>
+                            </tr>
+                            <tr>
+                                <td>过去肯定</td>
+                                <td>い→かった</td>
+                                <td>高かった</td>
+                                <td>+だった</td>
+                                <td>静かだった</td>
+                                <td>い→か、な→だっ</td>
+                            </tr>
+                            <tr>
+                                <td>过去否定</td>
+                                <td>い→くなかった</td>
+                                <td>高くなかった</td>
+                                <td>+じゃなかった</td>
+                                <td>静かじゃなかった</td>
+                                <td>否定+过去</td>
+                            </tr>
+                            <tr>
+                                <td>修饰名词</td>
+                                <td>直接接</td>
+                                <td>高い山</td>
+                                <td>+な</td>
+                                <td>静かな場所</td>
+                                <td>な形加な</td>
+                            </tr>
+                            <tr>
+                                <td>て形</td>
+                                <td>い→くて</td>
+                                <td>高くて</td>
+                                <td>+で</td>
+                                <td>静かで</td>
+                                <td>くて vs で</td>
+                            </tr>
+                            <tr>
+                                <td>副词</td>
+                                <td>い→く</td>
+                                <td>高く</td>
+                                <td>+に</td>
+                                <td>静かに</td>
+                                <td>く vs に</td>
+                            </tr>
+                            <tr>
+                                <td>变得〜</td>
+                                <td>〜くなる</td>
+                                <td>高くなる</td>
+                                <td>〜になる</td>
+                                <td>静かになる</td>
+                                <td>くなる vs になる</td>
+                            </tr>
+                            <tr>
+                                <td>条件形</td>
+                                <td>い→ければ</td>
+                                <td>高ければ</td>
+                                <td>+なら/であれば</td>
+                                <td>静かなら</td>
+                                <td>ければ vs なら</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: 考试常见陷阱 -->
+            <section id="sec-traps">
+                <h2 class="section-header serif">
+                    <span>考试常见陷阱 TOP 5</span>
+                    <span class="section-meta">EXAM TRAPS</span>
+                </h2>
+                <div class="cards-grid">
+                    <div class="content-card" id="traps">
+                        
+                        <div class="trap-card">
+                            <div class="trap-number">1</div>
+                            <div class="trap-content">
+                                <div class="trap-title">以い结尾的な形容词</div>
+                                <table>
+                                    <tr>
+                                        <th>词</th>
+                                        <th>类型</th>
+                                        <th>修饰名词</th>
+                                    </tr>
+                                    <tr>
+                                        <td>きれい</td>
+                                        <td><span class="type-label">な形容词</span></td>
+                                        <td>きれいな花</td>
+                                    </tr>
+                                    <tr>
+                                        <td>嫌い/きらい</td>
+                                        <td><span class="type-label">な形容词</span></td>
+                                        <td>嫌いな食べ物</td>
+                                    </tr>
+                                    <tr>
+                                        <td>有名/ゆうめい</td>
+                                        <td><span class="type-label">な形容词</span></td>
+                                        <td>有名な人</td>
+                                    </tr>
+                                </table>
+                                <div class="note-box">
+                                    💡 判断技巧：看修饰名词时加「な」还是直接接。加「な」= な形容词
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="trap-card">
+                            <div class="trap-number">2</div>
+                            <div class="trap-content">
+                                <div class="trap-title">い形容词 + だ 的错误</div>
+                                <div class="warning-box">
+                                    ❌ 错误：高いだ、おもしろいだ、忙しいだ<br>
+                                    ✓ 正确：高い、おもしろい、忙しい<br><br>
+                                    い形容词作谓语时，后面<strong>不能加「だ」</strong>！<br>
+                                    要用敬体时加「です」，但绝不加「だ」。
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="trap-card">
+                            <div class="trap-number">3</div>
+                            <div class="trap-content">
+                                <div class="trap-title">いい的变形必须用よ-</div>
+                                <div class="warning-box">
+                                    ❌ 错误：いくない、いかった、いくなかった<br>
+                                    ✓ 正确：よくない、よかった、よくなかった<br><br>
+                                    「いい」是最特殊的い形容词，所有变形都要换成「よ-」开头！
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="trap-card">
+                            <div class="trap-number">4</div>
+                            <div class="trap-content">
+                                <div class="trap-title">て形混淆</div>
+                                <table>
+                                    <tr>
+                                        <th>形容词类型</th>
+                                        <th>て形</th>
+                                        <th>例子</th>
+                                    </tr>
+                                    <tr>
+                                        <td>い形容词</td>
+                                        <td>〜くて</td>
+                                        <td>高くて、忙しくて</td>
+                                    </tr>
+                                    <tr>
+                                        <td>な形容词</td>
+                                        <td>〜で</td>
+                                        <td>静かで、元気で</td>
+                                    </tr>
+                                </table>
+                                <div class="warning-box">
+                                    ❌ 常见错误：静かくて（×）、高くてで（×）<br>
+                                    ✓ 记住：い→くて、な→で，完全不同！
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="trap-card">
+                            <div class="trap-number">5</div>
+                            <div class="trap-content">
+                                <div class="trap-title">くなる vs になる</div>
+                                <table>
+                                    <tr>
+                                        <th>类型</th>
+                                        <th>变得〜</th>
+                                        <th>例子</th>
+                                    </tr>
+                                    <tr>
+                                        <td>い形容词</td>
+                                        <td>〜くなる</td>
+                                        <td>高くなる（变贵）、寒くなる（变冷）</td>
+                                    </tr>
+                                    <tr>
+                                        <td>な形容词</td>
+                                        <td>〜になる</td>
+                                        <td>元気になる（变精神）、静かになる（变安静）</td>
+                                    </tr>
+                                    <tr>
+                                        <td>名词</td>
+                                        <td>〜になる</td>
+                                        <td>先生になる（成为老师）</td>
+                                    </tr>
+                                </table>
+                                <div class="warning-box">
+                                    ❌ 错误：高いになる（×）、元気くなる（×）<br>
+                                    ✓ 记住：い→く、な/名词→に
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('.content-card');
+        const navLinks = document.querySelectorAll('.toc-link');
+        const mainScroll = document.getElementById('main-scroll');
+
+        const observerOptions = {
+            root: mainScroll,
+            rootMargin: '0px 0px -60% 0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const section = entry.target.closest('section');
+                    if (!section) return;
+                    const currentId = section.getAttribute('id');
+                    navLinks.forEach(link => { link.classList.remove('active'); });
+                    const activeLink = document.querySelector(`.toc-link[href="#${currentId}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                        activeLink.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }
+                }
+            });
+        }, observerOptions);
+
+        cards.forEach(card => { observer.observe(card); });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    mainScroll.scrollTo({
+                        top: targetElement.offsetTop - 60,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JLPT N3 备考 - 词汇专项</title>
+<style>
+    :root {
+        --bg-color: #FDFBF7;
+        --text-main: #1C1C1A;
+        --text-muted: #7A7A7A;
+        --border-light: #E6E4DD;
+        --border-dark: #1C1C1A;
+        --accent: #2D2D2D;
+        --paper-white: #FFFFFF;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, .serif, .word-kanji, .toc-link {
+        font-family: "Noto Serif SC", "Source Han Serif SC", "SimSun", "Times New Roman", serif;
+    }
+
+    /* Layout */
+    .layout-container {
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    /* Sidebar TOC */
+    .sidebar {
+        width: 280px;
+        min-width: 280px;
+        border-right: 1px solid var(--border-light);
+        padding: 40px 24px;
+        overflow-y: auto;
+        background: var(--bg-color);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .toc-header {
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        margin-bottom: 32px;
+        border-bottom: 1px solid var(--border-light);
+        padding-bottom: 12px;
+        font-family: sans-serif;
+    }
+
+    .toc-section-title {
+        font-size: 18px;
+        color: var(--text-main);
+        margin: 24px 0 12px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .toc-list {
+        list-style: none;
+    }
+
+    .toc-item {
+        margin-bottom: 4px;
+    }
+
+    .toc-link {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 14px;
+        display: block;
+        padding: 6px 12px 6px 24px;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+        position: relative;
+    }
+
+    .toc-link::before {
+        content: "";
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 4px;
+        background: var(--border-light);
+        border-radius: 50%;
+        transition: all 0.2s;
+    }
+
+    .toc-link:hover {
+        background: rgba(0,0,0,0.03);
+        color: var(--text-main);
+    }
+
+    .toc-link.active {
+        color: var(--text-main);
+        font-weight: bold;
+    }
+
+    .toc-link.active::before {
+        background: var(--text-main);
+    }
+
+    /* Main Content */
+    .main {
+        flex: 1;
+        overflow-y: auto;
+        padding: 60px 40px;
+        scroll-behavior: smooth;
+    }
+
+    .paper {
+        max-width: 210mm;
+        margin: 0 auto;
+    }
+
+    /* Document Header */
+    .doc-header {
+        text-align: center;
+        border-bottom: 4px solid var(--border-dark);
+        padding-bottom: 32px;
+        margin-bottom: 64px;
+        position: relative;
+    }
+
+    .doc-header::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: var(--border-dark);
+    }
+
+    .doc-title {
+        font-size: 42px;
+        margin: 0 0 16px;
+        letter-spacing: 2px;
+        font-weight: normal;
+    }
+
+    .doc-meta {
+        font-size: 13px;
+        color: var(--text-muted);
+        font-family: "Courier New", Courier, monospace;
+        letter-spacing: 1px;
+    }
+
+    /* Section Headers */
+    .section-header {
+        font-size: 28px;
+        font-weight: normal;
+        margin: 40px 0 32px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--border-dark);
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    .section-meta {
+        font-size: 14px;
+        color: var(--text-muted);
+        font-family: sans-serif;
+    }
+
+    /* Grid Layout for High Density */
+    .cards-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+        align-items: start;
+    }
+
+    /* Legacy Classes Mapping */
+    .word-card {
+        border: 1px solid var(--border-light);
+        background: var(--paper-white);
+        padding: 32px 24px;
+        position: relative;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .word-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--border-dark);
+    }
+
+    .word-header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        margin-bottom: 20px;
+        padding-bottom: 16px;
+        border-bottom: 1px dashed var(--border-light);
+    }
+
+    .word-kanji {
+        font-size: 32px;
+        color: var(--text-main);
+        line-height: 1.1;
+    }
+
+    .word-kana {
+        font-size: 16px;
+        color: var(--text-muted);
+        margin-left: 12px;
+        font-family: sans-serif;
+    }
+
+    .word-pos {
+        font-size: 11px;
+        padding: 2px 8px;
+        border: 1px solid var(--border-light);
+        border-radius: 20px;
+        color: var(--text-muted);
+        margin-left: auto;
+        letter-spacing: 1px;
+    }
+
+    .word-meaning {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 24px;
+        color: var(--text-main);
+    }
+
+    .section-title {
+        font-weight: 600;
+        color: var(--text-main);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: block;
+        margin-bottom: 8px;
+        margin-top: 16px;
+        border-left: 3px solid var(--border-dark);
+        padding-left: 8px;
+    }
+
+    .section-content {
+        color: #444;
+        font-size: 14px;
+        text-align: justify;
+        margin-bottom: 12px;
+    }
+
+    .note-box {
+        background: #F4F2EB;
+        padding: 12px 16px;
+        border-left: 3px solid #C0B9A8;
+        font-size: 13px;
+        color: #555;
+        margin-top: 16px;
+    }
+
+    .warning-box {
+        background: #FFF9F0;
+        padding: 12px 16px;
+        border-left: 3px solid #D6A848;
+        font-size: 13px;
+        color: #555;
+        margin-top: 16px;
+    }
+
+    .important {
+        color: #A00000;
+        font-weight: bold;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0;
+        font-size: 13px;
+    }
+
+    th, td {
+        border: 1px solid var(--border-light);
+        padding: 8px 12px;
+        text-align: left;
+    }
+
+    th {
+        background: #FAFAFA;
+        font-weight: 600;
+        color: var(--text-main);
+    }
+
+    /* Print Styles */
+    @media print {
+        @page {
+            size: A4 portrait;
+            margin: 1cm;
+        }
+
+        body {
+            background: #FFF;
+            font-size: 10pt;
+            line-height: 1.4;
+        }
+
+        .layout-container {
+            display: block;
+            height: auto;
+            overflow: visible;
+        }
+
+        .sidebar {
+            display: none !important;
+        }
+
+        .main {
+            padding: 0;
+            overflow: visible;
+        }
+
+        .doc-header {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+        }
+
+        .doc-title {
+            font-size: 20pt;
+            margin-bottom: 5px;
+        }
+
+        .section-header {
+            margin: 20px 0 10px;
+            font-size: 14pt;
+            padding-bottom: 5px;
+        }
+
+        .cards-grid {
+            gap: 10px;
+        }
+
+        .word-card {
+            box-shadow: none;
+            border: 1px solid #CCC;
+            break-inside: avoid;
+            page-break-inside: avoid;
+            padding: 10px 15px;
+            margin-bottom: 0;
+        }
+
+        .word-card::before {
+            display: none;
+        }
+
+        .word-header {
+            margin-bottom: 8px;
+            padding-bottom: 6px;
+        }
+
+        .word-kanji {
+            font-size: 16pt;
+        }
+
+        .word-kana {
+            font-size: 11pt;
+        }
+
+        .word-meaning {
+            font-size: 12pt;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 10pt;
+            margin-top: 8px;
+            margin-bottom: 4px;
+        }
+
+        .section-content {
+            font-size: 10pt;
+            margin-bottom: 4px;
+        }
+
+        .note-box, .warning-box {
+            padding: 6px 10px;
+            margin-top: 8px;
+            font-size: 9.5pt;
+        }
+
+        table {
+            margin: 6px 0;
+            font-size: 9.5pt;
+        }
+
+        th, td {
+            padding: 4px 8px;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .cards-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    @media (max-width: 768px) {
+        .layout-container { flex-direction: column; }
+        .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border-light); padding: 20px; height: auto; max-height: 300px; }
+        .main { padding: 30px 20px; }
+    }
+</style>
+</head>
+<body>
+
+<div class="layout-container">
+    <aside class="sidebar" id="print-hide">
+        <div class="toc-header">INDEX / 单词目录</div>
+        
+        <h3 class="toc-section-title serif">N5 单词</h3>
+        <ul class="toc-list">
+            <li class="toc-item"><a href="#word-1" class="toc-link">こんにちは <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">こんにちは</span></a></li>
+            <li class="toc-item"><a href="#word-2" class="toc-link">おはようございます <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">おはようございます</span></a></li>
+            <li class="toc-item"><a href="#word-3" class="toc-link">おはよう <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">おはよう</span></a></li>
+            <li class="toc-item"><a href="#word-4" class="toc-link">こんばんは <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">こんばんは</span></a></li>
+            <li class="toc-item"><a href="#word-5" class="toc-link">やあ <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">やあ</span></a></li>
+            <li class="toc-item"><a href="#word-6" class="toc-link">書く <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">かく</span></a></li>
+            <li class="toc-item"><a href="#word-7" class="toc-link">飲む <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">のむ</span></a></li>
+            <li class="toc-item"><a href="#word-8" class="toc-link">話す <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">はなす</span></a></li>
+            <li class="toc-item"><a href="#word-9" class="toc-link">買う <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">かう</span></a></li>
+            <li class="toc-item"><a href="#word-10" class="toc-link">行く <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">いく</span></a></li>
+            <li class="toc-item"><a href="#word-11" class="toc-link">食べる <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">たべる</span></a></li>
+            <li class="toc-item"><a href="#word-12" class="toc-link">見る <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">みる</span></a></li>
+            <li class="toc-item"><a href="#word-13" class="toc-link">起きる <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">おきる</span></a></li>
+            <li class="toc-item"><a href="#word-14" class="toc-link">寝る <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">ねる</span></a></li>
+            <li class="toc-item"><a href="#word-15" class="toc-link">する <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">する</span></a></li>
+            <li class="toc-item"><a href="#word-16" class="toc-link">来る <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">くる</span></a></li>
+            <li class="toc-item"><a href="#word-17" class="toc-link">勉強する <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">べんきょうする</span></a></li>
+            <li class="toc-item"><a href="#word-18" class="toc-link">分かる <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">わかる</span></a></li>
+            <li class="toc-item"><a href="#word-19" class="toc-link">すごい <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">すごい</span></a></li>
+            <li class="toc-item"><a href="#word-20" class="toc-link">彼 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">かれ</span></a></li>
+             <li class="toc-item"><a href="#word-21" class="toc-link">出る <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">でる</span></a></li>
+             <li class="toc-item"><a href="#word-40" class="toc-link">弟 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">おとうと</span></a></li>
+             <li class="toc-item"><a href="#word-41" class="toc-link">これ <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">これ</span></a></li>
+             <li class="toc-item"><a href="#word-46" class="toc-link">大阪 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">おおさか</span></a></li>
+             <li class="toc-item"><a href="#word-47" class="toc-link">雨 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">あめ</span></a></li>
+             <li class="toc-item"><a href="#word-48" class="toc-link">箱 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">はこ</span></a></li>
+             <li class="toc-item"><a href="#word-49" class="toc-link">お金 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">おかね</span></a></li>
+             <li class="toc-item"><a href="#word-88" class="toc-link">忙しい <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">いそがしい</span></a></li>
+         </ul>
+
+        <h3 class="toc-section-title serif">N4 单词</h3>
+        <ul class="toc-list">
+            <li class="toc-item"><a href="#word-47" class="toc-link">受験番号 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">じゅけんばんごう</span></a></li>
+            <li class="toc-item"><a href="#word-48" class="toc-link">受験 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">じゅけん</span></a></li>
+            <li class="toc-item"><a href="#word-49" class="toc-link">番号 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">ばんごう</span></a></li>
+            <li class="toc-item"><a href="#word-22" class="toc-link">現時点 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">げんじてん</span></a></li>
+            <li class="toc-item"><a href="#word-23" class="toc-link">既に <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">すでに</span></a></li>
+            <li class="toc-item"><a href="#word-24" class="toc-link">入社 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">にゅうしゃ</span></a></li>
+            <li class="toc-item"><a href="#word-25" class="toc-link">受け止める <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">うけとめる</span></a></li>
+            <li class="toc-item"><a href="#word-26" class="toc-link">じっくり <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">じっくり</span></a></li>
+            <li class="toc-item"><a href="#word-27" class="toc-link">読む <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">よむ</span></a></li>
+             <li class="toc-item"><a href="#word-28" class="toc-link">焦る <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">あせる</span></a></li>
+             <li class="toc-item"><a href="#word-29" class="toc-link">涙 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">なみだ</span></a></li>
+             <li class="toc-item"><a href="#word-42" class="toc-link">割る <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">わる</span></a></li>
+             <li class="toc-item"><a href="#word-43" class="toc-link">折る <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">おる</span></a></li>
+             <li class="toc-item"><a href="#word-44" class="toc-link">触る <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">さわる</span></a></li>
+             <li class="toc-item"><a href="#word-50" class="toc-link">けが <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">けが</span></a></li>
+             <li class="toc-item"><a href="#word-51" class="toc-link">急に <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">きゅうに</span></a></li>
+             <li class="toc-item"><a href="#word-52" class="toc-link">治る <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">なおる</span></a></li>
+             <li class="toc-item"><a href="#word-53" class="toc-link">ぬれる <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">ぬれる</span></a></li>
+             <li class="toc-item"><a href="#word-54" class="toc-link">ゆっくり <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">ゆっくり</span></a></li>
+         </ul>
+
+        <h3 class="toc-section-title serif">N3 单词</h3>
+        <ul class="toc-list">
+            <li class="toc-item"><a href="#word-30" class="toc-link">転送 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">てんそう</span></a></li>
+            <li class="toc-item"><a href="#word-31" class="toc-link">共有 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">きょうゆう</span></a></li>
+            <li class="toc-item"><a href="#word-32" class="toc-link">投稿 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">とうこう</span></a></li>
+            <li class="toc-item"><a href="#word-33" class="toc-link">発信 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">はっしん</span></a></li>
+            <li class="toc-item"><a href="#word-34" class="toc-link">視点 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">してん</span></a></li>
+            <li class="toc-item"><a href="#word-35" class="toc-link">注目 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">ちゅうもく</span></a></li>
+            <li class="toc-item"><a href="#word-36" class="toc-link">必読 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">ひつどく</span></a></li>
+            <li class="toc-item"><a href="#word-37" class="toc-link">各位 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">かくい</span></a></li>
+             <li class="toc-item"><a href="#word-38" class="toc-link">コメント <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">こめんと</span></a></li>
+             <li class="toc-item"><a href="#word-39" class="toc-link">バズる <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">ばずる</span></a></li>
+             <li class="toc-item"><a href="#word-45" class="toc-link">蹴る <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">ける</span></a></li>
+             <li class="toc-item"><a href="#word-55" class="toc-link">完全 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">かんぜん</span></a></li>
+             <li class="toc-item"><a href="#word-56" class="toc-link">地面 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">じめん</span></a></li>
+             <li class="toc-item"><a href="#word-57" class="toc-link">移す <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">うつす</span></a></li>
+             <li class="toc-item"><a href="#word-58" class="toc-link">呼吸 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">こきゅう</span></a></li>
+             <li class="toc-item"><a href="#word-59" class="toc-link">淘汰 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">とうた</span></a></li>
+             <li class="toc-item"><a href="#word-60" class="toc-link">繰り返す <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">くりかえす</span></a></li>
+             <li class="toc-item"><a href="#word-61" class="toc-link">意味 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">いみ</span></a></li>
+             <li class="toc-item"><a href="#word-62" class="toc-link">これまで <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">これまで</span></a></li>
+             <li class="toc-item"><a href="#word-63" class="toc-link">やり方 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">やりかた</span></a></li>
+             <li class="toc-item"><a href="#word-64" class="toc-link">変化 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">へんか</span></a></li>
+             <li class="toc-item"><a href="#word-65" class="toc-link">拒む <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">こばむ</span></a></li>
+             <li class="toc-item"><a href="#word-66" class="toc-link">従来 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">じゅうらい</span></a></li>
+             <li class="toc-item"><a href="#word-67" class="toc-link">労働集約的 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">ろうどうしゅうやくてき</span></a></li>
+             <li class="toc-item"><a href="#word-68" class="toc-link">しがみつく <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">しがみつく</span></a></li>
+             <li class="toc-item"><a href="#word-69" class="toc-link">強力 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">きょうりょく</span></a></li>
+             <li class="toc-item"><a href="#word-70" class="toc-link">武器 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">ぶき</span></a></li>
+             <li class="toc-item"><a href="#word-71" class="toc-link">手にする <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">てにする</span></a></li>
+             <li class="toc-item"><a href="#word-72" class="toc-link">競合他社 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">きょうごうたしゃ</span></a></li>
+             <li class="toc-item"><a href="#word-73" class="toc-link">市場 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">しじょう</span></a></li>
+             <li class="toc-item"><a href="#word-74" class="toc-link">駆逐 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">くちく</span></a></li>
+             <li class="toc-item"><a href="#word-75" class="toc-link">味方に付ける <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">みかたにつける</span></a></li>
+             <li class="toc-item"><a href="#word-76" class="toc-link">競合 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">きょうごう</span></a></li>
+             <li class="toc-item"><a href="#word-77" class="toc-link">経営者 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">けいえいしゃ</span></a></li>
+             <li class="toc-item"><a href="#word-78" class="toc-link">過渡期 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">かとき</span></a></li>
+             <li class="toc-item"><a href="#word-79" class="toc-link">摩擦 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">まさつ</span></a></li>
+             <li class="toc-item"><a href="#word-80" class="toc-link">自ら <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">みずから</span></a></li>
+             <li class="toc-item"><a href="#word-81" class="toc-link">人月モデル <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">にんげつもでる</span></a></li>
+             <li class="toc-item"><a href="#word-82" class="toc-link">脱却 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">だっきゃく</span></a></li>
+             <li class="toc-item"><a href="#word-83" class="toc-link">完了 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">かんりょう</span></a></li>
+             <li class="toc-item"><a href="#word-84" class="toc-link">責任 <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">せきにん</span></a></li>
+             <li class="toc-item"><a href="#word-85" class="toc-link">新たな <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">あらたな</span></a></li>
+             <li class="toc-item"><a href="#word-86" class="toc-link">エコシステム <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">えこしすてむ</span></a></li>
+             <li class="toc-item"><a href="#word-87" class="toc-link">生き残る <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">いきのこる</span></a></li>
+         </ul>
+    </aside>
+
+    <main class="main" id="main-scroll">
+        <div class="paper">
+            
+            <header class="doc-header">
+                <h1 class="doc-title serif">日语单词本 - JLPT N3备考</h1>
+                <div class="doc-meta">开始日期：2026年3月17日 | 目标考试：2026年7月JLPT N3</div>
+            </header>
+
+            <section id="section-n5">
+                <h2 class="section-header serif">
+                    <span>N5 单词</span>
+                    <span class="section-meta">LEVEL N5</span>
+                </h2>
+                <div class="cards-grid">
+                    
+<div class="word-card" id="word-1">
+<div class="word-header"><span class="word-kanji">こんにちは</span> <span class="word-kana">こんにちは</span> <span class="word-pos">感叹词</span></div>
+<div class="word-meaning">你好（白天使用）</div>
+<div class="section-title">详细说明</div>
+<div class="section-content">构词：こん（这）+ にち（日）+ は（提示助词，读wa）。使用时间：上午10点左右到傍晚（太阳下山前）。使用对象：任何人都可以使用。</div>
+<div class="section-title">例句</div>
+<div class="section-content">こんにちは、元気ですか？ - 你好，你好吗？</div>
+<div class="note-box">发音注意：最后的"は"读作wa，不读ha。</div>
+</div>
+
+<div class="word-card" id="word-2">
+<div class="word-header"><span class="word-kanji">おはようございます</span> <span class="word-kana">おはようございます</span> <span class="word-pos">感叹词</span></div>
+<div class="word-meaning">早上好（礼貌体）</div>
+<div class="section-title">详细说明</div>
+<div class="section-content">构词：おはよう（早）+ ございます（礼貌用语）。使用时间：早晨到上午10点左右。使用对象：对长辈、上司、陌生人使用。</div>
+<div class="section-title">简化形式</div>
+<div class="section-content">おはよう = 早（对朋友、家人、晚辈使用）</div>
+<div class="section-title">例句</div>
+<div class="section-content">おはようございます、先生。 - 早上好，老师。</div>
+</div>
+
+<div class="word-card" id="word-3">
+<div class="word-header"><span class="word-kanji">おはよう</span> <span class="word-kana">おはよう</span> <span class="word-pos">感叹词</span></div>
+<div class="word-meaning">早（随意体）</div>
+<div class="section-title">详细说明</div>
+<div class="section-content">使用时间：早晨到上午10点左右。使用对象：对朋友、家人、晚辈使用。</div>
+<div class="section-title">例句</div>
+<div class="section-content">おはよう！今日もいい天気だね。 - 早！今天也是好天气呢。</div>
+</div>
+
+<div class="word-card" id="word-4">
+<div class="word-header"><span class="word-kanji">こんばんは</span> <span class="word-kana">こんばんは</span> <span class="word-pos">感叹词</span></div>
+<div class="word-meaning">晚上好</div>
+<div class="section-title">详细说明</div>
+<div class="section-content">构词：こん（这）+ ばん（晚、夜）+ は（提示助词，读wa）。使用时间：傍晚太阳下山后到深夜。</div>
+<div class="section-title">例句</div>
+<div class="section-content">こんばんは、お疲れ様です。 - 晚上好，辛苦了。</div>
+<div class="note-box">发音注意：最后的"は"同样读作wa。</div>
+</div>
+
+<div class="word-card" id="word-5">
+<div class="word-header"><span class="word-kanji">やあ</span> <span class="word-kana">やあ</span> <span class="word-pos">感叹词</span></div>
+<div class="word-meaning">嘿、喂（朋友间非正式问候）</div>
+<div class="section-title">详细说明</div>
+<div class="section-content">使用场景：非常亲密的朋友之间。语气：随意、轻松。注意：不要对长辈、上司使用，会显得不礼貌。</div>
+<div class="section-title">例句</div>
+<div class="section-content">やあ、久しぶり！ - 嘿，好久不见！</div>
+</div>
+
+<div class="word-card" id="word-6">
+<div class="word-header"><span class="word-kanji">書く</span> <span class="word-kana">かく</span> <span class="word-pos">动词（一类）</span></div>
+<div class="word-meaning">写</div>
+<div class="section-title">详细说明</div>
+<div class="section-content"><span class="important">一类动词（五段动词）</span>，词尾：く（在う段）。常见搭配：手紙を書く（写信）、字を書く（写字）、レポートを書く（写报告）。</div>
+<div class="section-title">ます形变化</div>
+<table><tr><th>形式</th><th>变化</th><th>意思</th></tr><tr><td>原形</td><td>書く</td><td>写</td></tr><tr><td>ます形</td><td>書きます</td><td>写（礼貌）</td></tr><tr><td>否定</td><td>書きません</td><td>不写</td></tr><tr><td>过去</td><td>書きました</td><td>写了</td></tr><tr><td>过去否定</td><td>書きませんでした</td><td>没写</td></tr></table>
+<div class="note-box">变形规则：一类动词，词尾く → き + ます（う段 → い段）</div>
+</div>
+
+<div class="word-card" id="word-7">
+<div class="word-header"><span class="word-kanji">飲む</span> <span class="word-kana">のむ</span> <span class="word-pos">动词（一类）</span></div>
+<div class="word-meaning">喝</div>
+<div class="section-title">详细说明</div>
+<div class="section-content"><span class="important">一类动词（五段动词）</span>，词尾：む（在う段）。常见搭配：水を飲む（喝水）、お茶を飲む（喝茶）、お酒を飲む（喝酒）。</div>
+<div class="section-title">ます形变化</div>
+<table><tr><th>形式</th><th>变化</th><th>意思</th></tr><tr><td>原形</td><td>飲む</td><td>喝</td></tr><tr><td>ます形</td><td>飲みます</td><td>喝（礼貌）</td></tr><tr><td>否定</td><td>飲みません</td><td>不喝</td></tr><tr><td>过去</td><td>飲みました</td><td>喝了</td></tr><tr><td>过去否定</td><td>飲みませんでした</td><td>没喝</td></tr></table>
+<div class="note-box">变形规则：一类动词，词尾む → み + ます（う段 → い段）</div>
+</div>
+
+<div class="word-card" id="word-8">
+<div class="word-header"><span class="word-kanji">話す</span> <span class="word-kana">はなす</span> <span class="word-pos">动词（一类）</span></div>
+<div class="word-meaning">说、说话</div>
+<div class="section-title">详细说明</div>
+<div class="section-content"><span class="important">一类动词（五段动词）</span>，词尾：す（在う段）。常见搭配：日本語を話す（说日语）、電話で話す（用电话说话）、友達と話す（和朋友说话）。</div>
+<div class="section-title">ます形变化</div>
+<table><tr><th>形式</th><th>变化</th><th>意思</th></tr><tr><td>原形</td><td>話す</td><td>说</td></tr><tr><td>ます形</td><td>話します</td><td>说（礼貌）</td></tr><tr><td>否定</td><td>話しません</td><td>不说</td></tr><tr><td>过去</td><td>話しました</td><td>说了</td></tr><tr><td>过去否定</td><td>話しませんでした</td><td>没说</td></tr></table>
+<div class="note-box">变形规则：一类动词，词尾す → し + ます（う段 → い段）</div>
+</div>
+
+<div class="word-card" id="word-9">
+<div class="word-header"><span class="word-kanji">買う</span> <span class="word-kana">かう</span> <span class="word-pos">动词（一类）</span></div>
+<div class="word-meaning">买</div>
+<div class="section-title">详细说明</div>
+<div class="section-content"><span class="important">一类动词（五段动词）</span>，词尾：う（在う段）。常见搭配：本を買う（买书）、服を買う（买衣服）、買い物する（购物）。</div>
+<div class="section-title">ます形变化</div>
+<table><tr><th>形式</th><th>变化</th><th>意思</th></tr><tr><td>原形</td><td>買う</td><td>买</td></tr><tr><td>ます形</td><td>買います</td><td>买（礼貌）</td></tr><tr><td>否定</td><td>買いません</td><td>不买</td></tr><tr><td>过去</td><td>買いました</td><td>买了</td></tr><tr><td>过去否定</td><td>買いませんでした</td><td>没买</td></tr></table>
+<div class="note-box">变形规则：一类动词，词尾う → い + ます（う段 → い段）</div>
+</div>
+
+<div class="word-card" id="word-10">
+<div class="word-header"><span class="word-kanji">行く</span> <span class="word-kana">いく</span> <span class="word-pos">动词（一类）</span></div>
+<div class="word-meaning">去</div>
+<div class="section-title">详细说明</div>
+<div class="section-content"><span class="important">一类动词（五段动词）</span>，词尾：く（在う段）。常见搭配：学校へ行く（去学校）、日本へ行く（去日本）、会社へ行く（去公司）。</div>
+<div class="section-title">ます形变化</div>
+<table><tr><th>形式</th><th>变化</th><th>意思</th></tr><tr><td>原形</td><td>行く</td><td>去</td></tr><tr><td>ます形</td><td>行きます</td><td>去（礼貌）</td></tr><tr><td>否定</td><td>行きません</td><td>不去</td></tr><tr><td>过去</td><td>行きました</td><td>去了</td></tr><tr><td>过去否定</td><td>行きませんでした</td><td>没去</td></tr></table>
+<div class="note-box">变形规则：一类动词，词尾く → き + ます（う段 → い段）</div>
+</div>
+
+<div class="word-card" id="word-11">
+<div class="word-header"><span class="word-kanji">食べる</span> <span class="word-kana">たべる</span> <span class="word-pos">动词（二类）</span></div>
+<div class="word-meaning">吃</div>
+<div class="section-title">详细说明</div>
+<div class="section-content"><span class="important">二类动词（一段动词）</span>，词尾：る，る前面是"べ"（在え段）。常见搭配：ご飯を食べる（吃饭）、朝ご飯を食べる（吃早饭）、晩ご飯を食べる（吃晚饭）。</div>
+<div class="section-title">ます形变化</div>
+<table><tr><th>形式</th><th>变化</th><th>意思</th></tr><tr><td>原形</td><td>食べる</td><td>吃</td></tr><tr><td>ます形</td><td>食べます</td><td>吃（礼貌）</td></tr><tr><td>否定</td><td>食べません</td><td>不吃</td></tr><tr><td>过去</td><td>食べました</td><td>吃了</td></tr><tr><td>过去否定</td><td>食べませんでした</td><td>没吃</td></tr></table>
+<div class="note-box">变形规则：二类动词，去掉る + ます</div>
+</div>
+
+<div class="word-card" id="word-12">
+<div class="word-header"><span class="word-kanji">見る</span> <span class="word-kana">みる</span> <span class="word-pos">动词（二类）</span></div>
+<div class="word-meaning">看</div>
+<div class="section-title">详细说明</div>
+<div class="section-content"><span class="important">二类动词（一段动词）</span>，词尾：る，る前面是"み"（在い段）。常见搭配：テレビを見る（看电视）、映画を見る（看电影）、本を見る（看书）。</div>
+<div class="section-title">ます形变化</div>
+<table><tr><th>形式</th><th>变化</th><th>意思</th></tr><tr><td>原形</td><td>見る</td><td>看</td></tr><tr><td>ます形</td><td>見ます</td><td>看（礼貌）</td></tr><tr><td>否定</td><td>見ません</td><td>不看</td></tr><tr><td>过去</td><td>見ました</td><td>看了</td></tr><tr><td>过去否定</td><td>見ませんでした</td><td>没看</td></tr></table>
+<div class="note-box">变形规则：二类动词，去掉る + ます</div>
+</div>
+
+<div class="word-card" id="word-13">
+<div class="word-header"><span class="word-kanji">起きる</span> <span class="word-kana">おきる</span> <span class="word-pos">动词（二类）</span></div>
+<div class="word-meaning">起床</div>
+<div class="section-title">详细说明</div>
+<div class="section-content"><span class="important">二类动词（一段动词）</span>，词尾：る，る前面是"き"（在い段）。常见搭配：6時に起きる（6点起床）、朝早く起きる（早上早起）。</div>
+<div class="section-title">ます形变化</div>
+<table><tr><th>形式</th><th>变化</th><th>意思</th></tr><tr><td>原形</td><td>起きる</td><td>起床</td></tr><tr><td>ます形</td><td>起きます</td><td>起床（礼貌）</td></tr><tr><td>否定</td><td>起きません</td><td>不起床</td></tr><tr><td>过去</td><td>起きました</td><td>起床了</td></tr><tr><td>过去否定</td><td>起きませんでした</td><td>没起床</td></tr></table>
+<div class="note-box">变形规则：二类动词，去掉る + ます</div>
+</div>
+
+<div class="word-card" id="word-14">
+<div class="word-header"><span class="word-kanji">寝る</span> <span class="word-kana">ねる</span> <span class="word-pos">动词（二类）</span></div>
+<div class="word-meaning">睡觉</div>
+<div class="section-title">详细说明</div>
+<div class="section-content"><span class="important">二类动词（一段动词）</span>，词尾：る，る前面是"ね"（在え段）。常见搭配：10時に寝る（10点睡觉）、早く寝る（早睡）。</div>
+<div class="section-title">ます形变化</div>
+<table><tr><th>形式</th><th>变化</th><th>意思</th></tr><tr><td>原形</td><td>寝る</td><td>睡觉</td></tr><tr><td>ます形</td><td>寝ます</td><td>睡觉（礼貌）</td></tr><tr><td>否定</td><td>寝ません</td><td>不睡觉</td></tr><tr><td>过去</td><td>寝ました</td><td>睡觉了</td></tr><tr><td>过去否定</td><td>寝ませんでした</td><td>没睡觉</td></tr></table>
+<div class="note-box">变形规则：二类动词，去掉る + ます</div>
+</div>
+
+<div class="word-card" id="word-15">
+<div class="word-header"><span class="word-kanji">する</span> <span class="word-kana">する</span> <span class="word-pos">动词（三类）</span></div>
+<div class="word-meaning">做</div>
+<div class="section-title">详细说明</div>
+<div class="section-content"><span class="important">三类动词（不规则动词）</span>，日语中最常用的动词之一！特点：变形不规则，必须单独记忆。常见搭配：勉強する（学习）、買い物する（购物）、旅行する（旅行）、電話する（打电话）。</div>
+<div class="section-title">ます形变化</div>
+<table><tr><th>形式</th><th>变化</th><th>意思</th></tr><tr><td>原形</td><td>する</td><td>做</td></tr><tr><td>ます形</td><td>します</td><td>做（礼貌）</td></tr><tr><td>否定</td><td>しません</td><td>不做</td></tr><tr><td>过去</td><td>しました</td><td>做了</td></tr><tr><td>过去否定</td><td>しませんでした</td><td>没做</td></tr></table>
+<div class="warning-box">注意：三类动词变形不规则，不能套用一类或二类的规则！</div>
+</div>
+
+<div class="word-card" id="word-16">
+<div class="word-header"><span class="word-kanji">来る</span> <span class="word-kana">くる</span> <span class="word-pos">动词（三类）</span></div>
+<div class="word-meaning">来</div>
+<div class="section-title">详细说明</div>
+<div class="section-content"><span class="important">三类动词（不规则动词）</span><br>特点：<br>• 汉字是"来"，但读作"くる"<br>• 变形不规则，必须单独记忆<br>• ます形读作"きます"（不是"くるます"）<br>常见搭配：日本に来る（来日本）、家に来る（来家里）、学校に来る（来学校）。</div>
+<div class="section-title">ます形变化</div>
+<table><tr><th>形式</th><th>变化</th><th>意思</th></tr><tr><td>原形</td><td>来る（くる）</td><td>来</td></tr><tr><td>ます形</td><td>来ます（きます）</td><td>来（礼貌）</td></tr><tr><td>否定</td><td>来ません（きません）</td><td>不来</td></tr><tr><td>过去</td><td>来ました（きました）</td><td>来了</td></tr><tr><td>过去否定</td><td>来ませんでした（きませんでした）</td><td>没来</td></tr></table>
+<div class="warning-box">发音注意：汉字"来"在原形读"く"，在ます形读"き"！这是特殊读音，必须记住！</div>
+</div>
+
+  <div class="word-card" id="word-17">
+    <div class="word-header"><span class="word-kanji">勉強する</span> <span class="word-kana">べんきょうする</span> <span class="word-pos">动词（三类）</span></div>
+    <div class="word-meaning">学习</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content"><span class="important">三类动词（サ变动词）</span>，由名词"勉強" + する构成。<br>构词：勉（努力）+ 強（强力）= 努力+强力地去做 = 学习<br>常见搭配：日本語を勉強する（学习日语）、英語を勉強する（学习英语）。</div>
+    <div class="section-title">ます形变化</div>
+    <table><tr><th>形式</th><th>变化</th><th>意思</th></tr><tr><td>原形</td><td>勉強する</td><td>学习</td></tr><tr><td>ます形</td><td>勉強します</td><td>学习（礼貌）</td></tr><tr><td>否定</td><td>勉強しません</td><td>不学习</td></tr><tr><td>过去</td><td>勉強しました</td><td>学习了</td></tr><tr><td>过去否定</td><td>勉強しませんでした</td><td>没学习</td></tr></table>
+    <div class="note-box">变形规则：三类动词，する → します（特殊变形）</div>
+  </div>
+
+  <div class="word-card" id="word-18">
+    <div class="word-header"><span class="word-kanji">分かる</span> <span class="word-kana">わかる</span> <span class="word-pos">动词（一类）</span></div>
+    <div class="word-meaning">明白、懂、理解</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content"><span class="important">一类动词（五段动词）</span>，词尾：る（在う段）。最常用的日语动词之一！<br>常见搭配：よく分かる（很懂）、分からない（不懂）、分かりました（明白了）。</div>
+    <div class="section-title">助词使用</div>
+    <div class="section-content">正确：この言葉<strong>が</strong>分かります（懂这个词）<br>错误：この言葉を分かります ✗</div>
+    <div class="section-title">ます形变化</div>
+    <table><tr><th>形式</th><th>变化</th><th>意思</th></tr><tr><td>原形</td><td>分かる</td><td>懂</td></tr><tr><td>ます形</td><td>分かります</td><td>明白（礼貌）</td></tr><tr><td>否定</td><td>分かりません</td><td>不明白</td></tr><tr><td>过去</td><td>分かりました</td><td>明白了</td></tr><tr><td>过去否定</td><td>分かりませんでした</td><td>没明白</td></tr></table>
+    <div class="warning-box">易混淆：<br>• 分かる = 明白、理解（强调理解过程）<br>• 知る（しる）= 知道（强调拥有知识）<br>例：道を知っています（知道路）✓ / 道が分かります（明白路）✓</div>
+  </div>
+
+  <div class="word-card" id="word-19">
+    <div class="word-header"><span class="word-kanji">すごい</span> <span class="word-kana">すごい</span> <span class="word-pos">い形容词</span></div>
+    <div class="word-meaning">厉害、了不起、很棒、惊人</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content"><span class="important">い形容词</span>，词尾：い。日常对话中非常常用的表达，用来形容人、事物、能力等。</div>
+    <div class="section-title">常见用法</div>
+    <div class="section-content">
+      • すごいね（好厉害啊 - 简体）<br>
+      • すごいですね（真厉害啊 - 礼貌）<br>
+      • すごくない？（不厉害吗？ - 反问）
+    </div>
+    <div class="section-title">例句</div>
+    <div class="section-content">
+      A：テストで100点取ったよ！（考试得了100分！）<br>
+      B：すごいね！（好厉害啊！）
+    </div>
+    <div class="section-title">相关词汇</div>
+    <div class="section-content">
+      <strong>近义词：</strong><br>
+      • すばらしい（すばらしい）- 非常好、出色（N4）<br>
+      • えらい（えらい）- 伟大、厉害（N4）<br>
+      • やるね（やるね）- 有一手、厉害（N3，口语）<br><br>
+      <strong>派生词：</strong><br>
+      • すごく（すごく）- 非常（副词形式）<br>
+      例：すごくおいしい（非常好吃）
+    </div>
+    <div class="warning-box">口语变形：男性口语中常说"すげー"（粗鲁说法），对长辈、上司要避免使用。</div>
+  </div>
+
+  <div class="word-card" id="word-20">
+    <div class="word-header"><span class="word-kanji">彼</span> <span class="word-kana">かれ</span> <span class="word-pos">代词</span></div>
+    <div class="word-meaning">他</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content"><span class="important">第三人称代词</span>，指代男性。对应词：彼女（かのじょ）= 她。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">
+      彼は学生です。（他是学生。）<br>
+      彼は焦って涙が出てしまった。（他急得眼泪都流出来了。）
+    </div>
+    <div class="note-box">注意：日语中第三人称代词使用较少，常用"あの人"（那个人）或直接称呼名字。</div>
+  </div>
+
+  <div class="word-card" id="word-21">
+    <div class="word-header"><span class="word-kanji">出る</span> <span class="word-kana">でる</span> <span class="word-pos">动词（二类）</span></div>
+    <div class="word-meaning">出来、出现、离开</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content"><span class="important">二类动词（一段动词）</span>，词尾：る，る前面是"で"（在え段）。<br>常见搭配：家を出る（出门）、結果が出る（出结果）、涙が出る（流泪）。</div>
+    <div class="section-title">ます形变化</div>
+    <table><tr><th>形式</th><th>变化</th><th>意思</th></tr><tr><td>原形</td><td>出る</td><td>出来</td></tr><tr><td>ます形</td><td>出ます</td><td>出来（礼貌）</td></tr><tr><td>否定</td><td>出ません</td><td>不出来</td></tr><tr><td>过去</td><td>出ました</td><td>出来了</td></tr><tr><td>过去否定</td><td>出ませんでした</td><td>没出来</td></tr></table>
+    <div class="section-title">て形</div>
+    <div class="section-content">出る → 出て（でて）<br>例：涙が出てしまった（眼泪流出来了）</div>
+    <div class="note-box">变形规则：二类动词，去掉る + て</div>
+  </div>
+
+  <div class="word-card" id="word-40">
+    <div class="word-header"><span class="word-kanji">弟</span> <span class="word-kana">おとうと</span> <span class="word-pos">名词</span></div>
+    <div class="word-meaning">弟弟</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">表示自己的弟弟。对应词：兄（あに）= 哥哥、姉（あね）= 姐姐、妹（いもうと）= 妹妹。<br><span class="important">说自己的家人时，常用较谦逊的说法，不加「さん」</span>。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">弟がこれを割ってしまいました。 - 弟弟把这个弄碎了。</div>
+  </div>
+
+  <div class="word-card" id="word-41">
+    <div class="word-header"><span class="word-kanji">これ</span> <span class="word-kana">これ</span> <span class="word-pos">代词</span></div>
+    <div class="word-meaning">这个</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">指离说话人近的事物。对应：それ（那个，靠近对方）、あれ（那个，离双方都远）。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">これは私の本です。 - 这是我的书。<br>弟がこれを割ってしまいました。 - 弟弟把这个弄碎了。</div>
+  </div>
+
+  <div class="word-card" id="word-46">
+    <div class="word-header"><span class="word-kanji">大阪</span> <span class="word-kana">おおさか</span> <span class="word-pos">名词（专有名词）</span></div>
+    <div class="word-meaning">大阪（日本城市名）</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">词源：大（おお）+ 坂（さか）= 大斜坡。地理位置：日本关西地区，日本第二大城市。别名："天下の台所"（天下的厨房）、"食い倒れの街"（吃到倒的城市）。</div>
+    <div class="section-title">常见搭配</div>
+    <div class="section-content">
+      • 大阪へ行く（去大阪）<br>
+      • 大阪に住む（住在大阪）<br>
+      • 大阪弁（おおさかべん）= 大阪话<br>
+      • 大阪城（おおさかじょう）= 大阪城
+    </div>
+    <div class="section-title">例句</div>
+    <div class="section-content">
+      1. 大阪は食べ物がおいしいです。（大阪的食物很好吃。）<br>
+      2. 来週、大阪へ行きます。（下周去大阪。）
+    </div>
+    <div class="warning-box">发音注意：おおさか，第一个"おお"要拉长，不要读成"おさか"（错误）。正确读法是"おーさか"的感觉。</div>
+    <div class="note-box">文化知识：大阪是日本三大都市圈之一（东京、大阪、名古屋）。著名景点：大阪城、道顿堀（どうとんぼり）、通天阁（つうてんかく）。著名美食：たこ焼き（章鱼烧）、お好み焼き（大阪烧）。</div>
+  </div>
+
+  <div class="word-card" id="word-47">
+    <div class="word-header"><span class="word-kanji">雨</span> <span class="word-kana">あめ</span> <span class="word-pos">名词</span></div>
+    <div class="word-meaning">雨</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">表示从天空降下来的雨水。常见搭配：<span class="important">雨が降る</span>（下雨）、雨の日（下雨天）、大雨（おおあめ，大雨）。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">雨で地面がぬれている。 - 因为下雨，地面湿了。</div>
+  </div>
+
+  <div class="word-card" id="word-48">
+    <div class="word-header"><span class="word-kanji">箱</span> <span class="word-kana">はこ</span> <span class="word-pos">名词</span></div>
+    <div class="word-meaning">箱子</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">表示装东西的盒子、箱子。常见搭配：箱に入れる（放进箱子里）、箱を開ける（打开箱子）、箱の中（箱子里面）。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">お金はあの箱に移したほうがいいですか。 - 钱放到那个箱子里比较好吗？</div>
+  </div>
+
+  <div class="word-card" id="word-49">
+    <div class="word-header"><span class="word-kanji">お金</span> <span class="word-kana">おかね</span> <span class="word-pos">名词</span></div>
+    <div class="word-meaning">钱</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">「金（かね）」前面加「お」后更自然、更常用。常见搭配：お金がある（有钱）、お金を払う（付钱）、お金をためる（存钱）。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">お金はあの箱に移したほうがいいですか。 - 钱放到那个箱子里比较好吗？</div>
+  </div>
+
+  <div class="word-card" id="word-88">
+    <div class="word-header"><span class="word-kanji">忙しい</span> <span class="word-kana">いそがしい</span> <span class="word-pos">い形容词</span></div>
+    <div class="word-meaning">忙、忙碌</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">和语（训读），汉字「忙」的音读是「ボウ」（如：多忙＝たぼう）。<br>常见搭配：仕事が忙しい（工作很忙）、忙しい日（忙碌的一天）、忙しい毎日（忙碌的每天）。<br>反义词：<span class="important">暇（ひま）</span>= 闲、有空。</div>
+    <div class="section-title">い形容词变形</div>
+    <table><tr><th>形式</th><th>变化</th><th>意思</th></tr><tr><td>原形</td><td>忙しい</td><td>忙</td></tr><tr><td>否定</td><td>忙しくない</td><td>不忙</td></tr><tr><td>过去</td><td>忙しかった</td><td>忙了（过去）</td></tr><tr><td>过去否定</td><td>忙しくなかった</td><td>没忙</td></tr><tr><td>礼貌形</td><td>忙しいです</td><td>忙（礼貌）</td></tr><tr><td>て形</td><td>忙しくて</td><td>因为忙…</td></tr><tr><td>副词形</td><td>忙しく</td><td>忙碌地</td></tr></table>
+    <div class="section-title">例句</div>
+    <div class="section-content">
+      1. 毎日仕事が忙しいです。 - 每天工作都很忙。<br>
+      2. 昨日は忙しかったから、勉強できなかった。 - 因为昨天很忙，没能学习。<br>
+      3. 忙しくて、ご飯を食べる時間がない。 - 太忙了，没有吃饭的时间。
+    </div>
+    <div class="warning-box"><span class="important">易错点：</span><br>• 「いそがし」不完整，必须带词尾「い」→ いそがしい<br>• い形容词后面不能加「だ」→ ✗ 忙しいだ ✓ 忙しい / 忙しいです<br>• 注意「が」是浊音（ga），不要读成「か」（ka）</div>
+    <div class="note-box">礼貌客套话：<strong>お忙しいところ、すみません</strong>（百忙之中打扰了）— 日常对话、商务场景都很常用。</div>
+  </div>
+
+                </div>
+            </section>
+
+            <section id="section-n4">
+                <h2 class="section-header serif">
+                    <span>N4 单词</span>
+                    <span class="section-meta">LEVEL N4</span>
+                </h2>
+                <div class="cards-grid">
+
+  <div class="word-card" id="word-47">
+    <div class="word-header"><span class="word-kanji">受験番号</span> <span class="word-kana">じゅけんばんごう</span> <span class="word-pos">名词</span></div>
+    <div class="word-meaning">准考证号、考试号码</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content"><span class="important">复合词</span>，由「受験」（参加考试）+「番号」（号码）构成。<br>使用场景：报名考试后，会收到一个受験番号，考试当天需要填写，查成绩时也需要用到。</div>
+    <div class="section-title">构词分析</div>
+    <div class="section-content">
+      <strong>1. 受験（じゅけん）</strong> = 参加考试、应试<br>
+      构词：受（う）ける（接受）+ 験（けん）（试验）= 接受试验 = 参加考试<br><br>
+      <strong>2. 番号（ばんごう）</strong> = 号码、编号<br>
+      例：電話番号（电话号码）、部屋番号（房间号）、学生番号（学号）
+    </div>
+    <div class="section-title">相关词汇</div>
+    <table><tr><th>单词</th><th>假名</th><th>意思</th></tr><tr><td>受験生</td><td>じゅけんせい</td><td>考生</td></tr><tr><td>受験料</td><td>じゅけんりょう</td><td>报名费</td></tr><tr><td>受験票</td><td>じゅけんひょう</td><td>准考证</td></tr><tr><td>合格</td><td>ごうかく</td><td>及格、通过</td></tr><tr><td>落第</td><td>らくだい</td><td>不及格</td></tr></table>
+    <div class="section-title">例句</div>
+    <div class="section-content">
+      1. 受験番号を忘れないでください。<br>
+      　请不要忘记准考证号。<br><br>
+      2. 受験番号は何番ですか。<br>
+      　你的准考证号是多少号？<br><br>
+      3. 来週のJLPTの受験番号を確認しましたか。<br>
+      　确认下周JLPT的准考证号了吗？
+    </div>
+    <div class="warning-box">发音注意：<br>• じゅけん：じゅ（jyu）+ けん（ken），注意"じゅ"是浊音<br>• ばんごう：ばん+ ごう（gō），"ごう"的长音要拉长</div>
+    <div class="note-box">文化背景：在日本，各种考试（包括JLPT）都会给考生分配一个受験番号，这个号码非常重要。考试当天必须填写，查成绩时需要输入，领取证书时也需要。所以日语考试中，"受験番号を控えておく"（记下准考证号）是一个常见提示。</div>
+  </div>
+
+  <div class="word-card" id="word-48">
+    <div class="word-header"><span class="word-kanji">受験</span> <span class="word-kana">じゅけん</span> <span class="word-pos">サ变动词/名词</span></div>
+    <div class="word-meaning">参加考试、应试</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content"><span class="important">三类动词（サ变动词）</span>，也可作名词使用。ます形：受験します。<br>构词：受（う）ける（接受）+ 験（けん）（试验）= 接受试验 = 参加考试。</div>
+    <div class="section-title">常见搭配</div>
+    <div class="section-content">
+      • 大学を受験する（考大学）<br>
+      • 受験勉強（じゅけんべんきょう）= 备考<br>
+      • 受験生（じゅけんせい）= 考生<br>
+      • 受験番号（じゅけんばんごう）= 准考证号
+    </div>
+    <div class="section-title">例句</div>
+    <div class="section-content">
+      1. 来年、大学を受験します。<br>
+      　明年参加大学入学考试。<br><br>
+      2. 受験勉強が大変です。<br>
+      　备考很辛苦。
+    </div>
+    <div class="note-box">相关词：<br>• 試験（しけん）= 考试（普通用语）<br>• 受験（じゅけん）= 参加考试（特指入学考试、资格考试等）</div>
+  </div>
+
+  <div class="word-card" id="word-22">
+    <div class="word-header"><span class="word-kanji">現時点</span> <span class="word-kana">げんじてん</span> <span class="word-pos">名词</span></div>
+    <div class="word-meaning">现在、目前</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">构词：現（现在）+ 時点（时点）。常用于ビジネス场合。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">現時点では不明です - 目前尚不清楚</div>
+  </div>
+
+  <div class="word-card" id="word-23">
+    <div class="word-header"><span class="word-kanji">既に</span> <span class="word-kana">すでに</span> <span class="word-pos">副词</span></div>
+    <div class="word-meaning">已经</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">比"もう"更正式，多用于书面语。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">既に終わりました - 已经结束了</div>
+  </div>
+
+  <div class="word-card" id="word-24">
+    <div class="word-header"><span class="word-kanji">入社</span> <span class="word-kana">にゅうしゃ</span> <span class="word-pos">サ变动词</span></div>
+    <div class="word-meaning">进入公司、入职</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content"><span class="important">三类动词（サ变动词）</span>，ます形：入社します。反义词：退社（退职）。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">来月入社します - 下个月入职</div>
+  </div>
+
+  <div class="word-card" id="word-25">
+    <div class="word-header"><span class="word-kanji">受け止める</span> <span class="word-kana">うけとめる</span> <span class="word-pos">二类动词</span></div>
+    <div class="word-meaning">接受、理解、应对</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content"><span class="important">二类动词（一段动词）</span>，ます形：受け止めます。构词：受け（接受）+ 止める（停止）。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">批判を受け止める - 接受批评</div>
+  </div>
+
+  <div class="word-card" id="word-26">
+    <div class="word-header"><span class="word-kanji">じっくり</span> <span class="word-kana">じっくり</span> <span class="word-pos">副词</span></div>
+    <div class="word-meaning">仔细地、慢慢地</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">表示花时间仔细地做某事。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">じっくり考える - 仔细考虑</div>
+  </div>
+
+  <div class="word-card" id="word-27">
+    <div class="word-header"><span class="word-kanji">読む</span> <span class="word-kana">よむ</span> <span class="word-pos">一类动词</span></div>
+    <div class="word-meaning">读</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content"><span class="important">一类动词（五段动词）</span>，词尾：む。常见搭配：本を読む（读书）、新聞を読む（读报纸）。</div>
+    <div class="section-title">ます形变化</div>
+    <table><tr><th>形式</th><th>变化</th><th>意思</th></tr><tr><td>原形</td><td>読む</td><td>读</td></tr><tr><td>ます形</td><td>読みます</td><td>读（礼貌）</td></tr><tr><td>否定</td><td>読みません</td><td>不读</td></tr><tr><td>过去</td><td>読みました</td><td>读了</td></tr></table>
+  </div>
+
+  <div class="word-card" id="word-28">
+    <div class="word-header"><span class="word-kanji">焦る</span> <span class="word-kana">あせる</span> <span class="word-pos">一类动词</span></div>
+    <div class="word-meaning">着急、焦急</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content"><span class="important">一类动词（五段动词）</span>，词尾：る（在う段）。表示心理上的焦急、着急状态。<br>常见搭配：焦らないで（别着急）、焦るとミスをする（一着急就会犯错）。</div>
+    <div class="section-title">ます形变化</div>
+    <table><tr><th>形式</th><th>变化</th><th>意思</th></tr><tr><td>原形</td><td>焦る</td><td>着急</td></tr><tr><td>ます形</td><td>焦ります</td><td>着急（礼貌）</td></tr><tr><td>否定</td><td>焦りません</td><td>不着急</td></tr><tr><td>过去</td><td>焦りました</td><td>着急了</td></tr></table>
+    <div class="section-title">て形</div>
+    <div class="section-content">焦る → 焦って（あせって）<br>例：焦って涙が出た（急得流泪了）</div>
+    <div class="note-box">变形规则：一类动词，る → って（促音变）</div>
+  </div>
+
+  <div class="word-card" id="word-29">
+    <div class="word-header"><span class="word-kanji">涙</span> <span class="word-kana">なみだ</span> <span class="word-pos">名词</span></div>
+    <div class="word-meaning">眼泪</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">表示从眼睛流出的液体。常与动词"出る"搭配使用。<br>常见搭配：涙が出る（流泪）、涙を流す（流泪、哭泣）、涙ぐむ（含泪）。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">
+      涙が出た。（流泪了。）<br>
+      彼は焦って涙が出てしまった。（他急得眼泪都流出来了。）
+    </div>
+    <div class="section-title">相关词汇</div>
+    <div class="section-content">
+      • 泣く（なく）- 哭（动词）<br>
+      • 涙ぐましい（なみだぐましい）- 令人感动的（N3）
+    </div>
+  </div>
+
+  <div class="word-card" id="word-42">
+    <div class="word-header"><span class="word-kanji">割る</span> <span class="word-kana">わる</span> <span class="word-pos">一类动词</span></div>
+    <div class="word-meaning">打破、弄碎、分开</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content"><span class="important">一类动词（五段动词）</span>，词尾：る（在う段）。常表示把杯子、盘子、玻璃等硬的东西弄碎。<br>常见搭配：皿を割る（打碎盘子）、コップを割る（打碎杯子）、卵を割る（打鸡蛋）。</div>
+    <div class="section-title">て形</div>
+    <div class="section-content"><span class="highlight">割る → 割って（わって）</span><br>规则：一类动词中，词尾「る・う・つ」变成「って」。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">弟がこれを割ってしまいました。 - 弟弟把这个弄碎了。</div>
+  </div>
+
+  <div class="word-card" id="word-43">
+    <div class="word-header"><span class="word-kanji">折る</span> <span class="word-kana">おる</span> <span class="word-pos">一类动词</span></div>
+    <div class="word-meaning">折、折断、叠</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content"><span class="important">一类动词（五段动词）</span>，词尾：る（在う段）。常用于纸、树枝、筷子、手指等可折的东西。<br>和「割る」不同，<span class="highlight">折る强调“折断/折叠”，割る强调“裂开/打碎”</span>。</div>
+    <div class="section-title">て形</div>
+    <div class="section-content">折る → 折って（おって）</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">紙を半分に折ってください。 - 请把纸对折。<br>枝を折ってしまった。 - 把树枝折断了。</div>
+  </div>
+
+  <div class="word-card" id="word-44">
+    <div class="word-header"><span class="word-kanji">触る</span> <span class="word-kana">さわる</span> <span class="word-pos">一类动词</span></div>
+    <div class="word-meaning">摸、碰</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content"><span class="important">一类动词（五段动词）</span>，词尾：る（在う段）。表示手接触到某物。常见搭配：物に触る（碰东西）、髪に触る（碰头发）。</div>
+    <div class="section-title">て形</div>
+    <div class="section-content">触る → 触って（さわって）</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">その絵に触ってはいけません。 - 不可以碰那幅画。</div>
+  </div>
+
+  <div class="word-card" id="word-50">
+    <div class="word-header"><span class="word-kanji">けが</span> <span class="word-kana">けが</span> <span class="word-pos">名词/サ变动词</span></div>
+    <div class="word-meaning">受伤、伤</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">通常写作「怪我（けが）」。表示身体受伤。常见搭配：けがをする（受伤）、けがが治る（伤好了）、大けが（おおけが，重伤）。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">けがは完全に治りました。 - 伤已经完全好了。</div>
+    <div class="note-box">考试里常常只写假名「けが」，你要知道它对应的汉字是<span class="important">怪我</span>。</div>
+  </div>
+
+  <div class="word-card" id="word-51">
+    <div class="word-header"><span class="word-kanji">急に</span> <span class="word-kana">きゅうに</span> <span class="word-pos">副词</span></div>
+    <div class="word-meaning">突然、一下子</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">由形容动词「急（きゅう）だ」变来。表示事情发生得很突然。常见搭配：急に泣く（突然哭）、急に寒くなる（突然变冷）、急に止まる（突然停下）。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">急に涙が出てしまいました。 - 突然流出了眼泪。</div>
+  </div>
+
+  <div class="word-card" id="word-52">
+    <div class="word-header"><span class="word-kanji">治る</span> <span class="word-kana">なおる</span> <span class="word-pos">一类动词</span></div>
+    <div class="word-meaning">痊愈、治好（自动）</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content"><span class="important">一类动词</span>。表示病、伤自己恢复好。常见搭配：病気が治る（病好了）、けがが治る（伤好了）。对应他动词：治す（なおす，治好、修好）。</div>
+    <div class="section-title">变形</div>
+    <div class="section-content">治る → 治って（なおって） → 治りました（なおりました）</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">けがは完全に治りました。 - 伤完全好了。</div>
+  </div>
+
+  <div class="word-card" id="word-53">
+    <div class="word-header"><span class="word-kanji">ぬれる</span> <span class="word-kana">ぬれる</span> <span class="word-pos">二类动词</span></div>
+    <div class="word-meaning">湿、淋湿</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content"><span class="important">二类动词</span>。表示东西变湿。常见搭配：雨にぬれる（被雨淋湿）、服がぬれる（衣服湿了）、地面がぬれる（地面湿了）。</div>
+    <div class="section-title">变形</div>
+    <div class="section-content">ぬれる → ぬれて → ぬれている</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">雨で地面がぬれている。 - 因为下雨，地面是湿的。</div>
+  </div>
+
+  <div class="word-card" id="word-54">
+    <div class="word-header"><span class="word-kanji">ゆっくり</span> <span class="word-kana">ゆっくり</span> <span class="word-pos">副词/サ变动词</span></div>
+    <div class="word-meaning">慢慢地；好好地休息</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">表示速度慢、不着急。和「じっくり」不同，<span class="highlight">ゆっくり强调“慢慢地”</span>，而「じっくり」强调“仔细、充分花时间”。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">ゆっくり呼吸をしてください。 - 请慢慢呼吸。<br>今日は家でゆっくりします。 - 今天在家好好休息。</div>
+  </div>
+  
+                </div>
+            </section>
+
+            <section id="section-n3">
+                <h2 class="section-header serif">
+                    <span>N3 单词</span>
+                    <span class="section-meta">LEVEL N3</span>
+                </h2>
+                <div class="cards-grid">
+
+  <div class="word-card" id="word-30">
+    <div class="word-header"><span class="word-kanji">転送</span> <span class="word-kana">てんそう</span> <span class="word-pos">サ变动词</span></div>
+    <div class="word-meaning">转发、转送</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content"><span class="important">三类动词（サ变动词）</span>，ます形：転送します。常用于邮件、文件的转发。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">メールを転送する - 转发邮件</div>
+  </div>
+
+  <div class="word-card" id="word-31">
+    <div class="word-header"><span class="word-kanji">共有</span> <span class="word-kana">きょうゆう</span> <span class="word-pos">サ变动词</span></div>
+    <div class="word-meaning">共享</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content"><span class="important">三类动词（サ变动词）</span>，ます形：共有します。IT领域常用词。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">ファイルを共有する - 共享文件</div>
+  </div>
+
+  <div class="word-card" id="word-32">
+    <div class="word-header"><span class="word-kanji">投稿</span> <span class="word-kana">とうこう</span> <span class="word-pos">サ变动词</span></div>
+    <div class="word-meaning">投稿、发帖</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content"><span class="important">三类动词（サ变动词）</span>，ます形：投稿します。社交媒体常用词。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">ブログに投稿する - 在博客发帖</div>
+  </div>
+
+  <div class="word-card" id="word-33">
+    <div class="word-header"><span class="word-kanji">発信</span> <span class="word-kana">はっしん</span> <span class="word-pos">サ变动词</span></div>
+    <div class="word-meaning">发送、发布、传播</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content"><span class="important">三类动词（サ变动词）</span>，ます形：発信します。常用于信息发布。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">情報を発信する - 发布信息</div>
+  </div>
+
+  <div class="word-card" id="word-34">
+    <div class="word-header"><span class="word-kanji">視点</span> <span class="word-kana">してん</span> <span class="word-pos">名词</span></div>
+    <div class="word-meaning">观点、视角</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">构词：視（看）+ 点（点）。常用于分析、讨论。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">様々な視点から - 从各种视角</div>
+  </div>
+
+  <div class="word-card" id="word-35">
+    <div class="word-header"><span class="word-kanji">注目</span> <span class="word-kana">ちゅうもく</span> <span class="word-pos">サ变动词</span></div>
+    <div class="word-meaning">关注、瞩目</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content"><span class="important">三类动词（サ变动词）</span>，ます形：注目します。构词：注（注目）+ 目（眼睛）。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">注目の的 - 关注的焦点</div>
+  </div>
+
+  <div class="word-card" id="word-36">
+    <div class="word-header"><span class="word-kanji">必読</span> <span class="word-kana">ひつどく</span> <span class="word-pos">名词/形容动词</span></div>
+    <div class="word-meaning">必读</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">构词：必（必须）+ 読（读）。强调重要性。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">必読の本 - 必读的书</div>
+  </div>
+
+  <div class="word-card" id="word-37">
+    <div class="word-header"><span class="word-kanji">各位</span> <span class="word-kana">かくい</span> <span class="word-pos">名词</span></div>
+    <div class="word-meaning">各位、诸位</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">用于邮件开头，表示"致各位"。ビジネス邮件常用。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">社員各位 - 各位员工</div>
+  </div>
+
+  <div class="word-card" id="word-38">
+    <div class="word-header"><span class="word-kanji">コメント</span> <span class="word-kana">こめんと</span> <span class="word-pos">名词</span></div>
+    <div class="word-meaning">评论</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">源自英语"comment"。社交媒体、ビジネス场合常用。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">コメントを書く - 写评论</div>
+  </div>
+
+  <div class="word-card" id="word-39">
+    <div class="word-header"><span class="word-kanji">バズる</span> <span class="word-kana">ばずる</span> <span class="word-pos">一类动词</span></div>
+    <div class="word-meaning">成为热门话题、爆红</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content"><span class="important">网络流行语</span>。源自英语"buzz"（嗡嗡声）。一类动词，ます形：バズります。表示在网络上成为热门话题。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">この投稿がバズった - 这篇帖子爆红了</div>
+    <div class="note-box">这是现代网络用语，在传统JLPT考试中较少出现，但在实际生活中很常见。</div>
+  </div>
+
+  <div class="word-card" id="word-45">
+    <div class="word-header"><span class="word-kanji">蹴る</span> <span class="word-kana">ける</span> <span class="word-pos">一类动词</span></div>
+    <div class="word-meaning">踢</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">表示用脚踢。虽然词尾是「る」，而且前面是「け」（え段），但这里<span class="important">是一类动词（例外）</span>。和「走る、帰る、入る、知る」一样，外形像二类，实际按一类动词变形。常见搭配：ボールを蹴る（踢球）、ドアを蹴る（踢门）。</div>
+    <div class="section-title">变形表</div>
+    <table><tr><th>形式</th><th>变化</th><th>意思</th></tr><tr><td>原形</td><td>蹴る</td><td>踢</td></tr><tr><td>ます形</td><td>蹴ります</td><td>踢（礼貌）</td></tr><tr><td>否定</td><td>蹴りません</td><td>不踢</td></tr><tr><td>过去</td><td>蹴りました</td><td>踢了</td></tr><tr><td>过去否定</td><td>蹴りませんでした</td><td>没踢</td></tr></table>
+    <div class="section-title">て形</div>
+    <div class="section-content">蹴る → 蹴って（けって）<br>规则：一类动词词尾「る・う・つ」→「って」</div>
+    <div class="section-title">更多变形</div>
+    <div class="section-content">辞书形：蹴る<br>ない形：蹴らない<br>て形：蹴って<br>た形：蹴った<br>可能形：蹴れる<br>意向形：蹴ろう</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">弟がボールを蹴った。 - 弟弟踢了球。</div>
+    <div class="note-box">易错点：<span class="important">不是二类动词</span>。如果是二类动词，否定形应该是「けない」，但正确是「蹴らない」，所以它按一类动词变形。</div>
+  </div>
+
+  <div class="word-card" id="word-55">
+    <div class="word-header"><span class="word-kanji">完全</span> <span class="word-kana">かんぜん</span> <span class="word-pos">名词/形容动词</span></div>
+    <div class="word-meaning">完全、彻底</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">构词：完（完成）+ 全（全部）。常见形式：完全に（完全地）、完全な（完全的）。<span class="important">注意读音是 かんぜん，不是 かんたん</span>。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">けがは完全に治りました。 - 伤已经完全好了。<br>準備は完全です。 - 准备很完整。</div>
+  </div>
+
+  <div class="word-card" id="word-56">
+    <div class="word-header"><span class="word-kanji">地面</span> <span class="word-kana">じめん</span> <span class="word-pos">名词</span></div>
+    <div class="word-meaning">地面</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">构词：地（地）+ 面（表面）。表示地的表面。常见搭配：地面に落ちる（掉到地上）、地面がぬれる（地面湿了）。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">雨で地面がぬれている。 - 因为下雨，地面湿了。</div>
+    <div class="note-box">易错点：读作<span class="important">じめん</span>，不是「ちめん」也不是「じめい」。</div>
+  </div>
+
+  <div class="word-card" id="word-57">
+    <div class="word-header"><span class="word-kanji">移す</span> <span class="word-kana">うつす</span> <span class="word-pos">一类动词</span></div>
+    <div class="word-meaning">移动、转移、搬到</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content"><span class="important">一类动词</span>。表示把某物从一个地方移到另一个地方。常见搭配：席を移す（换座位）、データを移す（转移数据）、お金を箱に移す（把钱移到箱子里）。</div>
+    <div class="section-title">变形</div>
+    <div class="section-content">移す → 移した（うつした） → 移して（うつして）</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">お金はあの箱に移したほうがいいですか。 - 钱放到那个箱子里比较好吗？</div>
+    <div class="note-box">不要和「写す（うつす，抄写）」「映す（うつす，映照）」「写る/移る（うつる，自动）」混淆。</div>
+  </div>
+
+  <div class="word-card" id="word-58">
+    <div class="word-header"><span class="word-kanji">呼吸</span> <span class="word-kana">こきゅう</span> <span class="word-pos">名词/サ变动词</span></div>
+    <div class="word-meaning">呼吸</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">构词：呼（呼）+ 吸（吸）。既可作名词，也可说「呼吸する」。<span class="important">正确读音是 こきゅう</span>。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">ゆっくり呼吸をしてください。 - 请慢慢呼吸。<br>深呼吸をする。 - 做深呼吸。</div>
+  </div>
+
+  <div class="word-card" id="word-59">
+    <div class="word-header"><span class="word-kanji">淘汰</span> <span class="word-kana">とうた</span> <span class="word-pos">名词/サ变动词</span></div>
+    <div class="word-meaning">淘汰</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">表示把不合适的人或事物排除出去。常见形式：淘汰する、淘汰される。本文标题「淘汰されるのは誰か」就是“被淘汰的是谁”。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">変化できない企業は市場で淘汰される。 - 无法变化的企业会在市场中被淘汰。</div>
+  </div>
+
+  <div class="word-card" id="word-60">
+    <div class="word-header"><span class="word-kanji">繰り返す</span> <span class="word-kana">くりかえす</span> <span class="word-pos">一类动词</span></div>
+    <div class="word-meaning">反复说、重复</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">常用于说明“再说一次、重复强调”。礼貌体是「繰り返します」。文中「繰り返しますが」有“我再强调一次，不过……”的语气。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">大切なので、もう一度繰り返します。 - 因为很重要，我再重复一遍。</div>
+  </div>
+
+  <div class="word-card" id="word-61">
+    <div class="word-header"><span class="word-kanji">意味</span> <span class="word-kana">いみ</span> <span class="word-pos">名词/サ变动词</span></div>
+    <div class="word-meaning">意思；意味着</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">既可作名词，也常和「する」构成「意味する」，表示“意味着、表示”。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">この変化は新しい時代の始まりを意味する。 - 这个变化意味着新时代的开始。</div>
+  </div>
+
+  <div class="word-card" id="word-62">
+    <div class="word-header"><span class="word-kanji">これまで</span> <span class="word-kana">これまで</span> <span class="word-pos">副词/名词</span></div>
+    <div class="word-meaning">至今为止；过去一直以来</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">表示从过去到现在这段时间。常见搭配：これまでの経験、これまで通り。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">これまでのやり方を見直す必要がある。 - 有必要重新审视至今为止的做法。</div>
+  </div>
+
+  <div class="word-card" id="word-63">
+    <div class="word-header"><span class="word-kanji">やり方</span> <span class="word-kana">やりかた</span> <span class="word-pos">名词</span></div>
+    <div class="word-meaning">做法；方法</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">由动词「やる」加「方」构成，表示做某事的方法。和「方法」意思接近，但更口语、更具体。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">この仕事のやり方を教えてください。 - 请教我这项工作的做法。</div>
+  </div>
+
+  <div class="word-card" id="word-64">
+    <div class="word-header"><span class="word-kanji">変化</span> <span class="word-kana">へんか</span> <span class="word-pos">名词/サ变动词</span></div>
+    <div class="word-meaning">变化</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">常见形式：変化する（变化）、変化を拒む（拒绝变化）。在文章中经常用于社会、技术、市场变化。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">時代の変化に対応しなければならない。 - 必须应对时代的变化。</div>
+  </div>
+
+  <div class="word-card" id="word-65">
+    <div class="word-header"><span class="word-kanji">拒む</span> <span class="word-kana">こばむ</span> <span class="word-pos">一类动词</span></div>
+    <div class="word-meaning">拒绝；抗拒</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">比「断る」更书面，常用于抽象对象，如变化、提案、协助。本文里是「変化を拒む」。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">新しい考え方を拒んではいけない。 - 不可以拒绝新的思维方式。</div>
+  </div>
+
+  <div class="word-card" id="word-66">
+    <div class="word-header"><span class="word-kanji">従来</span> <span class="word-kana">じゅうらい</span> <span class="word-pos">名词/副词</span></div>
+    <div class="word-meaning">以往；传统上</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">表示“到目前为止一直如此的、过去传统的”。常见搭配：従来の方法、従来型。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">従来のモデルでは限界がある。 - 传统模式是有局限的。</div>
+  </div>
+
+  <div class="word-card" id="word-67">
+    <div class="word-header"><span class="word-kanji">労働集約的</span> <span class="word-kana">ろうどうしゅうやくてき</span> <span class="word-pos">形容动词</span></div>
+    <div class="word-meaning">劳动密集型的</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">由「労働（劳动）」+「集約（集中）」+「的」构成，表示主要依靠人力投入的类型。常见于商业、经济文章。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">労働集約的な仕事は自動化の影響を受けやすい。 - 劳动密集型工作容易受到自动化的影响。</div>
+  </div>
+
+  <div class="word-card" id="word-68">
+    <div class="word-header"><span class="word-kanji">しがみつく</span> <span class="word-kana">しがみつく</span> <span class="word-pos">一类动词</span></div>
+    <div class="word-meaning">死抓住不放；紧抱；依附</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">原本是身体上“紧紧抱住”，引申为固执地依赖某种想法、制度或位置。文中是比喻：死守旧模式不放。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">古いやり方にしがみついてはいけない。 - 不能死守旧做法不放。</div>
+  </div>
+
+  <div class="word-card" id="word-69">
+    <div class="word-header"><span class="word-kanji">強力</span> <span class="word-kana">きょうりょく</span> <span class="word-pos">名词/形容动词</span></div>
+    <div class="word-meaning">强有力；强大</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">常见形式：強力な〜。表示力量、效果、影响很强。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">AIは強力な武器になりうる。 - AI可能成为强有力的武器。</div>
+  </div>
+
+  <div class="word-card" id="word-70">
+    <div class="word-header"><span class="word-kanji">武器</span> <span class="word-kana">ぶき</span> <span class="word-pos">名词</span></div>
+    <div class="word-meaning">武器；有力手段</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">本义是武器，文章里常用于比喻，指竞争优势或有效手段。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">知識は最大の武器だ。 - 知识是最大的武器。</div>
+  </div>
+
+  <div class="word-card" id="word-71">
+    <div class="word-header"><span class="word-kanji">手にする</span> <span class="word-kana">てにする</span> <span class="word-pos">惯用表达</span></div>
+    <div class="word-meaning">拿到；掌握；获得</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">字面是“拿到手里”，引申为“获得、掌握”。比单纯的「持つ」更强调得到某种资源或能力。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">新しい技術を手にした企業は強い。 - 掌握新技术的企业很强。</div>
+  </div>
+
+  <div class="word-card" id="word-72">
+    <div class="word-header"><span class="word-kanji">競合他社</span> <span class="word-kana">きょうごうたしゃ</span> <span class="word-pos">名词</span></div>
+    <div class="word-meaning">竞争对手公司</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">由「競合（竞争）」+「他社（别的公司）」组成。商务文章常见词。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">競合他社の動きを分析する。 - 分析竞争对手公司的动向。</div>
+  </div>
+
+  <div class="word-card" id="word-73">
+    <div class="word-header"><span class="word-kanji">市場</span> <span class="word-kana">しじょう</span> <span class="word-pos">名词</span></div>
+    <div class="word-meaning">市场</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">经济、商业文章高频词。常见搭配：市場から退出する、市場で勝つ。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">新しい市場を開拓する。 - 开拓新市场。</div>
+  </div>
+
+  <div class="word-card" id="word-74">
+    <div class="word-header"><span class="word-kanji">駆逐</span> <span class="word-kana">くちく</span> <span class="word-pos">名词/サ变动词</span></div>
+    <div class="word-meaning">驱逐；排挤出去</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">书面语较强，语气比「追い出す」更正式、更有压迫感。常见形式：駆逐する、駆逐される。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">古い方式は新技術に駆逐されることがある。 - 旧方式有时会被新技术排挤掉。</div>
+  </div>
+
+  <div class="word-card" id="word-75">
+    <div class="word-header"><span class="word-kanji">味方に付ける</span> <span class="word-kana">みかたにつける</span> <span class="word-pos">惯用表达</span></div>
+    <div class="word-meaning">争取到自己这一边；化为助力</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">不是单纯“把朋友带上”，而是“把某人某物变成己方力量”。文中「AIを味方に付ける」就是“把AI变成自己的助力”。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">変化を味方に付ける企業が伸びる。 - 把变化转化为助力的企业会成长。</div>
+  </div>
+
+  <div class="word-card" id="word-76">
+    <div class="word-header"><span class="word-kanji">競合</span> <span class="word-kana">きょうごう</span> <span class="word-pos">名词/サ变动词</span></div>
+    <div class="word-meaning">竞争；竞争对手</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">可指“竞争关系”，也可指“竞争对象”。常见搭配：競合となる、競合する。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">昨日の顧客が、今日は競合になることもある。 - 昨天的客户，今天也可能变成竞争对手。</div>
+  </div>
+
+  <div class="word-card" id="word-77">
+    <div class="word-header"><span class="word-kanji">経営者</span> <span class="word-kana">けいえいしゃ</span> <span class="word-pos">名词</span></div>
+    <div class="word-meaning">经营者；管理者</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">指负责经营企业的人，如老板、高层管理者。商务语境常用。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">経営者には長期的な視点が必要だ。 - 经营者需要长期视角。</div>
+  </div>
+
+  <div class="word-card" id="word-78">
+    <div class="word-header"><span class="word-kanji">過渡期</span> <span class="word-kana">かとき</span> <span class="word-pos">名词</span></div>
+    <div class="word-meaning">过渡期</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">表示从旧阶段过渡到新阶段的时期。常和社会、技术、组织变化搭配。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">今は大きな過渡期にある。 - 现在正处于一个大的过渡期。</div>
+  </div>
+
+  <div class="word-card" id="word-79">
+    <div class="word-header"><span class="word-kanji">摩擦</span> <span class="word-kana">まさつ</span> <span class="word-pos">名词</span></div>
+    <div class="word-meaning">摩擦；冲突</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">本义是物理上的摩擦，文章里常表示人与人、部门与部门之间的冲突与不顺。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">改革には一定の摩擦が伴う。 - 改革会伴随一定的摩擦。</div>
+  </div>
+
+  <div class="word-card" id="word-80">
+    <div class="word-header"><span class="word-kanji">自ら</span> <span class="word-kana">みずから</span> <span class="word-pos">副词/代词</span></div>
+    <div class="word-meaning">自己；亲自</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">书面语色彩较强，比「自分で」更正式。常见形式：自ら行う、自らの責任。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">経営者が自ら動くべきだ。 - 经营者应该亲自行动。</div>
+  </div>
+
+  <div class="word-card" id="word-81">
+    <div class="word-header"><span class="word-kanji">人月モデル</span> <span class="word-kana">にんげつもでる</span> <span class="word-pos">名词</span></div>
+    <div class="word-meaning">人月模型；按人月计费/管理的模式</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">IT行业术语。「人月」指“一个人工作一个月”的工作量。本文里强调要从这种传统模式中脱离。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">人月モデルだけに依存するのは危険だ。 - 只依赖人月模型是有风险的。</div>
+  </div>
+
+  <div class="word-card" id="word-82">
+    <div class="word-header"><span class="word-kanji">脱却</span> <span class="word-kana">だっきゃく</span> <span class="word-pos">名词/サ变动词</span></div>
+    <div class="word-meaning">摆脱；脱离</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">表示从某种状态、旧习惯、旧结构中脱离出来。常见搭配：古い体質からの脱却。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">古い発想からの脱却が必要だ。 - 有必要摆脱旧思维。</div>
+  </div>
+
+  <div class="word-card" id="word-83">
+    <div class="word-header"><span class="word-kanji">完了</span> <span class="word-kana">かんりょう</span> <span class="word-pos">名词/サ变动词</span></div>
+    <div class="word-meaning">完成；完毕</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">表示事情结束、完成。常见形式：完了する、完了させる。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">移行作業を年内に完了させる。 - 在年内完成迁移工作。</div>
+  </div>
+
+  <div class="word-card" id="word-84">
+    <div class="word-header"><span class="word-kanji">責任</span> <span class="word-kana">せきにん</span> <span class="word-pos">名词</span></div>
+    <div class="word-meaning">责任</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">常见搭配：責任がある、責任を取る、責任を持つ。本文里是“有完成某事的责任”。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">リーダーには説明する責任がある。 - 领导者有说明的责任。</div>
+  </div>
+
+  <div class="word-card" id="word-85">
+    <div class="word-header"><span class="word-kanji">新たな</span> <span class="word-kana">あらたな</span> <span class="word-pos">连体词</span></div>
+    <div class="word-meaning">新的</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">是「新しい」的书面表达，后面直接接名词，如「新たな課題」「新たな時代」。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">新たな戦略が必要になる。 - 会需要新的战略。</div>
+  </div>
+
+  <div class="word-card" id="word-86">
+    <div class="word-header"><span class="word-kanji">エコシステム</span> <span class="word-kana">えこしすてむ</span> <span class="word-pos">名词</span></div>
+    <div class="word-meaning">生态系统</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">来自英语 ecosystem。商业文章里常指企业、平台、用户、技术之间形成的整体结构。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">新しい産業エコシステムが生まれている。 - 新的产业生态系统正在形成。</div>
+  </div>
+
+  <div class="word-card" id="word-87">
+    <div class="word-header"><span class="word-kanji">生き残る</span> <span class="word-kana">いきのこる</span> <span class="word-pos">一类动词</span></div>
+    <div class="word-meaning">生存下来；存活；保留下来</div>
+    <div class="section-title">详细说明</div>
+    <div class="section-content">由「生きる」和「残る」构成，表示在竞争、灾害、变化中继续存在。常见搭配：市場で生き残る。</div>
+    <div class="section-title">例句</div>
+    <div class="section-content">変化に対応できる会社だけが生き残る。 - 只有能应对变化的公司才能生存下来。</div>
+  </div>
+
+                </div>
+            </section>
+
+        </div>
+    </main>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const sections = document.querySelectorAll('.word-card');
+        const navLinks = document.querySelectorAll('.toc-link');
+        const mainScroll = document.getElementById('main-scroll');
+
+        const observerOptions = {
+            root: mainScroll,
+            rootMargin: '0px 0px -60% 0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const currentId = entry.target.getAttribute('id');
+                    
+                    navLinks.forEach(link => { link.classList.remove('active'); });
+                    
+                    const activeLink = document.querySelector(`.toc-link[href="#${currentId}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                        activeLink.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => { observer.observe(section); });
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    mainScroll.scrollTo({
+                        top: targetElement.offsetTop - 60,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

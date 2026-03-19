@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JLPT N3 备考 - 语法专项</title>
+<style>
+    :root {
+        --bg-color: #FDFBF7;
+        --text-main: #1C1C1A;
+        --text-muted: #7A7A7A;
+        --border-light: #E6E4DD;
+        --border-dark: #1C1C1A;
+        --accent: #2D2D2D;
+        --paper-white: #FFFFFF;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, .serif, .grammar-title, .toc-link {
+        font-family: "Noto Serif SC", "Source Han Serif SC", "SimSun", "Times New Roman", serif;
+    }
+
+    /* Layout */
+    .layout-container {
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    /* Sidebar TOC */
+    .sidebar {
+        width: 280px;
+        min-width: 280px;
+        border-right: 1px solid var(--border-light);
+        padding: 40px 24px;
+        overflow-y: auto;
+        background: var(--bg-color);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .toc-header {
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        margin-bottom: 32px;
+        border-bottom: 1px solid var(--border-light);
+        padding-bottom: 12px;
+        font-family: sans-serif;
+    }
+
+    .toc-section-title {
+        font-size: 18px;
+        color: var(--text-main);
+        margin: 24px 0 12px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .toc-list {
+        list-style: none;
+    }
+
+    .toc-item {
+        margin-bottom: 4px;
+    }
+
+    .toc-link {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 14px;
+        display: block;
+        padding: 6px 12px 6px 24px;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+        position: relative;
+    }
+
+    .toc-link::before {
+        content: "";
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 4px;
+        background: var(--border-light);
+        border-radius: 50%;
+        transition: all 0.2s;
+    }
+
+    .toc-link:hover {
+        background: rgba(0,0,0,0.03);
+        color: var(--text-main);
+    }
+
+    .toc-link.active {
+        color: var(--text-main);
+        font-weight: bold;
+    }
+
+    .toc-link.active::before {
+        background: var(--text-main);
+    }
+
+    /* Main Content */
+    .main {
+        flex: 1;
+        overflow-y: auto;
+        padding: 60px 40px;
+        scroll-behavior: smooth;
+    }
+
+    .paper {
+        max-width: 210mm;
+        margin: 0 auto;
+    }
+
+    /* Document Header */
+    .doc-header {
+        text-align: center;
+        border-bottom: 4px solid var(--border-dark);
+        padding-bottom: 32px;
+        margin-bottom: 64px;
+        position: relative;
+    }
+
+    .doc-header::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: var(--border-dark);
+    }
+
+    .doc-title {
+        font-size: 42px;
+        margin: 0 0 16px;
+        letter-spacing: 2px;
+        font-weight: normal;
+    }
+
+    .doc-meta {
+        font-size: 13px;
+        color: var(--text-muted);
+        font-family: "Courier New", Courier, monospace;
+        letter-spacing: 1px;
+    }
+
+    /* Section Headers */
+    .section-header {
+        font-size: 28px;
+        font-weight: normal;
+        margin: 40px 0 32px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--border-dark);
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    .section-meta {
+        font-size: 14px;
+        color: var(--text-muted);
+        font-family: sans-serif;
+    }
+
+    /* Grid Layout for High Density */
+    .cards-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 32px;
+        align-items: start;
+    }
+
+    /* Legacy Classes Mapping */
+    .grammar-item {
+        border: 1px solid var(--border-light);
+        background: var(--paper-white);
+        padding: 32px 32px;
+        position: relative;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .grammar-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--border-dark);
+    }
+
+    .grammar-title {
+        font-size: 28px;
+        color: var(--text-main);
+        margin-bottom: 12px;
+    }
+
+    .grammar-meaning {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 12px;
+        color: var(--text-main);
+    }
+
+    .grammar-connection {
+        font-size: 14px;
+        color: var(--text-main);
+        font-family: "Courier New", monospace;
+        background: #F4F2EB;
+        padding: 8px 16px;
+        border-radius: 4px;
+        margin-bottom: 24px;
+        display: inline-block;
+        border: 1px solid var(--border-light);
+    }
+
+    .grammar-example {
+        margin-top: 16px;
+        padding: 16px;
+        background: #FAFAFA;
+        border-radius: 4px;
+        border: 1px solid var(--border-light);
+    }
+
+    .grammar-example-jp {
+        font-size: 16px;
+        color: var(--text-main);
+        margin-bottom: 8px;
+        font-family: "Noto Serif SC", serif;
+    }
+
+    .grammar-example-cn {
+        font-size: 14px;
+        color: var(--text-muted);
+    }
+
+    .note {
+        background: #F4F2EB;
+        padding: 12px 16px;
+        border-left: 3px solid #C0B9A8;
+        font-size: 14px;
+        color: #555;
+        margin-top: 24px;
+    }
+
+    .important {
+        color: #A00000;
+        font-weight: bold;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 14px;
+    }
+
+    th, td {
+        border: 1px solid var(--border-light);
+        padding: 10px 16px;
+        text-align: left;
+    }
+
+    th {
+        background: #FAFAFA;
+        font-weight: 600;
+        color: var(--text-main);
+    }
+
+    /* Print Styles */
+    @media print {
+        @page {
+            size: A4 portrait;
+            margin: 1cm;
+        }
+
+        body {
+            background: #FFF;
+            font-size: 10pt;
+            line-height: 1.4;
+        }
+
+        .layout-container {
+            display: block;
+            height: auto;
+            overflow: visible;
+        }
+
+        .sidebar {
+            display: none !important;
+        }
+
+        .main {
+            padding: 0;
+            overflow: visible;
+        }
+
+        .doc-header {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+        }
+
+        .doc-title {
+            font-size: 20pt;
+            margin-bottom: 5px;
+        }
+
+        .section-header {
+            margin: 20px 0 10px;
+            font-size: 14pt;
+            padding-bottom: 5px;
+        }
+
+        .cards-grid {
+            gap: 10px;
+        }
+
+        .grammar-item {
+            box-shadow: none;
+            border: 1px solid #CCC;
+            break-inside: avoid;
+            page-break-inside: avoid;
+            padding: 10px 15px;
+            margin-bottom: 0;
+        }
+
+        .grammar-item::before {
+            display: none;
+        }
+
+        .grammar-title {
+            font-size: 16pt;
+            margin-bottom: 6px;
+        }
+
+        .grammar-meaning {
+            font-size: 11pt;
+            margin-bottom: 6px;
+        }
+
+        .grammar-connection {
+            font-size: 10pt;
+            padding: 4px 8px;
+            margin-bottom: 10px;
+        }
+
+        .grammar-example {
+            padding: 6px 10px;
+            margin-top: 6px;
+        }
+
+        .grammar-example-jp {
+            font-size: 11pt;
+            margin-bottom: 2px;
+        }
+
+        .grammar-example-cn {
+            font-size: 10pt;
+        }
+
+        .note {
+            padding: 6px 10px;
+            margin-top: 10px;
+            font-size: 9.5pt;
+        }
+
+        table {
+            margin: 8px 0;
+            font-size: 9.5pt;
+        }
+
+        th, td {
+            padding: 4px 8px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .layout-container { flex-direction: column; }
+        .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border-light); padding: 20px; height: auto; max-height: 300px; }
+        .main { padding: 30px 20px; }
+        .grammar-item { padding: 24px 20px; }
+    }
+</style>
+</head>
+<body>
+
+<div class="layout-container">
+    <aside class="sidebar" id="print-hide">
+        <div class="toc-header">INDEX / 语法目录</div>
+        
+        <h3 class="toc-section-title serif">N5 语法</h3>
+        <ul class="toc-list">
+            <li class="toc-item"><a href="#gram-1" class="toc-link">问候语的时间区分</a></li>
+            <li class="toc-item"><a href="#gram-2" class="toc-link">礼貌体与简体</a></li>
+            <li class="toc-item"><a href="#gram-3" class="toc-link">动词分类（三类）</a></li>
+            <li class="toc-item"><a href="#gram-4" class="toc-link">动词ます形（礼貌体）</a></li>
+            <li class="toc-item"><a href="#gram-5" class="toc-link">ます形の四种变化</a></li>
+            <li class="toc-item"><a href="#gram-6" class="toc-link">终助词「ね」</a></li>
+            <li class="toc-item"><a href="#gram-7" class="toc-link">い形容词的用法</a></li>
+             <li class="toc-item"><a href="#gram-7a" class="toc-link">助词「が」（主语）</a></li>
+             <li class="toc-item"><a href="#gram-7b" class="toc-link">助词「を」（宾语）</a></li>
+             <li class="toc-item"><a href="#gram-7c" class="toc-link">动词て形（て-form）</a></li>
+             <li class="toc-item"><a href="#gram-13" class="toc-link">〜てください（请...）</a></li>
+         </ul>
+
+        <h3 class="toc-section-title serif">N4 语法</h3>
+         <ul class="toc-list">
+             <li class="toc-item"><a href="#gram-8" class="toc-link">〜とき（...的时候）</a></li>
+             <li class="toc-item"><a href="#gram-9" class="toc-link">〜てしまう（完成/遗憾）</a></li>
+             <li class="toc-item"><a href="#gram-14" class="toc-link">〜たほうがいい（最好...）</a></li>
+         </ul>
+
+        <h3 class="toc-section-title serif">N3 语法</h3>
+        <ul class="toc-list">
+            <li class="toc-item"><a href="#gram-9" class="toc-link">〜ている（正在...）</a></li>
+            <li class="toc-item"><a href="#gram-10" class="toc-link">〜てみる（试着做...）</a></li>
+            <li class="toc-item"><a href="#gram-11" class="toc-link">〜という（...的）</a></li>
+            <li class="toc-item"><a href="#gram-12" class="toc-link">〜てくれる（为我做...）</a></li>
+            <li class="toc-item"><a href="#gram-15" class="toc-link">〜のは〜だ（强调说明）</a></li>
+            <li class="toc-item"><a href="#gram-16" class="toc-link">〜を意味する（意味着）</a></li>
+            <li class="toc-item"><a href="#gram-17" class="toc-link">〜によって（由于/被）</a></li>
+            <li class="toc-item"><a href="#gram-18" class="toc-link">〜こそ（正是）</a></li>
+            <li class="toc-item"><a href="#gram-19" class="toc-link">〜における（在...中）</a></li>
+            <li class="toc-item"><a href="#gram-20" class="toc-link">〜ず（不...）</a></li>
+            <li class="toc-item"><a href="#gram-21" class="toc-link">〜からの（从...的）</a></li>
+            <li class="toc-item"><a href="#gram-22" class="toc-link">〜こともある（也有时）</a></li>
+            <li class="toc-item"><a href="#gram-23" class="toc-link">〜てはならない（不可）</a></li>
+            <li class="toc-item"><a href="#gram-24" class="toc-link">〜させる（使...完成）</a></li>
+            <li class="toc-item"><a href="#gram-25" class="toc-link">〜道なのです（说明结论）</a></li>
+        </ul>
+    </aside>
+
+    <main class="main" id="main-scroll">
+        <div class="paper">
+            
+            <header class="doc-header">
+                <h1 class="doc-title serif">日语语法笔记 - JLPT N3备考</h1>
+                <div class="doc-meta">开始日期：2026年3月17日 | 目标考试：2026年7月JLPT N3</div>
+            </header>
+
+            <section id="section-n5">
+                <h2 class="section-header serif">
+                    <span>N5 语法</span>
+                    <span class="section-meta">LEVEL N5</span>
+                </h2>
+                <div class="cards-grid">
+
+  <div class="grammar-item" id="gram-1">
+    <div class="grammar-title">问候语的时间区分</div>
+    <div class="grammar-meaning">意思：根据时间段使用不同的问候语</div>
+    <div class="grammar-connection">接续：独立使用，无需接续</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">おはようございます（早晨）→ こんにちは（白天）→ こんばんは（晚上）</div>
+      <div class="grammar-example-cn">早上好 → 你好 → 晚上好</div>
+    </div>
+    <div class="note">
+      <strong>重要：</strong>日语问候语严格区分时间段，用错会显得很奇怪。
+    </div>
+  </div>
+
+  <div class="grammar-item" id="gram-2">
+    <div class="grammar-title">礼貌体与简体</div>
+    <div class="grammar-meaning">意思：根据对象选择礼貌程度</div>
+    <div class="grammar-connection">接续：独立使用</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">おはようございます（礼貌）←→ おはよう（随意）</div>
+      <div class="grammar-example-cn">早上好（礼貌）←→ 早（随意）</div>
+    </div>
+    <div class="note">
+      <strong>规则：</strong>对长辈、上司、陌生人使用礼貌体；对朋友、家人、晚辈可以使用简体。
+    </div>
+  </div>
+
+  <div class="grammar-item" id="gram-3">
+    <div class="grammar-title">动词分类（三类）</div>
+    <div class="grammar-meaning">意思：日语动词分为三类，变形规则不同</div>
+    <div class="grammar-connection">接续：动词原形</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">
+        <strong>一类动词（五段动词）：</strong>書く、飲む、話す、買う<br>
+        <strong>二类动词（一段动词）：</strong>食べる、見る、起きる、寝る<br>
+        <strong>三类动词（不规则动词）：</strong>する、来る
+      </div>
+      <div class="grammar-example-cn">
+        一类：词尾在う段，变形时词尾在五段变化<br>
+        二类：词尾是る，る前在い/え段<br>
+        三类：只有两个，变形不规则
+      </div>
+    </div>
+    <div class="note">
+      <strong>判断方法：</strong><br>
+      1. 词尾不是る → 一类动词<br>
+      2. 词尾是る，る前在い/え段 → 二类动词<br>
+      3. する、来る → 三类动词<br>
+      <span class="important">注意：走る、帰る、入る、知る、蹴る等是一类动词的例外！</span>
+    </div>
+  </div>
+
+  <div class="grammar-item" id="gram-4">
+    <div class="grammar-title">动词ます形（礼貌体）</div>
+    <div class="grammar-meaning">意思：表示礼貌的动词形式</div>
+    <div class="grammar-connection">接续：动词原形 → ます形</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">
+        <strong>一类动词：</strong>う段 → い段 + ます<br>
+        書く → 書きます、飲む → 飲みます、話す → 話します<br><br>
+        <strong>二类动词：</strong>去掉る + ます<br>
+        食べる → 食べます、見る → 見ます、起きる → 起きます<br><br>
+        <strong>三类动词：</strong>特殊变形<br>
+        する → します、来る → 来ます（きます）
+      </div>
+      <div class="grammar-example-cn">
+        一类：词尾う段变い段<br>
+        二类：去掉る<br>
+        三类：特殊记忆
+      </div>
+    </div>
+    <div class="note">
+      <strong>记忆口诀：</strong><br>
+      一类：う段 → い段 + ます（く→き、む→み、す→し...）<br>
+      二类：去掉る，加上ます<br>
+      三类：する→します、来る→来ます（きます）
+    </div>
+  </div>
+
+  <div class="grammar-item" id="gram-5">
+    <div class="grammar-title">ます形の四种变化</div>
+    <div class="grammar-meaning">意思：ます形的肯定、否定、过去、过去否定</div>
+    <div class="grammar-connection">接续：ます形基础</div>
+    <table>
+      <tr>
+        <th>形式</th>
+        <th>变化</th>
+        <th>意思</th>
+        <th>例子</th>
+      </tr>
+      <tr>
+        <td>肯定</td>
+        <td>〜ます</td>
+        <td>做...</td>
+        <td>書きます（写）</td>
+      </tr>
+      <tr>
+        <td>否定</td>
+        <td>〜ません</td>
+        <td>不做...</td>
+        <td>書きません（不写）</td>
+      </tr>
+      <tr>
+        <td>过去</td>
+        <td>〜ました</td>
+        <td>做了...</td>
+        <td>書きました（写了）</td>
+      </tr>
+      <tr>
+        <td>过去否定</td>
+        <td>〜ませんでした</td>
+        <td>没做...</td>
+        <td>書きませんでした（没写）</td>
+      </tr>
+    </table>
+    <div class="note">
+      <strong>记忆口诀：</strong><br>
+      ます变ません（否定）<br>
+      ます变ました（过去）<br>
+      ません + でした（过去否定）
+    </div>
+  </div>
+
+  <div class="grammar-item" id="gram-6">
+    <div class="grammar-title">终助词「ね」（寻求共鸣、确认）</div>
+    <div class="grammar-meaning">意思：表示确认、征求同意、感叹</div>
+    <div class="grammar-connection">接续：句子 + ね</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">
+        すごいね（好厉害啊）<br>
+        いい天気ですね（好天气啊）<br>
+        分かるね？（懂了吧？）<br>
+        そうですね（是啊）
+      </div>
+      <div class="grammar-example-cn">
+        表示感叹<br>
+        表示感叹<br>
+        表示确认<br>
+        表示同意
+      </div>
+    </div>
+    <div class="note">
+      <strong>「ね」的三大作用：</strong><br>
+      1. <strong>确认</strong>：分かるね？（懂了吧？）- 确认对方是否理解<br>
+      2. <strong>感叹</strong>：いい天気ですね（好天气啊）- 表达情感<br>
+      3. <strong>征求同意</strong>：そうですね（是啊）- 寻求共鸣<br><br>
+      <strong>用法：</strong><br>
+      • い形容词：直接加ね → すごいね<br>
+      • な形容词/名词：加だね → 静かだね、学生だね<br>
+      • 动词：简体加ね → 分かるね、行くね<br>
+      • 礼貌体：加ですね → すごいですね、分かりますね
+    </div>
+  </div>
+
+  <div class="grammar-item" id="gram-7">
+    <div class="grammar-title">い形容词的用法</div>
+    <div class="grammar-meaning">意思：以"い"结尾的形容词，可直接修饰名词或作谓语</div>
+    <div class="grammar-connection">接续：い形容词 + 名词 / 句尾</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">
+        <strong>修饰名词：</strong><br>
+        すごい人（厉害的人）<br>
+        おいしい料理（好吃的菜）<br><br>
+        <strong>作谓语：</strong><br>
+        この映画はすごい（这部电影很厉害）<br>
+        すごいね（好厉害啊）<br>
+        すごいですね（真厉害啊 - 礼貌）
+      </div>
+      <div class="grammar-example-cn">
+        すごい修饰人<br>
+        おいしい修饰料理<br><br>
+        すごい作谓语（简体）<br>
+        加终助词ね<br>
+        加です表示礼貌
+      </div>
+    </div>
+    <div class="note">
+      <strong>重要：</strong>い形容词作谓语时<span class="important">不需要加"だ"</span>！<br>
+      ✓ すごい（正确）<br>
+      ✗ すごいだ（错误）<br><br>
+      <strong>礼貌形：</strong>い形容词 + です<br>
+      ✓ すごいです（正确）<br>
+      ✓ おいしいです（正确）
+    </div>
+  </div>
+
+  <div class="grammar-item" id="gram-7a">
+    <div class="grammar-title">助词「が」（主语标记）</div>
+    <div class="grammar-meaning">意思：提示动作、状态的主体；回答“谁/什么”时常用</div>
+    <div class="grammar-connection">接续：名词 + が + 动词/形容词</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">
+        弟がこれを割ってしまいました。<br>
+        猫がいます。<br>
+        何が好きですか。
+      </div>
+      <div class="grammar-example-cn">
+        弟弟把这个弄碎了。<br>
+        有猫。<br>
+        你喜欢什么？
+      </div>
+    </div>
+    <div class="note">
+      <strong>重点：</strong><br>
+      • 「が」前面的词，往往是动作的执行者或状态的主体<br>
+      • 在本句里，<span class="important">弟が</span> = “弟弟”是“打碎”这个动作的执行者<br>
+      • 不要和提示主题的「は」混淆：<br>
+      弟<strong>は</strong>学生です（说到弟弟，他是学生）<br>
+      弟<strong>が</strong>割りました（是弟弟打碎的）
+    </div>
+  </div>
+
+  <div class="grammar-item" id="gram-7b">
+    <div class="grammar-title">助词「を」（宾语标记）</div>
+    <div class="grammar-meaning">意思：表示动作直接作用的对象</div>
+    <div class="grammar-connection">接续：名词 + を + 他动词</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">
+        弟がこれを割ってしまいました。<br>
+        本を読む。<br>
+        水を飲みます。
+      </div>
+      <div class="grammar-example-cn">
+        弟弟把这个弄碎了。<br>
+        读书。<br>
+        喝水。
+      </div>
+    </div>
+    <div class="note">
+      <strong>重点：</strong><br>
+      • 「を」前面的词，是动作直接影响到的对象<br>
+      • 本句中 <span class="important">これを</span> = “这个”就是被打碎的东西<br>
+      • 发音常接近“o”，但写作固定是「を」
+    </div>
+  </div>
+
+  <div class="grammar-item" id="gram-7c">
+    <div class="grammar-title">动词て形（て-form）</div>
+    <div class="grammar-meaning">意思：连接后续语法，如〜てしまう、〜ている、〜てください等</div>
+    <div class="grammar-connection">接续：动词原形 → て形</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">
+        書く → 書いて<br>
+        食べる → 食べて<br>
+        する → して<br>
+        割る → 割って
+      </div>
+      <div class="grammar-example-cn">
+        写 → 写了/写着（连接形）<br>
+        吃 → 吃了/吃着（连接形）<br>
+        做 → 做了/做着（连接形）<br>
+        打碎 → 打碎了（连接形）
+      </div>
+    </div>
+    <div class="note">
+      <strong>本题重点规则：</strong><br>
+      • 一类动词词尾「う・つ・る」→「って」<br>
+      例：買う→買って、待つ→待って、割る→割って<br><br>
+      <strong>所以：</strong><br>
+      割る（わる）→ <span class="important">割って（わって）</span><br><br>
+      这正是本题正确答案的关键。
+    </div>
+  </div>
+
+  <div class="grammar-item" id="gram-13">
+    <div class="grammar-title">〜てください（请...）</div>
+    <div class="grammar-meaning">意思：礼貌地请求对方做某事</div>
+    <div class="grammar-connection">接续：动词て形 + ください</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">
+        ゆっくり呼吸をしてください。<br>
+        ここに名前を書いてください。
+      </div>
+      <div class="grammar-example-cn">
+        请慢慢呼吸。<br>
+        请在这里写名字。
+      </div>
+    </div>
+    <div class="note">
+      <strong>重点：</strong><br>
+      • 这是N5非常基础但非常重要的请求表达<br>
+      • 语气比命令形柔和很多<br>
+      • 结构一定是<span class="important">动词て形 + ください</span><br>
+      • 呼吸する → 呼吸をして → 呼吸をしてください
+    </div>
+  </div>
+
+                </div>
+            </section>
+
+            <section id="section-n4">
+                <h2 class="section-header serif">
+                    <span>N4 语法</span>
+                    <span class="section-meta">LEVEL N4</span>
+                </h2>
+                <div class="cards-grid">
+
+  <div class="grammar-item" id="gram-8">
+    <div class="grammar-title">〜とき（...的时候）</div>
+    <div class="grammar-meaning">意思：表示时间、时机</div>
+    <div class="grammar-connection">接续：动词/形容词/名词 + とき</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">
+        時間があるときに、読んでください。<br>
+        日本に行ったとき、たくさん買い物をしました。
+      </div>
+      <div class="grammar-example-cn">
+        有时间的时候，请阅读。<br>
+        去日本的时候，买了很多东西。
+      </div>
+    </div>
+    <div class="note">
+      <strong>接续方式：</strong><br>
+      • 动词原形/た形 + とき<br>
+      • い形容词 + とき<br>
+      • な形容词/名词 + の + とき
+    </div>
+  </div>
+
+  <div class="grammar-item" id="gram-9">
+    <div class="grammar-title">〜てしまう（完成/遗憾）</div>
+    <div class="grammar-meaning">意思：表示动作完成；表示遗憾、后悔、不由自主</div>
+    <div class="grammar-connection">接续：动词て形 + しまう</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">
+        <strong>【完成义】</strong><br>
+        宿題をしてしまった。（作业做完了。）<br><br>
+        <strong>【遗憾义】</strong><br>
+        財布を落としてしまった。（把钱包弄丢了。）<br>
+        涙が出てしまった。（眼泪流出来了。）
+      </div>
+      <div class="grammar-example-cn">
+        强调动作完成<br><br>
+        带有遗憾的感情<br>
+        不由自主地流泪
+      </div>
+    </div>
+    <div class="note">
+      <strong>两种用法：</strong><br>
+      1. <strong>完成义</strong>：强调动作全部完成<br>
+      2. <strong>遗憾义</strong>：表示不如意的结果，带有遗憾、后悔、无奈的感情色彩<br><br>
+      <strong>「しまう」和「しまいました」的区别：</strong><br>
+      • <span class="important">しまう</span>：原形 / 简体，较普通、较口语，也可放进辞书里查到<br>
+      例：割ってしまう（会弄碎 / 弄碎掉）<br>
+      • <span class="important">しまいました</span>：ました形 / 礼貌过去式，表示“已经……了”<br>
+      例：割ってしまいました（弄碎了）<br><br>
+      <strong>具体怎么变形：</strong><br>
+      しまう → しまいます → しまいました<br>
+      第一步：把原形「しまう」变成ます形「しまいます」<br>
+      第二步：把「ます」变成过去式「ました」→「しまいました」<br><br>
+      <strong>为什么会这样：</strong><br>
+      • 「しまう」是<span class="important">一类动词</span>，词尾是「う」<br>
+      • 一类动词变ます形时：<span class="important">う段 → い段 + ます</span><br>
+      • 所以：う → い + ます<br>
+      • 结果就是：しまう → しまい + ます → しまいます<br>
+      • 再变过去：しまいます → しまいました<br><br>
+      <strong>整句也一样：</strong><br>
+      割ってしまう → 割ってしまいます → 割ってしまいました<br><br>
+      <strong>所以本质区别有两个：</strong><br>
+      1. <strong>时态不同</strong>：しまう = 非过去；しまいました = 过去<br>
+      2. <strong>语气不同</strong>：しまう = 简体；しまいました = 礼貌体<br><br>
+      <strong>口语缩略形式：</strong><br>
+      • 出てしまう → 出ちゃう<br>
+      • 出てしまった → 出ちゃった<br>
+      • 食べてしまう → 食べちゃう<br><br>
+      <strong>变形方法：</strong><br>
+      一类动词：書く → 書いて + しまう<br>
+      二类动词：食べる → 食べて + しまう<br>
+      三类动词：する → して + しまう
+    </div>
+  </div>
+
+  <div class="grammar-item" id="gram-14">
+    <div class="grammar-title">〜たほうがいい（最好...）</div>
+    <div class="grammar-meaning">意思：表示建议，最好做某事</div>
+    <div class="grammar-connection">接续：动词た形 + ほうがいい</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">
+        お金はあの箱に移したほうがいいですか。<br>
+        早く寝たほうがいいです。
+      </div>
+      <div class="grammar-example-cn">
+        钱放到那个箱子里比较好吗？<br>
+        你最好早点睡。
+      </div>
+    </div>
+    <div class="note">
+      <strong>重点：</strong><br>
+      • 表示“这样做比较好、最好这样做”<br>
+      • 先把动词变成<span class="important">た形</span>，再接「ほうがいい」<br>
+      • 移す → 移した → 移したほうがいい<br>
+      • 句末加「ですか」时，整句就变成征求意见： “这样做比较好吗？”
+    </div>
+  </div>
+
+                </div>
+            </section>
+
+            <section id="section-n3">
+                <h2 class="section-header serif">
+                    <span>N3 语法</span>
+                    <span class="section-meta">LEVEL N3</span>
+                </h2>
+                <div class="cards-grid">
+
+  <div class="grammar-item" id="gram-9">
+    <div class="grammar-title">〜ている（正在...、...着）</div>
+    <div class="grammar-meaning">意思：表示动作正在进行或状态持续</div>
+    <div class="grammar-connection">接续：动词て形 + いる</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">
+        バズっている（正在成为热门话题）<br>
+        発信してくれている（正在为大家发布）<br>
+        雨が降っています（正在下雨）
+      </div>
+      <div class="grammar-example-cn">
+        正在成为热门话题<br>
+        正在为大家发布<br>
+        正在下雨
+      </div>
+    </div>
+    <div class="note">
+      <strong>变形方法：</strong><br>
+      一类动词：書く → 書いて + いる<br>
+      二类动词：食べる → 食べて + いる<br>
+      三类动词：する → して + いる
+    </div>
+  </div>
+
+  <div class="grammar-item" id="gram-10">
+    <div class="grammar-title">〜てみる（试着做...）</div>
+    <div class="grammar-meaning">意思：尝试做某事</div>
+    <div class="grammar-connection">接续：动词て形 + みる</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">
+        読んでみてください（请试着读一下）<br>
+        やってみる（试着做）<br>
+        食べてみる（试着吃）
+      </div>
+      <div class="grammar-example-cn">
+        请试着读一下<br>
+        试着做<br>
+        试着吃
+      </div>
+    </div>
+    <div class="note">
+      <strong>说明：</strong>みる本身是"看"的意思，作为补助动词表示"试着..."。<br>
+      常见搭配：〜てみてください（请试着做...）
+    </div>
+  </div>
+
+  <div class="grammar-item" id="gram-11">
+    <div class="grammar-title">〜という（...的）</div>
+    <div class="grammar-meaning">意思：表示前面的内容是后面名词的具体内容</div>
+    <div class="grammar-connection">接续：句子/短语 + という + 名词</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">
+        3つの視点で注目です（有三个视角值得关注）<br>
+        「田中」という人（叫田中的人）
+      </div>
+      <div class="grammar-example-cn">
+        有三个视角值得关注<br>
+        叫田中的人
+      </div>
+    </div>
+    <div class="note">
+      <strong>用法：</strong>用于解释说明、定义内容。
+    </div>
+  </div>
+
+  <div class="grammar-item" id="gram-12">
+    <div class="grammar-title">〜てくれる（为我做...）</div>
+    <div class="grammar-meaning">意思：表示别人为我（们）做某事</div>
+    <div class="grammar-connection">接续：动词て形 + くれる</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">
+        発信してくれている（为大家发布）<br>
+        教えてくれました（为我教了...）<br>
+        買ってくれる（为我买...）
+      </div>
+      <div class="grammar-example-cn">
+        正在为大家发布<br>
+        为我教了...<br>
+        为我买...
+      </div>
+    </div>
+    <div class="note">
+      <strong>重要：</strong>表示恩惠关系，强调对方的善意。<br>
+      变形：くれている = 正在为我（们）做...
+    </div>
+  </div>
+
+  <div class="grammar-item" id="gram-15">
+    <div class="grammar-title">〜のは〜だ（强调说明）</div>
+    <div class="grammar-meaning">意思：把某一部分拿出来重点说明，相当于“……的是……”</div>
+    <div class="grammar-connection">接续：普通形 + のは + 名词/句子 + だ</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">
+        淘汰されるのは誰か。<br>
+        大切なのは行動することです。
+      </div>
+      <div class="grammar-example-cn">
+        被淘汰的是谁？<br>
+        重要的是采取行动。
+      </div>
+    </div>
+    <div class="note">
+      <strong>说明：</strong>「の」把前面的动作或状态名词化，再用「は」提出主题。文章标题里就是用这个句型强调“到底是谁会被淘汰”。
+    </div>
+  </div>
+
+  <div class="grammar-item" id="gram-16">
+    <div class="grammar-title">〜を意味する（意味着）</div>
+    <div class="grammar-meaning">意思：表示“具有……含义”“意味着……”</div>
+    <div class="grammar-connection">接续：名词 + を + 意味する</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">
+        「SaaSの死」はSIerの終わりを意味しません。<br>
+        この数字は危機を意味する。
+      </div>
+      <div class="grammar-example-cn">
+        “SaaS之死”并不意味着SIer的终结。<br>
+        这个数字意味着危机。
+      </div>
+    </div>
+    <div class="note">
+      <strong>说明：</strong>「意味する」是比较书面的说法，常出现在说明文、评论文中。
+    </div>
+  </div>
+
+  <div class="grammar-item" id="gram-17">
+    <div class="grammar-title">〜によって（由于/被）</div>
+    <div class="grammar-meaning">意思：可表示原因、手段，也可用于被动句中表示动作发出者</div>
+    <div class="grammar-connection">接续：名词 + によって</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">
+        競合他社によって、市場から駆逐されるでしょう。<br>
+        台風によって電車が止まった。
+      </div>
+      <div class="grammar-example-cn">
+        会被竞争对手公司赶出市场吧。<br>
+        因台风电车停运了。
+      </div>
+    </div>
+    <div class="note">
+      <strong>重要：</strong>这里不是“按照”，而是在被动句里表示“被谁……”。
+    </div>
+  </div>
+
+  <div class="grammar-item" id="gram-18">
+    <div class="grammar-title">〜こそ（正是）</div>
+    <div class="grammar-meaning">意思：强烈强调前面的词，相当于“正是……才……”</div>
+    <div class="grammar-connection">接续：名词 + こそ</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">
+        AIを味方に付けたユーザー企業こそが、真の競合となる。<br>
+        今こそ変わるべきだ。
+      </div>
+      <div class="grammar-example-cn">
+        正是那些把AI变成助力的用户企业，才会成为真正的竞争对手。<br>
+        现在正是应该改变的时候。
+      </div>
+    </div>
+    <div class="note">
+      <strong>说明：</strong>语气很强，表示“不是别的，正是这个”。考试里常考强调作用。
+    </div>
+  </div>
+
+  <div class="grammar-item" id="gram-19">
+    <div class="grammar-title">〜における（在...中）</div>
+    <div class="grammar-meaning">意思：书面语，表示“在……方面/在……场合中”</div>
+    <div class="grammar-connection">接续：名词 + における + 名词</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">
+        この過渡期における摩擦を恐れず、進む。<br>
+        現代社会における教育の役割。
+      </div>
+      <div class="grammar-example-cn">
+        不要害怕这一过渡期中的摩擦，继续前进。<br>
+        现代社会中教育的作用。
+      </div>
+    </div>
+    <div class="note">
+      <strong>对比：</strong>口语里常说「〜での」，书面文章更常用「〜における」。
+    </div>
+  </div>
+
+  <div class="grammar-item" id="gram-20">
+    <div class="grammar-title">〜ず（不...）</div>
+    <div class="grammar-meaning">意思：书面语否定，等于「〜ないで」「〜なくて」的一部分用法</div>
+    <div class="grammar-connection">接续：动词ない形去ない + ず（但する→せず）</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">
+        摩擦を恐れず、改革を進める。<br>
+        何も言わずに帰った。
+      </div>
+      <div class="grammar-example-cn">
+        不惧摩擦，推进改革。<br>
+        什么也没说就回去了。
+      </div>
+    </div>
+    <div class="note">
+      <strong>重要：</strong>这是书面表达。特殊形式：する → せず。
+    </div>
+  </div>
+
+  <div class="grammar-item" id="gram-21">
+    <div class="grammar-title">〜からの（从...的）</div>
+    <div class="grammar-meaning">意思：表示“从某处/某状态出发的……”</div>
+    <div class="grammar-connection">接续：名词 + からの + 名词</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">
+        人月モデルからの脱却を完了させる。<br>
+        故郷からの手紙。
+      </div>
+      <div class="grammar-example-cn">
+        完成从人月模式中的脱离。<br>
+        来自故乡的信。
+      </div>
+    </div>
+    <div class="note">
+      <strong>说明：</strong>这里的「から」不是单独结束，而是接「の」后修饰后面的名词。
+    </div>
+  </div>
+
+  <div class="grammar-item" id="gram-22">
+    <div class="grammar-title">〜こともある（也有时会...）</div>
+    <div class="grammar-meaning">意思：表示有时会发生某种情况</div>
+    <div class="grammar-connection">接续：普通形 + こともある</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">
+        真の競合となることもある。<br>
+        失敗することもある。
+      </div>
+      <div class="grammar-example-cn">
+        也有可能成为真正的竞争对手。<br>
+        也有失败的时候。
+      </div>
+    </div>
+    <div class="note">
+      <strong>说明：</strong>比直接说「なる」语气更缓和，表示“存在这种可能性”。
+    </div>
+  </div>
+
+  <div class="grammar-item" id="gram-23">
+    <div class="grammar-title">〜てはならない（不可...）</div>
+    <div class="grammar-meaning">意思：表示禁止，“不可以……”“不能……”</div>
+    <div class="grammar-connection">接续：动词て形 + はならない</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">
+        忘れてはなりません。<br>
+        ここで諦めてはならない。
+      </div>
+      <div class="grammar-example-cn">
+        不能忘记。<br>
+        不可以在这里放弃。
+      </div>
+    </div>
+    <div class="note">
+      <strong>对比：</strong>比「〜てはいけない」更书面、更郑重。
+    </div>
+  </div>
+
+  <div class="grammar-item" id="gram-24">
+    <div class="grammar-title">〜させる（使...完成）</div>
+    <div class="grammar-meaning">意思：使役形，表示“让/使某人做某事”</div>
+    <div class="grammar-connection">接续：动词使役形</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">
+        脱却を完了させる責任がある。<br>
+        子どもに野菜を食べさせる。
+      </div>
+      <div class="grammar-example-cn">
+        有责任使脱离旧模式这件事完成。<br>
+        让孩子吃蔬菜。
+      </div>
+    </div>
+    <div class="note">
+      <strong>说明：</strong>「完了する」是“完成”，「完了させる」是“使其完成、把它做完”。这里强调主动推进结果达成。
+    </div>
+  </div>
+
+  <div class="grammar-item" id="gram-25">
+    <div class="grammar-title">〜道なのです（说明结论）</div>
+    <div class="grammar-meaning">意思：用「のです」对前面的判断作解释说明，带有总结结论的语气</div>
+    <div class="grammar-connection">接续：普通形 + のです</div>
+    <div class="grammar-example">
+      <div class="grammar-example-jp">
+        それが、AI時代の新たなエコシステムで生き残る道なのです。<br>
+        だから急ぐ必要があるのです。
+      </div>
+      <div class="grammar-example-cn">
+        那才是在AI时代的新生态系统中生存下去的道路。<br>
+        所以才有必要着急。
+      </div>
+    </div>
+    <div class="note">
+      <strong>说明：</strong>「のです」不是单纯的“是”，而是“这就是原因/结论/解释”。文章收尾很常见。
+    </div>
+  </div>
+
+                </div>
+            </section>
+
+        </div>
+    </main>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const sections = document.querySelectorAll('.grammar-item');
+        const navLinks = document.querySelectorAll('.toc-link');
+        const mainScroll = document.getElementById('main-scroll');
+
+        const observerOptions = {
+            root: mainScroll,
+            rootMargin: '0px 0px -60% 0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const currentId = entry.target.getAttribute('id');
+                    
+                    navLinks.forEach(link => { link.classList.remove('active'); });
+                    
+                    const activeLink = document.querySelector(`.toc-link[href="#${currentId}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                        activeLink.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => { observer.observe(section); });
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    mainScroll.scrollTo({
+                        top: targetElement.offsetTop - 60,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

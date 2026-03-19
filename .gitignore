@@ -1,0 +1,12 @@
+# Ignore everything
+*
+
+# But track these HTML files
+!index.html
+!单词.html
+!语法.html
+!动词变形.html
+!形容词变形.html
+
+# And track this gitignore itself
+!.gitignore
