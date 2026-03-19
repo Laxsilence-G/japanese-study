@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JLPT N3 备考 - 学习首页</title>
+<style>
+    :root {
+        --bg-color: #FDFBF7;
+        --text-main: #1C1C1A;
+        --text-muted: #7A7A7A;
+        --border-light: #E6E4DD;
+        --border-dark: #1C1C1A;
+        --paper-white: #FFFFFF;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, .serif, .toc-link, .entry-title {
+        font-family: "Noto Serif SC", "Source Han Serif SC", "SimSun", "Times New Roman", serif;
+    }
+
+    .layout-container {
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .sidebar {
+        width: 280px;
+        min-width: 280px;
+        border-right: 1px solid var(--border-light);
+        padding: 40px 24px;
+        overflow-y: auto;
+        background: var(--bg-color);
+    }
+
+    .toc-header {
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        margin-bottom: 32px;
+        border-bottom: 1px solid var(--border-light);
+        padding-bottom: 12px;
+    }
+
+    .toc-section-title {
+        font-size: 18px;
+        margin: 24px 0 12px;
+    }
+
+    .toc-list {
+        list-style: none;
+    }
+
+    .toc-item {
+        margin-bottom: 4px;
+    }
+
+    .toc-link {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 14px;
+        display: block;
+        padding: 6px 12px 6px 24px;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+        position: relative;
+    }
+
+    .toc-link::before {
+        content: "";
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 4px;
+        background: var(--border-light);
+        border-radius: 50%;
+    }
+
+    .toc-link:hover,
+    .toc-link.active {
+        background: rgba(0, 0, 0, 0.03);
+        color: var(--text-main);
+    }
+
+    .toc-link.active::before {
+        background: var(--text-main);
+    }
+
+    .main {
+        flex: 1;
+        overflow-y: auto;
+        padding: 60px 40px;
+        scroll-behavior: smooth;
+    }
+
+    .paper {
+        max-width: 210mm;
+        margin: 0 auto;
+    }
+
+    .doc-header {
+        text-align: center;
+        border-bottom: 4px solid var(--border-dark);
+        padding-bottom: 32px;
+        margin-bottom: 64px;
+        position: relative;
+    }
+
+    .doc-header::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: var(--border-dark);
+    }
+
+    .doc-title {
+        font-size: 42px;
+        margin: 0 0 16px;
+        letter-spacing: 2px;
+        font-weight: normal;
+    }
+
+    .doc-meta {
+        font-size: 13px;
+        color: var(--text-muted);
+        font-family: "Courier New", Courier, monospace;
+        letter-spacing: 1px;
+    }
+
+    .section-header {
+        font-size: 28px;
+        font-weight: normal;
+        margin: 40px 0 32px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--border-dark);
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    .section-meta {
+        font-size: 14px;
+        color: var(--text-muted);
+    }
+
+    .cards-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .card {
+        border: 1px solid var(--border-light);
+        background: var(--paper-white);
+        padding: 32px 24px;
+        position: relative;
+    }
+
+    .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--border-dark);
+    }
+
+    .card-header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 10px;
+        margin-bottom: 20px;
+        padding-bottom: 16px;
+        border-bottom: 1px dashed var(--border-light);
+    }
+
+    .entry-title {
+        font-size: 30px;
+    }
+
+    .entry-subtitle {
+        font-size: 15px;
+        color: var(--text-muted);
+    }
+
+    .entry-tag {
+        font-size: 11px;
+        padding: 2px 8px;
+        border: 1px solid var(--border-light);
+        border-radius: 20px;
+        color: var(--text-muted);
+        margin-left: auto;
+        letter-spacing: 1px;
+    }
+
+    .entry-summary {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .section-title {
+        font-weight: 600;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: block;
+        margin: 16px 0 8px;
+        border-left: 3px solid var(--border-dark);
+        padding-left: 8px;
+    }
+
+    .section-content {
+        color: #444;
+        font-size: 14px;
+        margin-bottom: 12px;
+    }
+
+    .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 18px;
+    }
+
+    .action-link {
+        display: inline-block;
+        padding: 10px 16px;
+        border: 1px solid var(--border-dark);
+        color: var(--text-main);
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+
+    .action-link:hover {
+        background: var(--text-main);
+        color: var(--paper-white);
+        transform: translateY(-1px);
+    }
+
+    .note-box {
+        background: #F4F2EB;
+        padding: 12px 16px;
+        border-left: 3px solid #C0B9A8;
+        font-size: 13px;
+        color: #555;
+        margin-top: 16px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0;
+        font-size: 13px;
+    }
+
+    th, td {
+        border: 1px solid var(--border-light);
+        padding: 8px 12px;
+        text-align: left;
+    }
+
+    th {
+        background: #FAFAFA;
+        font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+        .layout-container {
+            flex-direction: column;
+        }
+
+        .sidebar {
+            width: 100%;
+            min-width: 100%;
+            border-right: none;
+            border-bottom: 1px solid var(--border-light);
+            padding: 20px;
+            max-height: 300px;
+        }
+
+        .main {
+            padding: 30px 20px;
+        }
+
+        .card {
+            padding: 24px 20px;
+        }
+
+        .section-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="layout-container">
+    <aside class="sidebar">
+        <div class="toc-header">INDEX / 学习首页</div>
+        <h3 class="toc-section-title serif">首页导航</h3>
+        <ul class="toc-list">
+            <li class="toc-item"><a href="#overview" class="toc-link">学习总览</a></li>
+            <li class="toc-item"><a href="#entries" class="toc-link">资料入口</a></li>
+            <li class="toc-item"><a href="#publish" class="toc-link">发布提示</a></li>
+        </ul>
+        <h3 class="toc-section-title serif">快速打开</h3>
+        <ul class="toc-list">
+            <li class="toc-item"><a href="./单词.html" class="toc-link">单词.html</a></li>
+            <li class="toc-item"><a href="./语法.html" class="toc-link">语法.html</a></li>
+            <li class="toc-item"><a href="./动词变形.html" class="toc-link">动词变形.html</a></li>
+            <li class="toc-item"><a href="./形容词变形.html" class="toc-link">形容词变形.html</a></li>
+        </ul>
+    </aside>
+    <main class="main" id="main-scroll">
+        <div class="paper">
+            <header class="doc-header">
+                <h1 class="doc-title serif">日语学习首页 - JLPT N3备考</h1>
+                <div class="doc-meta">开始日期：2026年3月17日 | 目标考试：2026年7月JLPT N3</div>
+            </header>
+            <section id="overview" class="observe-section">
+                <h2 class="section-header serif"><span>学习总览</span><span class="section-meta">HOME OVERVIEW</span></h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="entry-title">JLPT N3 备考</span>
+                            <span class="entry-tag">2026.03 — 2026.07</span>
+                        </div>
+                        <div class="entry-summary">目标：2026年7月JLPT N3合格</div>
+                        <span class="section-title">学习内容</span>
+                        <div class="section-content">本学习系统涵盖：词汇、语法、动词变形、形容词变形四大专项。通过系统化的知识整理和笔记积累，为JLPT N3考试做充分准备。</div>
+                        <span class="section-title">学习资料</span>
+                        <div class="section-content">共4个专项模块，涵盖N5-N3级别内容，随学习进度持续更新。</div>
+                    </div>
+                </div>
+            </section>
+            <section id="entries" class="observe-section">
+                <h2 class="section-header serif"><span>资料入口</span><span class="section-meta">STUDY MATERIALS</span></h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="entry-title">📖 单词</span>
+                            <span class="entry-subtitle">词汇专项</span>
+                            <span class="entry-tag">N5 · N4 · N3</span>
+                        </div>
+                        <div class="entry-summary">日语单词本 - JLPT N3备考</div>
+                        <span class="section-title">内容说明</span>
+                        <div class="section-content">按照N5→N4→N3分级整理的词汇表。每个单词包含汉字、假名、词性、中文释义、详细说明、例句等完整信息。涵盖问候语、动词、名词、形容词、副词等各类词汇。</div>
+                        <div class="actions">
+                            <a href="./单词.html" class="action-link">打开单词本 →</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="entry-title">📝 语法</span>
+                            <span class="entry-subtitle">语法专项</span>
+                            <span class="entry-tag">N5 · N4 · N3</span>
+                        </div>
+                        <div class="entry-summary">日语语法笔记 - JLPT N3备考</div>
+                        <span class="section-title">内容说明</span>
+                        <div class="section-content">系统整理的语法知识点，包含问候语时间区分、礼貌体与简体、动词分类、ます形、て形、助词用法，以及N3级别的高级语法如〜ている、〜てしまう、〜という、〜によって等。每个语法点配有接续方式、例句和注意事项。</div>
+                        <div class="actions">
+                            <a href="./语法.html" class="action-link">打开语法笔记 →</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="entry-title">🔄 动词变形</span>
+                            <span class="entry-subtitle">变形手册</span>
+                            <span class="entry-tag">一类 · 二类 · 三类</span>
+                        </div>
+                        <div class="entry-summary">日语动词变形手册 - JLPT N3备考</div>
+                        <span class="section-title">内容说明</span>
+                        <div class="section-content">全面覆盖日语动词三种类型（一类/五段、二类/一段、三类/不规则）的变形规则。包含ます形、て形、ない形、た形的详细变形方法，附有综合对照表和学习建议。</div>
+                        <div class="actions">
+                            <a href="./动词变形.html" class="action-link">打开动词变形手册 →</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="entry-title">📐 形容词变形</span>
+                            <span class="entry-subtitle">变形总结</span>
+                            <span class="entry-tag">い形容词 · な形容词</span>
+                        </div>
+                        <div class="entry-summary">形容词变形总结 - い形容词 &amp; な形容词</div>
+                        <span class="section-title">内容说明</span>
+                        <div class="section-content">い形容词和な形容词的全变形规则总结。包含谓语形式、修饰名词、て形、副词形式、条件形等，附有速查对比表和考试常见陷阱TOP 5。</div>
+                        <div class="actions">
+                            <a href="./形容词变形.html" class="action-link">打开形容词变形总结 →</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="publish" class="observe-section">
+                <h2 class="section-header serif"><span>发布提示</span><span class="section-meta">PUBLISH NOTE</span></h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="entry-title">使用说明</span>
+                        </div>
+                        <span class="section-title">如何使用</span>
+                        <div class="section-content">点击上方资料入口卡片中的链接，即可打开对应的学习页面。所有页面均为独立HTML文件，可离线使用，支持打印。</div>
+                        <span class="section-title">更新记录</span>
+                        <div class="section-content">2026年3月17日：创建单词本、语法笔记<br>2026年3月18日：添加动词变形手册<br>2026年3月19日：添加形容词变形总结、整合首页导航</div>
+                        <div class="note-box">所有学习资料持续更新中，随学习进度不断补充新内容。</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const sections = document.querySelectorAll('.observe-section');
+        const navLinks = document.querySelectorAll('.toc-link');
+        const mainScroll = document.getElementById('main-scroll');
+
+        const observerOptions = {
+            root: mainScroll,
+            rootMargin: '0px 0px -60% 0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const currentId = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        if (link.getAttribute('href') === '#' + currentId) {
+                            link.classList.add('active');
+                        } else if (link.getAttribute('href').startsWith('#')) {
+                            link.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => { observer.observe(section); });
+
+        // Smooth scroll for internal links
+        document.querySelectorAll('.toc-link[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    mainScroll.scrollTo({
+                        top: targetElement.offsetTop - 60,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
