@@ -279,6 +279,18 @@
         color: var(--text-muted);
     }
 
+    .flow-chart {
+        margin-top: 16px;
+        padding: 16px 20px;
+        background: #FAFAFA;
+        border: 1px solid var(--border-light);
+        border-radius: 4px;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+        white-space: pre-line;
+    }
+
     /* Verb type badges */
     .verb-type {
         display: inline-block;
@@ -466,6 +478,7 @@
         <h3 class="toc-section-title serif">基础篇</h3>
         <ul class="toc-list">
             <li class="toc-item"><a href="#section-1" class="toc-link">动词变形基础概念</a></li>
+            <li class="toc-item"><a href="#section-1" class="toc-link">拿到词先怎么判断</a></li>
             <li class="toc-item"><a href="#section-2" class="toc-link">ます形（礼貌体）</a></li>
             <li class="toc-item"><a href="#section-3" class="toc-link">ます形的四种变化</a></li>
         </ul>
@@ -476,6 +489,15 @@
             <li class="toc-item"><a href="#section-5" class="toc-link">ない形（否定形式）</a></li>
             <li class="toc-item"><a href="#section-6" class="toc-link">た形（过去形式）</a></li>
             <li class="toc-item"><a href="#section-6a" class="toc-link">たい形（想要做...）</a></li>
+            <li class="toc-item"><a href="#section-6b" class="toc-link">形态关系图与误区</a></li>
+            <li class="toc-item"><a href="#section-6c" class="toc-link">可能形（能...）</a></li>
+            <li class="toc-item"><a href="#section-6d" class="toc-link">其他常考形态</a></li>
+            <li class="toc-item"><a href="#section-6e" class="toc-link">ている（正在...）</a></li>
+            <li class="toc-item"><a href="#section-6f" class="toc-link">条件形（たら / ば）</a></li>
+            <li class="toc-item"><a href="#section-6g" class="toc-link">意向形</a></li>
+            <li class="toc-item"><a href="#section-6h" class="toc-link">命令形与禁止形</a></li>
+            <li class="toc-item"><a href="#section-6i" class="toc-link">受身形</a></li>
+            <li class="toc-item"><a href="#section-6j" class="toc-link">使役形</a></li>
         </ul>
 
         <h3 class="toc-section-title serif">综合</h3>
@@ -530,6 +552,53 @@
                                 <li><strong>检查是否是例外？</strong> 走る、帰る、入る、知る等 → 一类动词</li>
                                 <li><strong>是否是する或来る？</strong> 是 → 三类动词</li>
                             </ol>
+                        </div>
+                    </div>
+
+                    <div class="content-card" id="card-1-pos">
+                        <h3 class="card-title">3. 拿到一个词，先判断它是不是动词</h3>
+                        <div class="note">
+                            <strong>先记住总原则：</strong>不是所有词都会像动词那样变形。<span class="important">先判断词性，再谈变形。</span>
+                        </div>
+                        <table>
+                            <tr><th style="width:18%">词类</th><th style="width:30%">最常见外形</th><th style="width:27%">后面常接什么</th><th style="width:25%">例子</th></tr>
+                            <tr><td>动词</td><td>常以う段假名结尾，或「〜る」「する」「来る」</td><td>ます、ない、て、た、たい</td><td>書く、食べる、する</td></tr>
+                            <tr><td>い形容词</td><td>词尾常是「い」</td><td>くない、かった、くて、く</td><td>高い、忙しい</td></tr>
+                            <tr><td>な形容词</td><td>词典里常不带「な」单独出现</td><td>だ、です、な、に、で</td><td>静か、元気</td></tr>
+                            <tr><td>名词</td><td>表示人、事、物、地点、概念</td><td>だ、です、の、に、になる</td><td>学生、日本、本</td></tr>
+                        </table>
+                        <div class="note-tip">
+                            <strong>实战判断口诀</strong><br>
+                            ① 能不能说「〜ます」？如果原本就是动作，多半是动词。<br>
+                            ② 能不能说「〜くない」？如果可以，多半是い形容词。<br>
+                            ③ 修饰名词时要不要加「な」？要加的话，多半是な形容词。<br>
+                            ④ 能不能说「〜の本」「〜になる」？如果更像事物名称，多半是名词。
+                        </div>
+                        <div class="note-warning">
+                            <strong>⚠️ 重要提醒</strong><br>
+                            词尾只是<strong>线索</strong>，不是百分之百答案。比如「きれい」虽然以「い」结尾，却是<span class="important">な形容词</span>；「切る（きる）」虽然长得像二类动词，却是<span class="important">一类动词</span>。
+                        </div>
+                    </div>
+
+                    <div class="content-card" id="card-1-masu-myth">
+                        <h3 class="card-title">4. 为什么看起来很多词后面加ます就成了动词？</h3>
+                        <div class="note">
+                            这里最容易误会。<span class="important">不是「ます」把词变成了动词</span>，而是：<br>
+                            <strong>动词本来就是动词</strong>，只是换成了礼貌说法。<br>
+                            书く → 書きます、食べる → 食べます，这两个词在加ます之前就已经是动词了。
+                        </div>
+                        <table>
+                            <tr><th>原来的词</th><th>真实情况</th><th>正确形式</th><th>错误理解</th></tr>
+                            <tr><td>書く</td><td>本来就是动词</td><td>書きます</td><td>不是「書く + ます」随便拼接</td></tr>
+                            <tr><td>食べる</td><td>本来就是动词</td><td>食べます</td><td>不是名词变动词</td></tr>
+                            <tr><td>勉強</td><td>本身常先当名词</td><td>勉強する → 勉強します</td><td class="important">不能说「勉強ます」</td></tr>
+                            <tr><td>学生</td><td>名词</td><td>学生です</td><td class="important">不能说「学生ます」</td></tr>
+                            <tr><td>きれい</td><td>な形容词</td><td>きれいです</td><td class="important">不能说「きれいます」</td></tr>
+                        </table>
+                        <div class="note-tip">
+                            <strong>你现在要这样理解：</strong><br>
+                            「ます」只接在<span class="important">动词的ます形词干</span>后面。<br>
+                            而像「勉強」这种词之所以能变成动作，是因为它先和<span class="important">する</span>结合，变成「勉強する」这个三类动词，然后才继续变成「勉強します」。
                         </div>
                     </div>
 
@@ -808,6 +877,463 @@
                 </div>
             </section>
 
+            <section id="section-6b">
+                <h2 class="section-header serif">
+                    <span>六-2、各个形态和词性之间的关系</span>
+                </h2>
+                <div class="cards-grid">
+
+                    <div class="content-card" id="card-6b-chart">
+                        <h3 class="card-title">1. 动词 → ます形 → たい形 的关系图</h3>
+                        <div class="flow-chart">辞書形（原形）      書く
+        ↓ 先按动词规则变形
+ます形            書きます
+        ↓ 去掉「ます」
+たい形            書きたい
+        ↓ 因为「たい」语法上像 い形容词
+继续变化          書きたくない / 書きたかった / 書きたくなかった</div>
+                        <div class="note-tip">
+                            <strong>关键点只抓一句：</strong><br>
+                            <span class="important">前半段决定“这是哪个动词”，后半段决定“句尾怎么变”。</span><br>
+                            所以「書きたい」里面，前面的「書き」来自动词「書く」，后面的「たい」让整个句尾表现得像い形容词。
+                        </div>
+                    </div>
+
+                    <div class="content-card" id="card-6b-suru">
+                        <h3 class="card-title">2. サ变名词为什么会像三类动词？</h3>
+                        <div class="flow-chart">勉強（名词）
+   ↓ 和 する 结合
+勉強する（动词，三类）
+   ↓ 礼貌体
+勉強します
+   ↓ 愿望
+勉強したい</div>
+                        <div class="note">
+                            所以你看到很多汉字词好像“突然会动词变形”，本质上是它们走了这条路：<br>
+                            <span class="highlight">名词 → 名词 + する → 三类动词 → 继续按动词变形</span>
+                        </div>
+                        <div class="note-warning">
+                            <strong>⚠️ 一定不要跳步</strong><br>
+                            不是「勉強 → 勉強たい」✗，而是「勉強する → 勉強したい」✓。<br>
+                            不是「電話 → 電話ました」✗，而是「電話する → 電話しました」✓。
+                        </div>
+                    </div>
+
+                    <div class="content-card" id="card-6b-why-tai">
+                        <h3 class="card-title">3. 为什么「たい」很像い形容词？</h3>
+                        <table>
+                            <tr><th>项目</th><th>い形容词</th><th>たい形</th><th>你要记住的结论</th></tr>
+                            <tr><td>否定</td><td>高い → 高くない</td><td>行きたい → 行きたくない</td><td>都用「くない」</td></tr>
+                            <tr><td>过去</td><td>高い → 高かった</td><td>行きたい → 行きたかった</td><td>都用「かった」</td></tr>
+                            <tr><td>过去否定</td><td>高い → 高くなかった</td><td>行きたい → 行きたくなかった</td><td>都用「くなかった」</td></tr>
+                            <tr><td>礼貌</td><td>高いです</td><td>行きたいです</td><td>都能接「です」</td></tr>
+                        </table>
+                        <div class="note-tip">
+                            <strong>最简单理解法</strong><br>
+                            「たい」本身不是普通动词词尾，它更像是贴在动词后面的<span class="important">“想〜”形容词部件</span>。<br>
+                            所以：<span class="highlight">动词负责动作意义，たい负责“想要”的语法外壳</span>。
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="section-6c">
+                <h2 class="section-header serif">
+                    <span>六-3、可能形（能够…… / 可以……）</span>
+                </h2>
+                <div class="cards-grid">
+
+                    <div class="content-card" id="card-6c-intro">
+                        <div class="note"><strong>可能形是什么？</strong>表示“能做……”“会做……”“在某种条件下可以做……”。这是你做题时非常常遇到、而且从N4到N3都很重要的形态。</div>
+                        <div class="note-tip"><strong>你先抓核心意思</strong><br>食べる = 吃；<span class="important">食べられる = 能吃 / 可以吃</span><br>話す = 说；<span class="important">話せる = 会说 / 能说</span></div>
+                    </div>
+
+                    <div class="content-card" id="card-6c-rule">
+                        <h3 class="card-title">1. 可能形的基本变法</h3>
+                        <table>
+                            <tr><th>动词类型</th><th>原形</th><th>规则</th><th>可能形</th><th>意思</th></tr>
+                            <tr><td><span class="verb-type">一类</span></td><td>書く</td><td>词尾う段 → え段 + る</td><td>書ける</td><td>能写</td></tr>
+                            <tr><td><span class="verb-type">一类</span></td><td>話す</td><td>す → せる</td><td>話せる</td><td>会说</td></tr>
+                            <tr><td><span class="verb-type">一类</span></td><td>読む</td><td>む → める</td><td>読める</td><td>能读</td></tr>
+                            <tr><td><span class="verb-type">二类</span></td><td>食べる</td><td>去掉る + られる</td><td>食べられる</td><td>能吃</td></tr>
+                            <tr><td><span class="verb-type">二类</span></td><td>見る</td><td>去掉る + られる</td><td>見られる</td><td>能看见 / 能看</td></tr>
+                            <tr><td><span class="verb-type">三类</span></td><td>する</td><td>特殊变化</td><td>できる</td><td>会做 / 能做</td></tr>
+                            <tr><td><span class="verb-type">三类</span></td><td>来る（くる）</td><td>特殊变化</td><td>来られる（こられる）</td><td>能来</td></tr>
+                        </table>
+                        <div class="note-tip"><strong>💡 一类动词一眼记法</strong><br>一类动词的可能形，就是<span class="important">う段变え段，再加る</span>：<br>く→ける、す→せる、む→める、ぶ→べる、ぬ→ねる、う→える、つ→てる、る→れる、ぐ→げる</div>
+                    </div>
+
+                    <div class="content-card" id="card-6c-particle">
+                        <h3 class="card-title">2. 可能形里助词为什么常从「を」变「が」？</h3>
+                        <div class="note">这是做题时最容易卡住的地方。<span class="important">可能句里，原来动作的对象常常从「を」变成「が」</span>。</div>
+                        <table>
+                            <tr><th>普通句</th><th>可能句</th><th>意思</th></tr>
+                            <tr><td>日本語を話す</td><td>日本語が話せる</td><td>会说日语</td></tr>
+                            <tr><td>漢字を読む</td><td>漢字が読める</td><td>能读汉字</td></tr>
+                            <tr><td>寿司を食べる</td><td>寿司が食べられる</td><td>能吃寿司</td></tr>
+                        </table>
+                        <div class="note-warning"><strong>⚠️ 先这样记最稳</strong><br>初学阶段做题时，你先优先记：<span class="important">名词 + が + 可能形</span>。<br>以后你会看到有些句子也保留「を」，但考试基础题里最常见、最稳妥的是「が」。</div>
+                    </div>
+
+                    <div class="content-card" id="card-6c-traps">
+                        <h3 class="card-title">3. 可能形的常见陷阱</h3>
+                        <div class="note-warning"><strong>⚠️ 易错点1：一类动词不要乱套二类规则</strong><br>書く → 書ける ✓<br>✗ 書きられる</div>
+                        <div class="note-warning"><strong>⚠️ 易错点2：二类动词的可能形不是ます形后面加る</strong><br>食べる → 食べられる ✓<br>✗ 食べれる（口语里有人说，但考试标准形先记食べられる）</div>
+                        <div class="note-warning"><strong>⚠️ 易错点3：する的可能形不是「しられる」</strong><br>する → <span class="important">できる</span>，这是必须单独记住的特殊形。</div>
+                        <div class="example-block">
+                            <div class="example-jp">私は日本語が話せます。</div>
+                            <div class="example-cn">我会说日语。</div>
+                        </div>
+                        <div class="example-block">
+                            <div class="example-jp">この店では魚が食べられます。</div>
+                            <div class="example-cn">在这家店可以吃鱼。</div>
+                        </div>
+                        <div class="example-block">
+                            <div class="example-jp">明日は来られません。</div>
+                            <div class="example-cn">明天不能来。</div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="section-6d">
+                <h2 class="section-header serif">
+                    <span>六-4、除了这些，还有哪些常考形态？</span>
+                </h2>
+                <div class="cards-grid">
+
+                    <div class="content-card" id="card-6d-priority">
+                        <h3 class="card-title">1. 从N5到N3最值得优先掌握的动词形态</h3>
+                        <table>
+                            <tr><th>优先级</th><th>形态</th><th>作用</th><th>你现在的建议</th></tr>
+                            <tr><td><span class="important">最高</span></td><td>辞書形 / 普通形</td><td>接各种语法、做从句、做普通表达</td><td>必须认识并熟悉</td></tr>
+                            <tr><td><span class="important">最高</span></td><td>ている</td><td>正在…… / 保持某状态</td><td>一定要补强</td></tr>
+                            <tr><td><span class="important">最高</span></td><td>可能形</td><td>能…… / 会……</td><td>现在就该学</td></tr>
+                            <tr><td>高</td><td>条件形（たら / ば）</td><td>如果……的话</td><td>N4-N3非常常见</td></tr>
+                            <tr><td>高</td><td>意向形</td><td>要不要…… / 我们来……吧 / 打算……</td><td>常见且实用</td></tr>
+                            <tr><td>中</td><td>命令形 / 禁止形</td><td>命令、禁止</td><td>先会识别，再慢慢掌握</td></tr>
+                            <tr><td>中</td><td>受身形</td><td>被……</td><td>N3经常会看到</td></tr>
+                            <tr><td>中</td><td>使役形</td><td>让……做……</td><td>N3会出现，先知道概念</td></tr>
+                        </table>
+                        <div class="note-tip"><strong>结论</strong><br>就你现在的阶段来说，<span class="important">最该立刻补的就是：可能形、ている、条件形、意向形</span>。<br>受身形、使役形、命令形、禁止形先做到“见过、能认”，后面再系统学会更合适。</div>
+                    </div>
+
+                    <div class="content-card" id="card-6d-brief">
+                        <h3 class="card-title">2. 这些常考形态分别是干什么的？</h3>
+                        <table>
+                            <tr><th>形态</th><th>例子</th><th>意思</th></tr>
+                            <tr><td>辞書形</td><td>書く</td><td>原形，很多语法都接它</td></tr>
+                            <tr><td>ている</td><td>書いている</td><td>正在写 / 一直是写着的状态</td></tr>
+                            <tr><td>可能形</td><td>書ける</td><td>能写</td></tr>
+                            <tr><td>たら条件</td><td>書いたら</td><td>如果写了 / 要是写的话</td></tr>
+                            <tr><td>ば条件</td><td>書けば</td><td>如果写的话</td></tr>
+                            <tr><td>意向形</td><td>書こう</td><td>来写吧 / 打算写</td></tr>
+                            <tr><td>命令形</td><td>書け</td><td>写！</td></tr>
+                            <tr><td>禁止形</td><td>書くな</td><td>别写！</td></tr>
+                            <tr><td>受身形</td><td>書かれる</td><td>被写</td></tr>
+                            <tr><td>使役形</td><td>書かせる</td><td>让……写</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="content-card" id="card-6d-next">
+                        <h3 class="card-title">3. 你现在最合理的学习顺序</h3>
+                        <div class="note-tip">
+                            <ol>
+                                <li><strong>先巩固你已经会的：</strong>ます形、ます四变、て形、ない形、た形、たい形</li>
+                                <li><strong>立刻补上：</strong><span class="important">可能形</span></li>
+                                <li><strong>接着补：</strong>ている、条件形（たら / ば）、意向形</li>
+                                <li><strong>再进入识别层面：</strong>受身形、使役形、命令形、禁止形</li>
+                            </ol>
+                        </div>
+                        <div class="note-warning"><strong>⚠️ 很重要</strong><br>不是说后面的形态不考，而是对你现在来说，如果一下子全背，会很乱。<span class="important">先把高频、好用、立刻能做题的形态学稳</span>，效率最高。</div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="section-6e">
+                <h2 class="section-header serif">
+                    <span>六-5、ている（正在…… / ……着 / 保持某状态）</span>
+                </h2>
+                <div class="cards-grid">
+
+                    <div class="content-card" id="card-6e-intro">
+                        <div class="note"><strong>ている是什么？</strong>这是日语里非常高频的形式。它最常见有两种意思：<br>① <span class="important">正在进行</span>：今ご飯を食べている（正在吃饭）<br>② <span class="important">状态持续</span>：窓が開いている（窗户开着）</div>
+                    </div>
+
+                    <div class="content-card" id="card-6e-type1">
+                        <h3 class="card-title">1. 一类动词 → ている</h3>
+                        <div class="formula-box"><strong>规则：</strong>先变成て形，再加いる</div>
+                        <table>
+                            <tr><th>原形</th><th>先变て形</th><th>ている形</th><th>意思</th></tr>
+                            <tr><td>書く</td><td>書いて</td><td>書いている</td><td>正在写</td></tr>
+                            <tr><td>飲む</td><td>飲んで</td><td>飲んでいる</td><td>正在喝</td></tr>
+                            <tr><td>話す</td><td>話して</td><td>話している</td><td>正在说</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="content-card" id="card-6e-type2">
+                        <h3 class="card-title">2. 二类动词 → ている</h3>
+                        <div class="formula-box"><strong>规则：</strong>先变成て形，再加いる</div>
+                        <table>
+                            <tr><th>原形</th><th>て形</th><th>ている形</th><th>意思</th></tr>
+                            <tr><td>食べる</td><td>食べて</td><td>食べている</td><td>正在吃</td></tr>
+                            <tr><td>見る</td><td>見て</td><td>見ている</td><td>正在看</td></tr>
+                            <tr><td>起きる</td><td>起きて</td><td>起きている</td><td>醒着 / 起着</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="content-card" id="card-6e-type3">
+                        <h3 class="card-title">3. 三类动词 → ている</h3>
+                        <table>
+                            <tr><th>原形</th><th>て形</th><th>ている形</th><th>意思</th></tr>
+                            <tr><td>する</td><td>して</td><td>している</td><td>正在做</td></tr>
+                            <tr><td>来る（くる）</td><td>来て（きて）</td><td>来ている（きている）</td><td>来了 / 正在来</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="content-card" id="card-6e-traps">
+                        <h3 class="card-title">4. ている的常见陷阱</h3>
+                        <div class="note-warning"><strong>⚠️ 陷阱1：不是所有ている都翻成“正在”</strong><br>住んでいる = 住着 / 住在，不一定翻成“正在住”<br>結婚している = 已婚 / 结着婚，不是“正在结婚”</div>
+                        <div class="note-warning"><strong>⚠️ 陷阱2：自动词常表示结果状态</strong><br>窓が開いている = 窗户开着<br>地面がぬれている = 地面湿着 / 地面是湿的</div>
+                        <div class="example-block">
+                            <div class="example-jp">今、日本語を勉強している。</div>
+                            <div class="example-cn">现在正在学习日语。</div>
+                        </div>
+                        <div class="example-block">
+                            <div class="example-jp">雨で地面がぬれている。</div>
+                            <div class="example-cn">因为下雨，地面是湿的。</div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="section-6f">
+                <h2 class="section-header serif">
+                    <span>六-6、条件形（たら / ば）</span>
+                </h2>
+                <div class="cards-grid">
+
+                    <div class="content-card" id="card-6f-tara">
+                        <h3 class="card-title">1. たら条件：如果……的话</h3>
+                        <div class="note"><strong>最简单理解：</strong>先变成<span class="important">た形</span>，再加<span class="important">ら</span>。</div>
+                        <table>
+                            <tr><th>动词类型</th><th>原形</th><th>先变た形</th><th>たら形</th></tr>
+                            <tr><td><span class="verb-type">一类</span></td><td>書く</td><td>書いた</td><td>書いたら</td></tr>
+                            <tr><td><span class="verb-type">一类</span></td><td>飲む</td><td>飲んだ</td><td>飲んだら</td></tr>
+                            <tr><td><span class="verb-type">二类</span></td><td>食べる</td><td>食べた</td><td>食べたら</td></tr>
+                            <tr><td><span class="verb-type">二类</span></td><td>見る</td><td>見た</td><td>見たら</td></tr>
+                            <tr><td><span class="verb-type">三类</span></td><td>する</td><td>した</td><td>したら</td></tr>
+                            <tr><td><span class="verb-type">三类</span></td><td>来る</td><td>来た</td><td>来たら</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="content-card" id="card-6f-ba">
+                        <h3 class="card-title">2. ば条件：如果……的话</h3>
+                        <table>
+                            <tr><th>动词类型</th><th>原形</th><th>规则</th><th>ば形</th><th>意思</th></tr>
+                            <tr><td><span class="verb-type">一类</span></td><td>書く</td><td>词尾う段 → え段 + ば</td><td>書けば</td><td>如果写</td></tr>
+                            <tr><td><span class="verb-type">一类</span></td><td>読む</td><td>む → めば</td><td>読めば</td><td>如果读</td></tr>
+                            <tr><td><span class="verb-type">二类</span></td><td>食べる</td><td>去掉る + れば</td><td>食べれば</td><td>如果吃</td></tr>
+                            <tr><td><span class="verb-type">二类</span></td><td>見る</td><td>去掉る + れば</td><td>見れば</td><td>如果看</td></tr>
+                            <tr><td><span class="verb-type">三类</span></td><td>する</td><td>特殊变化</td><td>すれば</td><td>如果做</td></tr>
+                            <tr><td><span class="verb-type">三类</span></td><td>来る（くる）</td><td>特殊变化</td><td>来れば（くれば）</td><td>如果来</td></tr>
+                        </table>
+                        <div class="note-tip"><strong>💡 一类动词记忆法</strong><br>一类动词的ば形和可能形很像：<br>書く → 書ける（能写） / 書けば（如果写）<br>読む → 読める（能读） / 読めば（如果读）</div>
+                    </div>
+
+                    <div class="content-card" id="card-6f-compare">
+                        <h3 class="card-title">3. たら 和 ば 怎么区分？</h3>
+                        <div class="note">初学阶段你可以先这样理解：<br><span class="important">たら更口语、更宽</span>；<span class="important">ば更像规则、条件判断</span>。</div>
+                        <div class="example-block">
+                            <div class="example-jp">時間があったら、映画を見ます。</div>
+                            <div class="example-cn">如果有时间，就看电影。</div>
+                        </div>
+                        <div class="example-block">
+                            <div class="example-jp">安ければ、買います。</div>
+                            <div class="example-cn">如果便宜，就买。</div>
+                        </div>
+                        <div class="note-warning"><strong>⚠️ 初学建议</strong><br>做题时先记：<span class="important">たら = た形 + ら</span>；<span class="important">ば = 一类变え段+ば / 二类去る+れば / する→すれば / 来る→くれば</span>。</div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="section-6g">
+                <h2 class="section-header serif">
+                    <span>六-7、意向形（要……吧 / 打算……）</span>
+                </h2>
+                <div class="cards-grid">
+
+                    <div class="content-card" id="card-6g-type1">
+                        <h3 class="card-title">1. 一类动词 → 意向形</h3>
+                        <div class="formula-box"><strong>规则：</strong>词尾う段 → お段 + う</div>
+                        <table>
+                            <tr><th>原形</th><th>变化</th><th>意向形</th><th>意思</th></tr>
+                            <tr><td>書く</td><td>く → こ + う</td><td>書こう</td><td>来写吧 / 打算写</td></tr>
+                            <tr><td>話す</td><td>す → そ + う</td><td>話そう</td><td>来说吧</td></tr>
+                            <tr><td>読む</td><td>む → も + う</td><td>読もう</td><td>来读吧</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="content-card" id="card-6g-type2">
+                        <h3 class="card-title">2. 二类动词 → 意向形</h3>
+                        <div class="formula-box"><strong>规则：</strong>去掉る + よう</div>
+                        <table>
+                            <tr><th>原形</th><th>意向形</th><th>意思</th></tr>
+                            <tr><td>食べる</td><td>食べよう</td><td>来吃吧 / 打算吃</td></tr>
+                            <tr><td>見る</td><td>見よう</td><td>来看看吧</td></tr>
+                            <tr><td>起きる</td><td>起きよう</td><td>起来吧 / 打算起床</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="content-card" id="card-6g-type3">
+                        <h3 class="card-title">3. 三类动词 → 意向形</h3>
+                        <table>
+                            <tr><th>原形</th><th>意向形</th><th>意思</th></tr>
+                            <tr><td>する</td><td>しよう</td><td>来做吧</td></tr>
+                            <tr><td>来る（くる）</td><td>来よう（こよう）</td><td>来吧 / 打算来</td></tr>
+                        </table>
+                        <div class="example-block">
+                            <div class="example-jp">一緒に勉強しよう。</div>
+                            <div class="example-cn">我们一起学习吧。</div>
+                        </div>
+                    </div>
+
+                    <div class="content-card" id="card-6g-traps">
+                        <h3 class="card-title">4. 意向形的常见陷阱</h3>
+                        <div class="note-warning"><strong>⚠️ 易错点1</strong><br>一类动词不是去掉词尾乱加よう。<br>書く → 書こう ✓ / ✗ 書きよう</div>
+                        <div class="note-warning"><strong>⚠️ 易错点2</strong><br>二类动词才是去掉る + よう。<br>食べる → 食べよう ✓</div>
+                        <div class="note-tip"><strong>常见用法</strong><br>① 邀请：一緒に行こう。<br>② 自己的打算：明日から頑張ろうと思う。</div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="section-6h">
+                <h2 class="section-header serif">
+                    <span>六-8、命令形与禁止形</span>
+                </h2>
+                <div class="cards-grid">
+
+                    <div class="content-card" id="card-6h-order">
+                        <h3 class="card-title">1. 命令形</h3>
+                        <table>
+                            <tr><th>动词类型</th><th>规则</th><th>例子</th></tr>
+                            <tr><td><span class="verb-type">一类</span></td><td>词尾う段 → え段</td><td>書く → 書け、話す → 話せ、行く → 行け</td></tr>
+                            <tr><td><span class="verb-type">二类</span></td><td>去掉る + ろ / よ</td><td>食べる → 食べろ、見る → 見ろ</td></tr>
+                            <tr><td><span class="verb-type">三类</span></td><td>特殊变化</td><td>する → しろ / せよ、来る → 来い（こい）</td></tr>
+                        </table>
+                        <div class="note-warning"><strong>⚠️ 注意</strong><br>命令形语气很强，日常对别人直接说会显得凶。考试里常考的是<span class="important">识别</span>，不是让你乱用。</div>
+                    </div>
+
+                    <div class="content-card" id="card-6h-ban">
+                        <h3 class="card-title">2. 禁止形</h3>
+                        <div class="formula-box"><strong>规则：</strong>辞書形 + な</div>
+                        <table>
+                            <tr><th>原形</th><th>禁止形</th><th>意思</th></tr>
+                            <tr><td>書く</td><td>書くな</td><td>别写</td></tr>
+                            <tr><td>食べる</td><td>食べるな</td><td>别吃</td></tr>
+                            <tr><td>する</td><td>するな</td><td>别做</td></tr>
+                            <tr><td>来る</td><td>来るな</td><td>别来</td></tr>
+                        </table>
+                        <div class="note-tip"><strong>对比</strong><br>命令形是“去做！”；禁止形是“别做！”。<br>这两种都比「〜てください」「〜ないでください」强硬得多。</div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="section-6i">
+                <h2 class="section-header serif">
+                    <span>六-9、受身形（被……）</span>
+                </h2>
+                <div class="cards-grid">
+
+                    <div class="content-card" id="card-6i-rule">
+                        <h3 class="card-title">1. 受身形的基本规则</h3>
+                        <table>
+                            <tr><th>动词类型</th><th>规则</th><th>例子</th><th>意思</th></tr>
+                            <tr><td><span class="verb-type">一类</span></td><td>词尾う段 → あ段 + れる</td><td>書く → 書かれる</td><td>被写</td></tr>
+                            <tr><td><span class="verb-type">一类</span></td><td>す → される</td><td>話す → 話される</td><td>被说</td></tr>
+                            <tr><td><span class="verb-type">二类</span></td><td>去掉る + られる</td><td>食べる → 食べられる</td><td>被吃</td></tr>
+                            <tr><td><span class="verb-type">二类</span></td><td>去掉る + られる</td><td>見る → 見られる</td><td>被看</td></tr>
+                            <tr><td><span class="verb-type">三类</span></td><td>特殊变化</td><td>する → される、来る → 来られる</td><td>被做 / 被来</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="content-card" id="card-6i-compare">
+                        <h3 class="card-title">2. 为什么二类动词的受身形和可能形长得像？</h3>
+                        <div class="note">这是超级重要的混淆点。二类动词里：<br>食べる → <span class="important">食べられる</span><br>这个形式既可能是<span class="important">可能形</span>（能吃），也可能是<span class="important">受身形</span>（被吃）。<br>到底是哪一个，要看<span class="important">句子的意思和助词</span>。</div>
+                        <div class="example-block">
+                            <div class="example-jp">私は魚が食べられる。</div>
+                            <div class="example-cn">我能吃鱼。（可能）</div>
+                        </div>
+                        <div class="example-block">
+                            <div class="example-jp">魚は猫に食べられた。</div>
+                            <div class="example-cn">鱼被猫吃了。（受身）</div>
+                        </div>
+                    </div>
+
+                    <div class="content-card" id="card-6i-usage">
+                        <h3 class="card-title">3. 受身句怎么认？</h3>
+                        <div class="note-tip"><strong>常见标志</strong><br>① 有“被……”的意思<br>② 常出现动作发出者：<span class="important">に</span> / <span class="important">によって</span><br>③ 句子重点落在“承受动作的一方”</div>
+                        <div class="example-block">
+                            <div class="example-jp">私は先生にほめられた。</div>
+                            <div class="example-cn">我被老师表扬了。</div>
+                        </div>
+                        <div class="example-block">
+                            <div class="example-jp">古い方法は新技術によって変えられる。</div>
+                            <div class="example-cn">旧方法会被新技术改变。</div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="section-6j">
+                <h2 class="section-header serif">
+                    <span>六-10、使役形（让……做…… / 使……）</span>
+                </h2>
+                <div class="cards-grid">
+
+                    <div class="content-card" id="card-6j-rule">
+                        <h3 class="card-title">1. 使役形的基本规则</h3>
+                        <table>
+                            <tr><th>动词类型</th><th>规则</th><th>例子</th><th>意思</th></tr>
+                            <tr><td><span class="verb-type">一类</span></td><td>词尾う段 → あ段 + せる</td><td>書く → 書かせる</td><td>让写</td></tr>
+                            <tr><td><span class="verb-type">一类</span></td><td>す → させる</td><td>話す → 話させる</td><td>让说</td></tr>
+                            <tr><td><span class="verb-type">二类</span></td><td>去掉る + させる</td><td>食べる → 食べさせる</td><td>让吃</td></tr>
+                            <tr><td><span class="verb-type">二类</span></td><td>去掉る + させる</td><td>見る → 見させる</td><td>让看</td></tr>
+                            <tr><td><span class="verb-type">三类</span></td><td>特殊变化</td><td>する → させる、来る → 来させる（こさせる）</td><td>让做 / 让来</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="content-card" id="card-6j-usage">
+                        <h3 class="card-title">2. 使役形最常见的用法</h3>
+                        <div class="example-block">
+                            <div class="example-jp">先生は学生に本を読ませる。</div>
+                            <div class="example-cn">老师让学生读书。</div>
+                        </div>
+                        <div class="example-block">
+                            <div class="example-jp">母は子どもに野菜を食べさせる。</div>
+                            <div class="example-cn">妈妈让孩子吃蔬菜。</div>
+                        </div>
+                        <div class="note-tip"><strong>句型观察</strong><br>A は B に C を V-させる<br>＝ A 让 B 做 C 这件事</div>
+                    </div>
+
+                    <div class="content-card" id="card-6j-traps">
+                        <h3 class="card-title">3. 使役形的常见陷阱</h3>
+                        <div class="note-warning"><strong>⚠️ 易错点1</strong><br>一类动词是あ段 + せる，不是去掉词尾直接加させる。<br>書く → 書かせる ✓ / ✗ 書きさせる</div>
+                        <div class="note-warning"><strong>⚠️ 易错点2</strong><br>二类动词才是去掉る + させる。<br>食べる → 食べさせる ✓</div>
+                        <div class="note-warning"><strong>⚠️ 易错点3</strong><br>する → させる，来る → 来させる（こさせる），都要单独记。</div>
+                    </div>
+
+                </div>
+            </section>
+
             <section id="section-7">
                 <h2 class="section-header serif">
                     <span>七、动词变形综合对照表</span>
@@ -817,31 +1343,58 @@
                     <div class="content-card" id="card-7-type1">
                         <h3 class="card-title">一类动词变形总表</h3>
                         <table>
-                            <tr><th>原形</th><th>ます形</th><th>て形</th><th>ない形</th><th>た形</th><th>たい形</th></tr>
-                            <tr><td>書く</td><td>書きます</td><td>書いて</td><td>書かない</td><td>書いた</td><td>書きたい</td></tr>
-                            <tr><td>飲む</td><td>飲みます</td><td>飲んで</td><td>飲まない</td><td>飲んだ</td><td>飲みたい</td></tr>
-                            <tr><td>話す</td><td>話します</td><td>話して</td><td>話さない</td><td>話した</td><td>話したい</td></tr>
-                            <tr><td>買う</td><td>買います</td><td>買って</td><td>買わない</td><td>買った</td><td>買いたい</td></tr>
-                            <tr><td>行く</td><td>行きます</td><td>行って</td><td>行かない</td><td>行った</td><td>行きたい</td></tr>
+                            <tr><th>原形</th><th>ます形</th><th>て形</th><th>ない形</th><th>た形</th><th>たい形</th><th>可能形</th></tr>
+                            <tr><td>書く</td><td>書きます</td><td>書いて</td><td>書かない</td><td>書いた</td><td>書きたい</td><td>書ける</td></tr>
+                            <tr><td>飲む</td><td>飲みます</td><td>飲んで</td><td>飲まない</td><td>飲んだ</td><td>飲みたい</td><td>飲める</td></tr>
+                            <tr><td>話す</td><td>話します</td><td>話して</td><td>話さない</td><td>話した</td><td>話したい</td><td>話せる</td></tr>
+                            <tr><td>買う</td><td>買います</td><td>買って</td><td>買わない</td><td>買った</td><td>買いたい</td><td>買える</td></tr>
+                            <tr><td>行く</td><td>行きます</td><td>行って</td><td>行かない</td><td>行った</td><td>行きたい</td><td>行ける</td></tr>
                         </table>
                     </div>
 
                     <div class="content-card" id="card-7-type2">
                         <h3 class="card-title">二类动词变形总表</h3>
                         <table>
-                            <tr><th>原形</th><th>ます形</th><th>て形</th><th>ない形</th><th>た形</th><th>たい形</th></tr>
-                            <tr><td>食べる</td><td>食べます</td><td>食べて</td><td>食べない</td><td>食べた</td><td>食べたい</td></tr>
-                            <tr><td>見る</td><td>見ます</td><td>見て</td><td>見ない</td><td>見た</td><td>見たい</td></tr>
-                            <tr><td>起きる</td><td>起きます</td><td>起きて</td><td>起きない</td><td>起きた</td><td>起きたい</td></tr>
+                            <tr><th>原形</th><th>ます形</th><th>て形</th><th>ない形</th><th>た形</th><th>たい形</th><th>可能形</th></tr>
+                            <tr><td>食べる</td><td>食べます</td><td>食べて</td><td>食べない</td><td>食べた</td><td>食べたい</td><td>食べられる</td></tr>
+                            <tr><td>見る</td><td>見ます</td><td>見て</td><td>見ない</td><td>見た</td><td>見たい</td><td>見られる</td></tr>
+                            <tr><td>起きる</td><td>起きます</td><td>起きて</td><td>起きない</td><td>起きた</td><td>起きたい</td><td>起きられる</td></tr>
                         </table>
                     </div>
 
                     <div class="content-card" id="card-7-type3">
                         <h3 class="card-title">三类动词变形总表</h3>
                         <table>
-                            <tr><th>原形</th><th>ます形</th><th>て形</th><th>ない形</th><th>た形</th><th>たい形</th></tr>
-                            <tr><td>する</td><td>します</td><td>して</td><td>しない</td><td>した</td><td>したい</td></tr>
-                            <tr><td>来る（くる）</td><td>来ます（きます）</td><td>来て（きて）</td><td>来ない（こない）</td><td>来た（きた）</td><td>来たい（きたい）</td></tr>
+                            <tr><th>原形</th><th>ます形</th><th>て形</th><th>ない形</th><th>た形</th><th>たい形</th><th>可能形</th></tr>
+                            <tr><td>する</td><td>します</td><td>して</td><td>しない</td><td>した</td><td>したい</td><td>できる</td></tr>
+                            <tr><td>来る（くる）</td><td>来ます（きます）</td><td>来て（きて）</td><td>来ない（こない）</td><td>来た（きた）</td><td>来たい（きたい）</td><td>来られる（こられる）</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="content-card" id="card-7-advanced1">
+                        <h3 class="card-title">一类动词进阶常考形态表</h3>
+                        <table>
+                            <tr><th>原形</th><th>ている</th><th>たら</th><th>ば</th><th>意向</th><th>命令</th><th>禁止</th><th>受身</th><th>使役</th></tr>
+                            <tr><td>書く</td><td>書いている</td><td>書いたら</td><td>書けば</td><td>書こう</td><td>書け</td><td>書くな</td><td>書かれる</td><td>書かせる</td></tr>
+                            <tr><td>話す</td><td>話している</td><td>話したら</td><td>話せば</td><td>話そう</td><td>話せ</td><td>話すな</td><td>話される</td><td>話させる</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="content-card" id="card-7-advanced2">
+                        <h3 class="card-title">二类动词进阶常考形态表</h3>
+                        <table>
+                            <tr><th>原形</th><th>ている</th><th>たら</th><th>ば</th><th>意向</th><th>命令</th><th>禁止</th><th>受身</th><th>使役</th></tr>
+                            <tr><td>食べる</td><td>食べている</td><td>食べたら</td><td>食べれば</td><td>食べよう</td><td>食べろ</td><td>食べるな</td><td>食べられる</td><td>食べさせる</td></tr>
+                            <tr><td>見る</td><td>見ている</td><td>見たら</td><td>見れば</td><td>見よう</td><td>見ろ</td><td>見るな</td><td>見られる</td><td>見させる</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="content-card" id="card-7-advanced3">
+                        <h3 class="card-title">三类动词进阶常考形态表</h3>
+                        <table>
+                            <tr><th>原形</th><th>ている</th><th>たら</th><th>ば</th><th>意向</th><th>命令</th><th>禁止</th><th>受身</th><th>使役</th></tr>
+                            <tr><td>する</td><td>している</td><td>したら</td><td>すれば</td><td>しよう</td><td>しろ</td><td>するな</td><td>される</td><td>させる</td></tr>
+                            <tr><td>来る（くる）</td><td>来ている</td><td>来たら</td><td>来れば</td><td>来よう</td><td>来い</td><td>来るな</td><td>来られる</td><td>来させる</td></tr>
                         </table>
                     </div>
 
@@ -862,7 +1415,9 @@
                                 <li><strong>第二阶段：</strong>熟练ます形及其四种变化</li>
                                 <li><strong>第三阶段：</strong>掌握て形（最重要！）</li>
                                 <li><strong>第四阶段：</strong>学习ない形和た形</li>
-                                <li><strong>第五阶段：</strong>综合练习，在实际句子中运用</li>
+                                <li><strong>第五阶段：</strong>补上たい形和<span class="important">可能形</span></li>
+                                <li><strong>第六阶段：</strong>继续进入ている、条件形、意向形</li>
+                                <li><strong>第七阶段：</strong>再系统学习受身形、使役形、命令形、禁止形</li>
                             </ol>
                         </div>
 
