@@ -1792,7 +1792,7 @@
                 </h2>
                 <div class="cards-grid">
 
-  <div class="grammar-item" id="gram-9">
+  <div class="grammar-item" id="gram-9-n3">
     <div class="grammar-title">〜ている（正在...、...着）</div>
     <div class="grammar-meaning">意思：表示动作正在进行或状态持续</div>
     <div class="grammar-connection">接续：动词て形 + いる</div>
@@ -4060,9 +4060,36 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        const sidebar = document.querySelector('.sidebar');
+        const mainScroll = document.getElementById('main-scroll');
+
+        const buildToc = () => {
+            if (!sidebar) return;
+
+            const tocHeader = sidebar.querySelector('.toc-header')?.outerHTML || '<div class="toc-header">INDEX / 语法目录</div>';
+            const tocHtml = Array.from(document.querySelectorAll('main section')).map(section => {
+                const title = section.querySelector('.section-header span')?.textContent?.trim();
+                const items = Array.from(section.querySelectorAll('.grammar-item')).map(card => {
+                    const id = card.getAttribute('id');
+                    const grammarTitle = card.querySelector('.grammar-title')?.textContent?.trim();
+
+                    if (!id || !grammarTitle) return '';
+
+                    return `<li class="toc-item"><a href="#${id}" class="toc-link">${grammarTitle}</a></li>`;
+                }).filter(Boolean).join('');
+
+                if (!title || !items) return '';
+
+                return `<h3 class="toc-section-title serif">${title}</h3><ul class="toc-list">${items}</ul>`;
+            }).filter(Boolean).join('');
+
+            sidebar.innerHTML = tocHeader + tocHtml;
+        };
+
+        buildToc();
+
         const sections = document.querySelectorAll('.grammar-item');
         const navLinks = document.querySelectorAll('.toc-link');
-        const mainScroll = document.getElementById('main-scroll');
 
         const observerOptions = {
             root: mainScroll,

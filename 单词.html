@@ -5723,9 +5723,37 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        const sidebar = document.querySelector('.sidebar');
+        const mainScroll = document.getElementById('main-scroll');
+
+        const buildToc = () => {
+            if (!sidebar) return;
+
+            const tocHeader = sidebar.querySelector('.toc-header')?.outerHTML || '<div class="toc-header">INDEX / 单词目录</div>';
+            const tocHtml = Array.from(document.querySelectorAll('main section')).map(section => {
+                const title = section.querySelector('.section-header span')?.textContent?.trim();
+                const items = Array.from(section.querySelectorAll('.word-card')).map(card => {
+                    const id = card.getAttribute('id');
+                    const kanji = card.querySelector('.word-kanji')?.textContent?.trim();
+                    const kana = card.querySelector('.word-kana')?.textContent?.trim();
+
+                    if (!id || !kanji) return '';
+
+                    return `<li class="toc-item"><a href="#${id}" class="toc-link">${kanji}${kana ? ` <span style="font-size: 11px; color: var(--text-muted); margin-left: 4px;">${kana}</span>` : ''}</a></li>`;
+                }).filter(Boolean).join('');
+
+                if (!title || !items) return '';
+
+                return `<h3 class="toc-section-title serif">${title}</h3><ul class="toc-list">${items}</ul>`;
+            }).filter(Boolean).join('');
+
+            sidebar.innerHTML = tocHeader + tocHtml;
+        };
+
+        buildToc();
+
         const sections = document.querySelectorAll('.word-card');
         const navLinks = document.querySelectorAll('.toc-link');
-        const mainScroll = document.getElementById('main-scroll');
 
         const observerOptions = {
             root: mainScroll,
